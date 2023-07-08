@@ -1,4 +1,4 @@
-[% load static %]
+{% load static %}
 
 <!doctype html>
 <html lang="en">
@@ -29,8 +29,6 @@
     <title>Luigi's Pizza {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-    <h1>Luigi's Pizza</h1>
-
     <header class="container-fluid fixed-top"></header>
 
     {% if messages %}
