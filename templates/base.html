@@ -16,7 +16,9 @@
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css"
+        integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
@@ -34,7 +36,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.js"
+        integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{% static 'js/swiper.min.js' %}"></script>
     <script src="{% static 'js/base.js' %}"></script>
     {% endblock %}
@@ -51,7 +55,7 @@
         <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                    <h3 class="logo-font text-black my-0"><img src="/media/logo-pizza.svg" alt="Pizza slice">
+                    <h3 class="logo-font text-black my-0"><img src="/media/logo-slice-1.png" alt="Pizza slice">
                         <strong>Luigi's</strong> Pizza</h3>
                 </a>
             </div>
@@ -72,7 +76,7 @@
                         <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                             <div class="text-center">
-                                <div class="lp-btn lp-btn-2 lp-btn-yellow">
+                                <div class="lp-btn lp-btn-top-nav lp-btn-2 lp-btn-yellow">
                                     <span class="lp-icon">
                                         <img class="acc-btn" src="/media/acc.svg" alt="icon">
                                     </span>
@@ -97,7 +101,7 @@
                         <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
                             href="">
                             <div class="text-center">
-                                <div class="lp-btn lp-btn-2 lp-btn-yellow">
+                                <div class="lp-btn lp-btn-top-nav lp-btn-2 lp-btn-yellow">
                                     <span class="lp-icon">
                                         <img class="cart-btn" src="/media/cart.svg" alt="icon">
                                     </span>
@@ -114,6 +118,22 @@
                     </li>
                 </ul>
             </div>
+        </div>
+        <div class="row bg-white">
+            <nav class="navbar navbar-expand-lg navbar-light w-100">
+                <div class="text-center">
+                    <div class="lp-btn lp-btn-top-nav lp-btn-2 lp-btn-yellow navbar-toggler" type="button"
+                        data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="lp-icon">
+                            <img class="menu-btn" src="/media/mobile-menu.svg" alt="icon">
+                        </span>
+                    </div>
+                    <p class="d-block d-lg-none">Menu</p>
+                </div>
+                {% include 'includes/mobile-top-header.html' %}
+                {% include 'includes/main-nav.html' %}
+            </nav>
         </div>
     </header>
 
