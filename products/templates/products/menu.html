@@ -2,19 +2,95 @@
 {% load static %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
+<div class="container header-container">
+  <div class="row">
+    <div class="col"></div>
+  </div>
+</div>
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                {{ products }}
-            </div>
-        </div>
+<section class="lp-menu-section lp-p-90-60">
+  <div class="lp-bg-1">
+    <div></div>
+  </div>
+  <div class="container">
+    <!-- filter -->
+    <div class="lp-filter mb-30">
+      <a href="#." data-filter="*" class="lp-filter-link lp-active">See all</a>
+      <a href="#." data-filter=".{{ product.category|lower }}" class="lp-filter-link">Pizza</a>
+      <a href="#." data-filter=".{{ product.category|lower }}" class="lp-filter-link">Drinks</a>
+      <a href="#." data-filter=".{{ product.category|lower }}" class="lp-filter-link">Dessert</a>
     </div>
+    <!-- filter end -->
+    <div class="lp-masonry-grid">
+      <div class="lp-grid-sizer"></div>
+      {% for product in products %}
+      <div class="lp-grid-item lp-item-25 {{ product.category|lower }}">
+        <a href="#" class="lp-menu-item lp-mb-30">
+          {% if product.image %}
+          <div class="lp-cover-frame">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            {% if product.vegetarian == True %}
+            <div class="lp-badge lp-vegan"><i class="fas fa-leaf"></i> Vegeterian</div>
+            {% elif product.spicy == True %}
+            <div class="lp-badge lp-hot"><i class="fas fa-pepper-hot"></i> Spicy</div>
+            {% else %}
+            {% endif %}
+          </div>
+          {% else %}
+          <div class="lp-cover-frame">
+            <img src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+          </div>
+          {% endif %}
+          <div class="lp-card-tp">
+            <h4 class="lp-card-title">{{ product.name }}</h4>
+            <div class="lp-price">{{ product.price }} €</div>
+          </div>
+          <div class="lp-description">
+            <p class="lp-text lp-mb-15"><span>{{ product.ingredients|truncatechars:55 }}</span></p>
+            {% if product.rating %}
+            <ul class="lp-stars">
+              <li><i class="fas fa-star {% if product.rating > 0 %} full {% else %} empty {% endif %}"></i></li>
+              <li><i class="fas fa-star {% if product.rating > 1 %} full {% else %} empty {% endif %}"></i></li>
+              <li><i class="fas fa-star {% if product.rating > 2 %} full {% else %} empty {% endif %}"></i></li>
+              <li><i class="fas fa-star {% if product.rating > 3 %} full {% else %} empty {% endif %}"></i></li>
+              <li><i class="fas fa-star {% if product.rating > 4 %} full {% else %} empty {% endif %}"></i></li>
+              <li><span>{{ product.rating }} / 5</span></li>
+            </ul>
+            {% else %}
+            <ul class="lp-stars">
+              <li><i class="fas fa-star empty"></i></li>
+              <li><i class="fas fa-star empty"></i></li>
+              <li><i class="fas fa-star empty"></i></li>
+              <li><i class="fas fa-star empty"></i></li>
+              <li><i class="fas fa-star empty"></i></li>
+              <li><span>Sorry, not rated yet!</span></li>
+            </ul>
+            {% endif %}
+          </div>
+          <div class="lp-card-buttons-frame">
+            <!-- button -->
+            <a href="#" class="lp-btn lp-btn-2 lp-btn-gray lp-btn-icon lp-m-0">
+              <span class="lp-icon">
+                <img src="/media/arrow.svg" alt="icon">
+              </span>
+            </a>
+            <!-- button end -->
+            <!-- button -->
+            <a href="#" class="lp-btn lp-atc">
+              <span class="lp-icon">
+                <img src="/media/cart.svg" alt="icon">
+              </span>
+              <span class="lp-add-to-cart-text">Add to cart</span>
+              <span class="lp-added-text">Added</span>
+            </a>
+            <!-- button end -->
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 {% endblock %}

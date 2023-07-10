@@ -450,6 +450,56 @@ spaces
 
 /***************************
 
+add to cart button
+
+***************************/
+.lp-atc {
+    overflow: hidden;
+}
+
+.lp-atc .lp-added-text {
+    transition: 0.3s ease-in-out;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -100%;
+    pointer-events: none;
+}
+
+.lp-atc .lp-add-to-cart-text {
+    transition: 0.3s ease-in-out;
+}
+
+.lp-atc.lp-added {
+    cursor: not-allowed;
+    background-color: #F9FAFC;
+}
+
+.lp-atc.lp-added .lp-add-to-cart-text {
+    opacity: 0;
+}
+
+.lp-atc.lp-added .lp-added-text {
+    opacity: 1;
+    right: 20px;
+    pointer-events: all;
+}
+
+.lp-atc.lp-added:hover {
+    filter: none;
+}
+
+.lp-menu-item .lp-card-buttons-frame {
+    display: flex;
+    justify-content: space-between;
+}
+
+.lp-menu-item .lp-card-buttons-frame .lp-btn {
+    margin: 0;
+}
+
+/***************************
+
 buttons
 
 ***************************/
@@ -629,6 +679,122 @@ buttons
 
 /***************************
 
+filter
+
+***************************/
+.lp-filter {
+    margin-bottom: 60px;
+}
+
+.lp-filter .lp-filter-link {
+    padding: 0 20px;
+    font-weight: 500;
+    line-height: 55px;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    height: 55px;
+    font-size: 14px;
+    margin-right: 10px;
+    background-color: #F2F3F5;
+    transition: 0.3s ease-in-out;
+    color: #6F6F87;
+}
+
+.lp-filter .lp-filter-link:last-child {
+    margin-right: 0;
+}
+
+.lp-filter .lp-filter-link.lp-active {
+    background-color: #F5C332;
+    color: #231E41;
+}
+
+.lp-filter .lp-filter-link:hover {
+    filter: brightness(102%);
+    color: #231E41;
+}
+
+@media (max-width: 768px) {
+    .lp-filter {
+        margin-bottom: 60px;
+    }
+
+    .lp-filter .lp-filter-link {
+        display: block;
+        margin-right: 0;
+    }
+}
+
+/***************************
+
+grid
+
+***************************/
+.lp-masonry-grid {
+    width: calc(100% + 30px);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.lp-masonry-grid .lp-grid-item {
+    padding: 0 15px;
+    width: 100%;
+}
+
+.lp-masonry-grid .lp-grid-item.lp-item-25 {
+    width: 25%;
+    padding: 0 15px;
+}
+
+.lp-masonry-grid .lp-grid-item.lp-item-33 {
+    width: 33.333%;
+    padding: 0 15px;
+}
+
+.lp-masonry-grid .lp-grid-item.lp-item-50 {
+    width: 50%;
+    padding: 0 15px;
+}
+
+.grid-sizer {
+    width: 100%;
+}
+
+@media (max-width: 992px) {
+    .lp-masonry-grid .lp-grid-item.lp-item-25 {
+        width: 33.333%;
+    }
+
+    .lp-masonry-grid .lp-grid-item.lp-item-33 {
+        width: 50%;
+    }
+
+    .lp-masonry-grid .lp-grid-item.lp-item-50 {
+        width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .lp-masonry-grid .lp-grid-item.lp-item-25 {
+        width: 100%;
+    }
+
+    .lp-masonry-grid .lp-grid-item.lp-item-33 {
+        width: 100%;
+    }
+
+    .lp-masonry-grid .lp-grid-item.lp-item-50 {
+        width: 100%;
+    }
+}
+
+/***************************
+
 stars
 
 ***************************/
@@ -637,13 +803,13 @@ stars
     display: flex;
 }
 
-.lp-stars li {
+.lp-stars li .full {
     margin-right: 5px;
     color: #F5C332;
     font-size: 14px;
 }
 
-.lp-stars li.lp-empty {
+.lp-stars li .empty {
     color: #F2F3F5;
     filter: brightness(95%);
 }
@@ -661,6 +827,36 @@ stars
 
 .lp-stars.lp-unrated li span {
     text-shadow: none;
+}
+
+/***************************
+
+badge
+
+***************************/
+.lp-badge {
+    position: absolute;
+    z-index: 2;
+    top: 15px;
+    left: 15px;
+    background-color: #F5C332;
+    padding: 3px 10px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.lp-badge i {
+    font-size: 11px;
+    margin-right: 5px;
+}
+
+.lp-badge.lp-vegan {
+    background-color: #9CCC65;
+}
+
+.lp-badge.lp-hot {
+    background-color: #FF5252;
 }
 
 /***************************
@@ -1129,19 +1325,14 @@ menu
 }
 
 .lp-menu-item .lp-card-tp .lp-price {
-    width: 60px;
+    width: 80px;
     height: 60px;
-    font-weight: 500;
+    font-weight: 400;
     background-color: #F5C332;
-    font-size: 22px;
+    font-size: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.lp-menu-item .lp-card-tp .lp-price sub {
-    font-size: 12px;
-    font-weight: 400;
 }
 
 .lp-menu-item .lp-card-buttons-frame {
