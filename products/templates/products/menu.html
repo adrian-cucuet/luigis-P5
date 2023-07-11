@@ -11,23 +11,22 @@
 
 {% block content %}
 <section class="lp-menu-section lp-p-90-60">
-  <div class="lp-bg-1">
-    <div></div>
-  </div>
   <div class="container">
     <!-- filter -->
     <div class="lp-filter mb-30">
-      <a href="#." data-filter="*" class="lp-filter-link lp-active">See all</a>
-      <a href="#." data-filter=".{{ product.category|lower }}" class="lp-filter-link">Pizza</a>
-      <a href="#." data-filter=".{{ product.category|lower }}" class="lp-filter-link">Drinks</a>
-      <a href="#." data-filter=".{{ product.category|lower }}" class="lp-filter-link">Dessert</a>
+      <a class="lp-filter-link lp-active" data-filter="*">See all</a>
+      {% for product in products %}
+      {% ifchanged %}
+      <a class="lp-filter-link" data-filter=".{{ product.category|lower }}">{{ product.category }}</a>
+      {% endifchanged %}
+      {% endfor %}
     </div>
     <!-- filter end -->
     <div class="lp-masonry-grid">
       <div class="lp-grid-sizer"></div>
       {% for product in products %}
-      <div class="lp-grid-item lp-item-25 {{ product.category|lower }}">
-        <a href="#" class="lp-menu-item lp-mb-30">
+      <div class="lp-grid-item lp-item-33 {{ product.category|lower }}">
+        <div class="lp-menu-item lp-mb-30">
           {% if product.image %}
           <div class="lp-cover-frame">
             <img src="{{ product.image.url }}" alt="{{ product.name }}">
@@ -45,10 +44,10 @@
           {% endif %}
           <div class="lp-card-tp">
             <h4 class="lp-card-title">{{ product.name }}</h4>
-            <div class="lp-price">{{ product.price }} €</div>
+            <div class="lp-price-menu">{{ product.price }} €</div>
           </div>
           <div class="lp-description">
-            <p class="lp-text lp-mb-15"><span>{{ product.ingredients|truncatechars:55 }}</span></p>
+            <p class="lp-text lp-mb-15"><span>{{ product.ingredients|truncatechars:100 }}</span></p>
             {% if product.rating %}
             <ul class="lp-stars">
               <li><i class="fas fa-star {% if product.rating > 0 %} full {% else %} empty {% endif %}"></i></li>
@@ -71,10 +70,11 @@
           </div>
           <div class="lp-card-buttons-frame">
             <!-- button -->
-            <a href="#" class="lp-btn lp-btn-2 lp-btn-gray lp-btn-icon lp-m-0">
+            <a href="{% url 'menu_item' product.id %}" class="lp-btn lp-btn-gray">
               <span class="lp-icon">
                 <img src="/media/arrow.svg" alt="icon">
               </span>
+              <span>Details</span>
             </a>
             <!-- button end -->
             <!-- button -->
@@ -82,15 +82,42 @@
               <span class="lp-icon">
                 <img src="/media/cart.svg" alt="icon">
               </span>
-              <span class="lp-add-to-cart-text">Add to cart</span>
+              <span class="lp-add-to-cart-text">Add to Cart</span>
               <span class="lp-added-text">Added</span>
             </a>
             <!-- button end -->
           </div>
-        </a>
+        </div>
       </div>
       {% endfor %}
     </div>
   </div>
 </section>
 {% endblock %}
+
+<!-- {% block postloadjs %}
+<script type="text/javascript">
+  $('.lp-filter a').on('click', function () {
+    $('.lp-filter .lp-active').removeClass('lp-active');
+    $(this).addClass('lp-active');
+
+    var selector = $(this).attr('data-filter');
+    $('.lp-masonry-grid').isotope({
+      filter: selector
+    });
+    return false;
+  });
+
+  $('.lp-masonry-grid').isotope({
+    itemSelector: '.lp-grid-item',
+    percentPosition: true,
+    masonry: {
+      columnWidth: '.lp-grid-sizer'
+    }
+  });
+
+  $('.sb-tabs').isotope({
+    filter: '.sb-ingredients-tab'
+  });
+</script>
+{% endblock %} -->
