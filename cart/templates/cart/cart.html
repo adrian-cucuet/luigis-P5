@@ -37,15 +37,42 @@
                             </div>
                             <div class="lp-prod-description">
                                 <h4 class="lp-mb-10">{{ item.product.name }}</h4>
-                                <p class="lp-text lp-text-sm">Size: {% if item.has_size %}{{ item.size }}{% else %}N/A{% endif %}</p>
+                                <p class="lp-text lp-text-sm">Size:
+                                    {% if item.product.has_size %}{{ item.size }}{% else %}N/A{% endif %}</p>
                                 <p class="lp-text lp-text-sm">{{ item.product.ingredients|truncatechars:30 }}</p>
                             </div>
                         </a>
                     </div>
                     <div class="col-6 col-lg-3">
-                        <div class="lp-input-number-frame">
-                            <p class="lp-mb-10">{{ item.quantity }}</p>
-                        </div>
+                        <form class="form update-form" method="POST" action="">
+                            {% csrf_token %}
+                            <div class="form-group lp-buttons-frame">
+                                <div class="input-group lp-input-number-frame">
+                                    <div class="input-group-prepend">
+                                        <button class="decrement-qty lp-input-number-btn"
+                                            data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+                                            <span>
+                                                <i class="fas fa-minus"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <input class="form-control form-control-sm qty_input" type="number" name="quantity"
+                                        value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}"
+                                        id="id_qty_{{ item.item_id }}">
+                                    <div class="input-group-append">
+                                        <button class="increment-qty lp-input-number-btn"
+                                            data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                                            <span>
+                                                <i class="fas fa-plus"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    {% if item.product.has_sizes %}
+                                    <input type="hidden" name="product_size" value="{{ item.size }}">
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     <div class="col-3 col-lg-1">
                         <div class="lp-price-1">{{ item.product.price }}</div>
@@ -54,7 +81,8 @@
                         <div class="lp-price-2">{{ item.product.price }}</div>
                     </div>
                     <div class="col-1">
-                        <a href="#." class="lp-remove">+</a>
+                        <a class="lp-update"><small><i class="fa-solid fa-rotate-right fa-xs"></i></small></a>
+                        <a class="lp-remove" id="remove_{{ item.item_id }}" data-size="{{ item.size }}"><small><i class="fa-solid fa-xmark fa-xs"></i></small></a>
                     </div>
                 </div>
             </div>
@@ -157,4 +185,30 @@
     </div>
 </footer>
 <!-- footer end -->
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+{% include 'products/includes/quantity_input_script.html' %}
+<script type="text/javascript">
+    // Update quantity on click
+    $('.lp-update').click(function(e) {
+        var form = $(this).prev('.update-form');
+        form.submit();
+    });
+
+    // Remove item and reload on click
+    $('.lp-remove').click(function(e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var size = $(this).data('size');
+        var url = `/cart/remove/${itemId}`;
+        var data = {'csrfmiddlewaretoken': csrfToken, 'size': size};
+
+        $.post(url, data)
+         .done(function() {
+             location.reload();
+         });
+    });
+</script>
 {% endblock %}

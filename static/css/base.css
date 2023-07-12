@@ -499,19 +499,6 @@ add to cart button
     overflow: hidden;
 }
 
-.lp-btn .lp-add-cart-btn {
-    background-image: url('/media/cart.svg');
-    background-repeat: no-repeat;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    padding: 0 !important;
-    margin: 0;
-    width: 55px;
-    height: 55px;
-}
-
 .lp-atc .lp-added-text {
     transition: 0.3s ease-in-out;
     position: absolute;
@@ -551,6 +538,10 @@ add to cart button
 
 .lp-menu-item .lp-card-buttons-frame .lp-btn {
     margin: 0;
+}
+
+.input-group {
+    width: auto !important;
 }
 
 /***************************
@@ -1416,22 +1407,23 @@ cart
     outline: inherit;
 }
 
-.lp-remove {
+.lp-remove,
+.lp-update {
+    cursor: pointer;
     float: right;
     text-align: center;
     display: block;
     border-radius: 50%;
     background-color: #F2F3F5;
-    cursor: pointer;
     width: 30px;
     height: 30px;
     text-align: center;
     line-height: 30px;
-    transform: rotate(45deg);
     transition: 0.3s ease-in-out;
 }
 
-.lp-remove:hover {
+.lp-remove:hover,
+.lp-update:hover {
     filter: brightness(102%);
 }
 
