@@ -13,6 +13,10 @@
 <section class="lp-p-90-90">
     <div class="container">
         {% if cart_items %}
+        {{ cart_items }}
+        <br>
+        <br>
+        {{ request.session.cart }}
         <div class="lp-cart-table">
             <div class="lp-cart-table-header">
                 <div class="row">
@@ -33,6 +37,7 @@
                             </div>
                             <div class="lp-prod-description">
                                 <h4 class="lp-mb-10">{{ item.product.name }}</h4>
+                                <p class="lp-text lp-text-sm">Size: {% if item.has_size %}{{ item.size }}{% else %}N/A{% endif %}</p>
                                 <p class="lp-text lp-text-sm">{{ item.product.ingredients|truncatechars:30 }}</p>
                             </div>
                         </a>

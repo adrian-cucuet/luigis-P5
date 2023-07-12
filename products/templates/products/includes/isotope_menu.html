@@ -1,0 +1,24 @@
+<script type="text/javascript">
+    $('.lp-filter a').on('click', function () {
+      $('.lp-filter .lp-active').removeClass('lp-active');
+      $(this).addClass('lp-active');
+  
+      var selector = $(this).attr('data-filter');
+      $('.lp-masonry-grid').isotope({
+        filter: selector
+      });
+      return false;
+    });
+  
+    $('.lp-masonry-grid').isotope({
+      itemSelector: '.lp-grid-item',
+      percentPosition: true,
+      masonry: {
+        columnWidth: '.lp-grid-sizer'
+      }
+    });
+  
+    $('.lp-tabs').isotope({
+      filter: '.lp-ingredients-tab'
+    });
+  </script>

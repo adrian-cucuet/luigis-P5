@@ -95,29 +95,7 @@
 </section>
 {% endblock %}
 
-<!-- {% block postloadjs %}
-<script type="text/javascript">
-  $('.lp-filter a').on('click', function () {
-    $('.lp-filter .lp-active').removeClass('lp-active');
-    $(this).addClass('lp-active');
-
-    var selector = $(this).attr('data-filter');
-    $('.lp-masonry-grid').isotope({
-      filter: selector
-    });
-    return false;
-  });
-
-  $('.lp-masonry-grid').isotope({
-    itemSelector: '.lp-grid-item',
-    percentPosition: true,
-    masonry: {
-      columnWidth: '.lp-grid-sizer'
-    }
-  });
-
-  $('.sb-tabs').isotope({
-    filter: '.sb-ingredients-tab'
-  });
-</script>
-{% endblock %} -->
+{% block postloadjs %}
+{{ block.super }}
+{% include 'products/includes/isotope_menu.html' %}
+{% endblock %}
