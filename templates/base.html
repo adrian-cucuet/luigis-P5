@@ -81,7 +81,7 @@
                                         <img class="acc-btn" src="/media/acc.svg" alt="icon">
                                     </span>
                                 </div>
-                                <p class="my-0">Account</p>
+                                <p class="my-0 lp-top-nav-p">Account</p>
                             </div>
                         </a>
                         <div class="dropdown-menu border-0" aria-labelledby="user-options">
@@ -105,13 +105,14 @@
                                     <span class="lp-icon">
                                         <img class="cart-btn" src="/media/cart.svg" alt="icon">
                                     </span>
+                                    <i class="lp-cart-number">{{ product_count }}</i>
                                 </div>
-                                <p class="my-0">
-                                    {% if grand_total %}
-                                    ${{ grand_total|floatformat:2 }}
-                                    {% else %}
-                                    $0.00
-                                    {% endif %}
+                                <p class="my-0 lp-top-nav-p">
+                                {% if grand_total and not standard_delivery_fee %}
+                                    €{{ grand_total|floatformat:2 }}
+                                {% else %}
+                                    €0.00
+                                {% endif %}
                                 </p>
                             </div>
                         </a>

@@ -337,6 +337,10 @@ h5 {
     align-items: center;
 }
 
+.lp-top-nav-p {
+    color: #231E41;
+}
+
 .lp-illustration-about {
     position: relative;
     overflow: hidden;
@@ -461,11 +465,51 @@ spaces
 
 /***************************
 
+minicart button
+
+***************************/
+.lp-cart-number {
+    color: #231E41;
+    text-align: center;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    line-height: 20px;
+    background-color: #F2F3F5;
+    border-radius: 15px;
+    height: 20px;
+    padding: 0 6px;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+.lp-cart-number.lp-added {
+    animation: addToCart 0.6s ease-in-out;
+}
+
+/***************************
+
 add to cart button
 
 ***************************/
 .lp-atc {
     overflow: hidden;
+}
+
+.lp-btn .lp-add-cart-btn {
+    background-image: url('/media/cart.svg');
+    background-repeat: no-repeat;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 0 !important;
+    margin: 0;
+    width: 55px;
+    height: 55px;
 }
 
 .lp-atc .lp-added-text {
