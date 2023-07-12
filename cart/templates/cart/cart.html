@@ -13,7 +13,9 @@
 <section class="lp-p-90-90">
     <div class="container">
         {% if cart_items %}
-        <div class="lp-cart-table"></div>
+        <div class="lp-cart-table">
+            {{ cart_items }}
+        </div>
         {% else %}
         <div class="text-center">
             <h3 class="lp-mb-25">Your cart is empty!</h3>
