@@ -1317,9 +1317,42 @@ menu item
 cart
 
 ***************************/
+.w-20 {
+    width: 20% !important;
+}
+
+.w-15 {
+    width: 15% !important;
+}
+
+.lp-cart-separator-end {
+    border-bottom: solid 1px #F2F3F5;
+}
+
+.lp-cart-separator-start {
+    border-top: solid 1px #F2F3F5;
+}
+
 .lp-co-cart-frame {
     padding: 30px;
     background-color: #F9FAFC;
+}
+
+.cart-items {
+    margin: auto;
+    height: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.image-box {
+    width: 15%;
+    text-align: center;
+}
+
+.image-box img {
+    height: 120px;
 }
 
 .lp-product {
@@ -1327,13 +1360,7 @@ cart
     align-items: center;
 }
 
-.lp-product .lp-cover-frame {
-    position: relative;
-    width: 90px;
-    padding-bottom: 90px;
-}
-
-.lp-product .lp-cover-frame img {
+.lp-cover-frame img {
     position: absolute;
     top: 0;
     left: 0;
@@ -1343,12 +1370,12 @@ cart
     object-position: center;
 }
 
-.lp-product .lp-prod-description {
+.lp-prod-description {
     padding-left: 15px;
     width: calc(100% - 90px);
 }
 
-.lp-product .lp-prod-description h4 {
+.lp-prod-description h4 {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -moz-box;
@@ -1389,7 +1416,7 @@ cart
     margin: 0 5px;
     text-align: center;
     height: 50px;
-    width: 60px;
+    width: 40px;
     background-color: #F2F3F5;
     position: relative;
     padding: 0 20px;
@@ -1410,12 +1437,12 @@ cart
 .lp-remove,
 .lp-update {
     cursor: pointer;
-    float: right;
+    /* float: right; */
     text-align: center;
-    display: block;
-    border-radius: 50%;
+    /* display: block; */
+    /* border-radius: 50%; */
     background-color: #F2F3F5;
-    width: 30px;
+    /* width: 30px; */
     height: 30px;
     text-align: center;
     line-height: 30px;

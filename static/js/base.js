@@ -19,22 +19,4 @@ $(function () {
       },
     },
   });
-
-  $('[data-fancybox="menu"]').fancybox({
-    animationEffect: "zoom-in-out",
-    animationDuration: 600,
-    transitionDuration: 1200,
-  });
-
-  $('.lp-add').on('click', function () {
-    if ($(this).prev().val() < 10) {
-      $(this).prev().val(+$(this).prev().val() + 1);
-    }
-  });
-
-  $('.lp-sub').on('click', function () {
-    if ($(this).next().val() > 1) {
-      if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1);
-    }
-  });
 });

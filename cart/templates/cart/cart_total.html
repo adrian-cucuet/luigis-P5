@@ -1,0 +1,43 @@
+<div class="lp-cart-total">
+    <div class="lp-sum">
+        <div class="row">
+            <div class="col-8">
+                <div class="lp-total-title">Subtotal:</div>
+            </div>
+            <div class="col-4">
+                <div class="lp-price-1 text-right">€ {{ total|floatformat:2 }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="lp-sum">
+        <div class="row">
+            <div class="col-12">
+                {% if free_delivery_delta > 0 %}
+                <p class="lp-total-title text-warning">
+                    Spend € {{ free_delivery_delta }} more, and get free delivery!
+                </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="lp-sum">
+        <div class="row">
+            <div class="col-8">
+                <div class="lp-total-title">Delivery Fee:</div>
+            </div>
+            <div class="col-4">
+                <div class="lp-price-1 text-right">€ {{ delivery|floatformat:2 }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="lp-realy-sum">
+        <div class="row">
+            <div class="col-8">
+                <div class="lp-total-title">Total:</div>
+            </div>
+            <div class="col-4">
+                <div class="lp-price-2 text-right">€ {{ grand_total|floatformat:2 }}</div>
+            </div>
+        </div>
+    </div>
+</div>

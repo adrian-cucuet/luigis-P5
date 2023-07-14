@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load cart_tools %}
 
 {% block page_header %}
 <div class="container header-container">
@@ -13,141 +14,49 @@
 <section class="lp-p-90-90">
     <div class="container">
         {% if cart_items %}
-        {{ cart_items }}
-        <br>
-        <br>
-        {{ request.session.cart }}
-        <div class="lp-cart-table">
-            <div class="lp-cart-table-header">
-                <div class="row">
-                    <div class="col-lg-6">Product</div>
-                    <div class="col-lg-3">Quantity</div>
-                    <div class="col-lg-1">Price</div>
-                    <div class="col-lg-1">Subtotal</div>
-                    <div class="col-lg-1"></div>
-                </div>
-            </div>
-            {% for item in cart_items %}
-            <div class="lp-cart-item">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <a class="lp-product" href="#">
-                            <div class="lp-cover-frame">
-                                <img src="{{ item.product.image.url}}" alt="{{ item.product.name }}">
-                            </div>
-                            <div class="lp-prod-description">
-                                <h4 class="lp-mb-10">{{ item.product.name }}</h4>
-                                <p class="lp-text lp-text-sm">Size:
-                                    {% if item.product.has_size %}{{ item.size }}{% else %}N/A{% endif %}</p>
-                                <p class="lp-text lp-text-sm">{{ item.product.ingredients|truncatechars:30 }}</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-6 col-lg-3">
-                        <form class="form update-form" method="POST" action="">
-                            {% csrf_token %}
-                            <div class="form-group lp-buttons-frame">
-                                <div class="input-group lp-input-number-frame">
-                                    <div class="input-group-prepend">
-                                        <button class="decrement-qty lp-input-number-btn"
-                                            data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
-                                            <span>
-                                                <i class="fas fa-minus"></i>
-                                            </span>
-                                        </button>
-                                    </div>
-                                    <input class="form-control form-control-sm qty_input" type="number" name="quantity"
-                                        value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}"
-                                        id="id_qty_{{ item.item_id }}">
-                                    <div class="input-group-append">
-                                        <button class="increment-qty lp-input-number-btn"
-                                            data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
-                                            <span>
-                                                <i class="fas fa-plus"></i>
-                                            </span>
-                                        </button>
-                                    </div>
-                                    {% if item.product.has_sizes %}
-                                    <input type="hidden" name="product_size" value="{{ item.size }}">
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-3 col-lg-1">
-                        <div class="lp-price-1">{{ item.product.price }}</div>
-                    </div>
-                    <div class="col-3 col-lg-1">
-                        <div class="lp-price-2">{{ item.product.price }}</div>
-                    </div>
-                    <div class="col-1">
-                        <a class="lp-update"><small><i class="fa-solid fa-rotate-right fa-xs"></i></small></a>
-                        <a class="lp-remove" id="remove_{{ item.item_id }}" data-size="{{ item.size }}"><small><i class="fa-solid fa-xmark fa-xs"></i></small></a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
+        <div class="table-responsive table-borderless">
+            <table class="table table-sm">
+                <thead class="text-black">
+                    <tr>
+                        <th scope="col">Product Info</th>
+                        <th scope="col"></th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Subtotal</th>
+                    </tr>
+                </thead>
+                {% for item in cart_items %}
+                <tr>
+                    <tr class="py-3 lp-cart-separator-start"></tr>
+                    <td class="py-3">
+                        <img height="120px" src="{{ item.product.image.url}}" alt="{{ item.product.name }}">
+                    </td>
+                    <td class="py-3">
+                        <h4 class="lp-mb-10">{{ item.product.name }}</h4>
+                        <p class="lp-text lp-text-sm"><strong>Size:
+                        </strong>{% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
+                        <p class="lp-text lp-text-sm">{{ item.product.ingredients|truncatechars:30 }}</p>
+                    </td>
+                    <td class="py-3">
+                        <div class="lp-price-1">€ {{ item.product.price }}</div>
+                    </td>
+                    <td class="py-3 w-15">
+                        {% include 'cart/quantity_form.html' %}
+                        <a class="lp-update text-info"><small>Update</small></a>
+                        <a class="lp-remove text-danger float-right" id="remove_{{ item.item_id }}"
+                            data-product_size="{{ item.size }}"><small>Remove</small></a>
+                    </td>
+                    <td class="py-3">
+                        <div class="lp-price-2">€ {{ item.product.price | calc_qty_total:item.quantity }}</div>
+                    </td>
+                </tr>
+                <tr class="py-3 lp-cart-separator-end"></tr>
+                {% endfor %}
+            </table>
             <div class="row justify-content-end">
                 <div class="col-lg-6">
-                    <div class="lp-cart-total">
-                        <div class="lp-sum">
-                            <div class="row">
-                                <div class="col-8">
-                                    <div class="lp-total-title">Subtotal:</div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="lp-price-1 text-right">€ {{ total|floatformat:2 }}</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="lp-sum">
-                            <div class="row">
-                                {% if free_delivery_delta > 0 %}
-                                <p class="lp-total-title text-warning">
-                                    Spend € {{ free_delivery_delta }} more, and get free delivery!
-                                </p>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <div class="lp-sum">
-                            <div class="row">
-                                <div class="col-8">
-                                    <div class="lp-total-title">Delivery Fee:</div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="lp-price-1 text-right">€ {{ delivery|floatformat:2 }}</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="lp-realy-sum">
-                            <div class="row">
-                                <div class="col-8">
-                                    <div class="lp-total-title">Total:</div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="lp-price-2 text-right">€ {{ grand_total|floatformat:2 }}</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="lp-cart-btns-frame text-right">
-                        <!-- button -->
-                        <a href="{% url 'menu' %}" class="lp-btn lp-btn-2 lp-btn-gray">
-                            <span class="lp-icon">
-                                <img src="/media/arrow-2.svg" alt="icon">
-                            </span>
-                            <span>Continue shopping</span>
-                        </a>
-                        <!-- button end -->
-                        <!-- button -->
-                        <a href="#" class="lp-btn lp-m-0">
-                            <span class="lp-icon">
-                                <img src="/media/arrow.svg" alt="icon">
-                            </span>
-                            <span>Checkout</span>
-                        </a>
-                        <!-- button end -->
-                    </div>
+                    {% include 'cart/cart_total.html' %}
+                    {% include 'cart/checkout_buttons.html' %}
                 </div>
             </div>
         </div>
@@ -192,23 +101,26 @@
 {% include 'products/includes/quantity_input_script.html' %}
 <script type="text/javascript">
     // Update quantity on click
-    $('.lp-update').click(function(e) {
+    $('.lp-update').click(function (e) {
         var form = $(this).prev('.update-form');
         form.submit();
-    });
+    })
 
     // Remove item and reload on click
-    $('.lp-remove').click(function(e) {
+    $('.lp-remove').click(function (e) {
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
-        var size = $(this).data('size');
-        var url = `/cart/remove/${itemId}`;
-        var data = {'csrfmiddlewaretoken': csrfToken, 'size': size};
+        var size = $(this).data('product_size');
+        var url = `/cart/remove/${itemId}/`;
+        var data = {
+            'csrfmiddlewaretoken': csrfToken,
+            'product_size': size
+        };
 
         $.post(url, data)
-         .done(function() {
-             location.reload();
-         });
-    });
+            .done(function () {
+                location.reload();
+            });
+    })
 </script>
 {% endblock %}
