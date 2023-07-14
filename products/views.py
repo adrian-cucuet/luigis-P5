@@ -14,12 +14,10 @@ def all_products(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, 
-                               "Oops, you must include a search term!")
-                return redirect(reverse('products'))
+                messages.error(request, "Oops, you must include a cool pizza name!")
+                return redirect(reverse('menu'))
 
-            queries = Q(name__icontains=query) \
-                | Q(description__icontains=query)
+            queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
     context = {

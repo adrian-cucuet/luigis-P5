@@ -34,11 +34,11 @@
                     <td class="py-3">
                         <h4 class="lp-mb-10">{{ item.product.name }}</h4>
                         <p class="lp-text lp-text-sm"><strong>Size:
-                        </strong>{% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
+                        </strong>{% if item.size %}{{ item.size|upper }}{% else %} N/A{% endif %}</p>
                         <p class="lp-text lp-text-sm">{{ item.product.ingredients|truncatechars:30 }}</p>
                     </td>
                     <td class="py-3">
-                        <div class="lp-price-1">€ {{ item.product.price }}</div>
+                        <div class="lp-price-1">${{ item.product.price }}</div>
                     </td>
                     <td class="py-3 w-15">
                         {% include 'cart/quantity_form.html' %}
@@ -47,7 +47,7 @@
                             data-product_size="{{ item.size }}"><small>Remove</small></a>
                     </td>
                     <td class="py-3">
-                        <div class="lp-price-2">€ {{ item.product.price | calc_qty_total:item.quantity }}</div>
+                        <div class="lp-price-2">${{ item.product.price | calc_qty_total:item.quantity }}</div>
                     </td>
                 </tr>
                 <tr class="py-3 lp-cart-separator-end"></tr>

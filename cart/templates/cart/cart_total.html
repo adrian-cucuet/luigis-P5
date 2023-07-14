@@ -5,7 +5,7 @@
                 <div class="lp-total-title">Subtotal:</div>
             </div>
             <div class="col-4">
-                <div class="lp-price-1 text-right">€ {{ total|floatformat:2 }}</div>
+                <div class="lp-price-1 text-right">${{ total|floatformat:2 }}</div>
             </div>
         </div>
     </div>
@@ -14,7 +14,7 @@
             <div class="col-12">
                 {% if free_delivery_delta > 0 %}
                 <p class="lp-total-title text-warning">
-                    Spend € {{ free_delivery_delta }} more, and get free delivery!
+                    Spend ${{ free_delivery_delta }} more, and get free delivery!
                 </p>
                 {% endif %}
             </div>
@@ -26,7 +26,7 @@
                 <div class="lp-total-title">Delivery Fee:</div>
             </div>
             <div class="col-4">
-                <div class="lp-price-1 text-right">€ {{ delivery|floatformat:2 }}</div>
+                <div class="lp-price-1 text-right">${{ delivery|floatformat:2 }}</div>
             </div>
         </div>
     </div>
@@ -36,7 +36,7 @@
                 <div class="lp-total-title">Total:</div>
             </div>
             <div class="col-4">
-                <div class="lp-price-2 text-right">€ {{ grand_total|floatformat:2 }}</div>
+                <div class="lp-price-2 text-right">${{ grand_total|floatformat:2 }}</div>
             </div>
         </div>
     </div>

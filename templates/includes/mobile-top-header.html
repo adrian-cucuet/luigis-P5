@@ -14,7 +14,7 @@
         <div class="dropdown-menu border-0 w-100 p-3 rounded-0 my-0" aria-labelledby="mobile-search">
             <form method="GET" action="{% url 'menu' %}">
                 <div class="input-group w-100">
-                    <input class="form-control rounded-0" type="text" name="q" placeholder="Search our site">
+                    <input class="form-control rounded-0" type="text" name="q" placeholder="Search your pizza">
                     <div class="input-group-append">
                         <button class="form-control btn btn-gray rounded-0" type="submit"><img src="/media/search.svg"
                                 alt="search"></button>
@@ -60,7 +60,7 @@
                 </div>
                 <p class="my-0 lp-top-nav-p">
                     {% if total %}
-                    €{{ total|floatformat:2 }}
+                    ${{ total|floatformat:2 }}
                     {% else %}
                     €0.00
                     {% endif %}

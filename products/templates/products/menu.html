@@ -44,7 +44,7 @@
           {% endif %}
           <div class="lp-card-tp">
             <h4 class="lp-card-title">{{ product.name }}</h4>
-            <div class="lp-price-menu">{{ product.price }} €</div>
+            <div class="lp-price-menu">${{ product.price }}</div>
           </div>
           <div class="lp-description">
             <p class="lp-text lp-mb-15"><span>{{ product.ingredients|truncatechars:100 }}</span></p>
