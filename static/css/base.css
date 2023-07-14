@@ -1416,7 +1416,7 @@ cart
     margin: 0 5px;
     text-align: center;
     height: 50px;
-    width: 40px;
+    width: 60px;
     background-color: #F2F3F5;
     position: relative;
     padding: 0 20px;
@@ -2035,4 +2035,25 @@ social icons
 
 .lp-social li:last-child {
     margin-right: 0;
+}
+
+/***************************
+
+toasts messages
+
+***************************/
+.message-container {
+    position: fixed;
+    border-radius: 10%;
+    top: 116px;
+    right: 20px;
+    z-index: 99999999999;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 3px;
 }
