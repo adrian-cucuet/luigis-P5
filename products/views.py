@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.views.generic import ListView
 from django.contrib import messages
 from django.db.models import Q
 from .models import Product
@@ -32,9 +33,11 @@ def menu_item(request, product_id):
     """ A view to show an individual item """
 
     product = get_object_or_404(Product, pk=product_id)
+    similar_products = Product.objects.filter(category=product.category).exclude(pk=product_id)[:5]
 
     context = {
         'product': product,
+        'similar_products': similar_products,
     }
 
     return render(request, 'products/menu_item.html', context)

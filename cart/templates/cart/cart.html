@@ -15,23 +15,23 @@
     <div class="container">
         {% if cart_items %}
         <div class="table-responsive table-borderless">
-            <table class="table table-sm">
+            <table class="table table-sm ">
                 <thead class="text-black">
                     <tr>
                         <th scope="col">Product Info</th>
                         <th scope="col"></th>
                         <th scope="col">Price</th>
-                        <th scope="col">Qty</th>
-                        <th scope="col">Subtotal</th>
+                        <th scope="col" class="text-center">Qty</th>
+                        <th scope="col" class="float-right">Subtotal</th>
                     </tr>
                 </thead>
                 {% for item in cart_items %}
                 <tr>
                     <tr class="py-3 lp-cart-separator-start"></tr>
-                    <td class="py-3">
+                    <td class="py-3 w-20">
                         <img height="120px" src="{{ item.product.image.url}}" alt="{{ item.product.name }}">
                     </td>
-                    <td class="py-3">
+                    <td class="py-3 w-25">
                         <h4 class="lp-mb-10">{{ item.product.name }}</h4>
                         <p class="lp-text lp-text-sm"><strong>Size:
                         </strong>{% if item.size %}{{ item.size|upper }}{% else %} N/A{% endif %}</p>
@@ -40,13 +40,13 @@
                     <td class="py-3">
                         <div class="lp-price-1">${{ item.product.price }}</div>
                     </td>
-                    <td class="py-3 w-15">
+                    <td class="py-3 w-20">
                         {% include 'cart/quantity_form.html' %}
                         <a class="lp-update text-info"><small>Update</small></a>
                         <a class="lp-remove text-danger float-right" id="remove_{{ item.item_id }}"
                             data-product_size="{{ item.size }}"><small>Remove</small></a>
                     </td>
-                    <td class="py-3">
+                    <td class="py-3 float-right">
                         <div class="lp-price-2">${{ item.product.price | calc_qty_total:item.quantity }}</div>
                     </td>
                 </tr>
@@ -59,6 +59,53 @@
                     {% include 'cart/checkout_buttons.html' %}
                 </div>
             </div>
+        </div>
+
+        <div class="table-responsive rounded d-none d-md-block">
+            <table class="table table-sm table-borderless">
+                <thead class="text-black">
+                    <tr>
+                        <th scope="col">Product Info</th>
+                        <th scope="col"></th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Subtotal</th>
+                    </tr>
+                </thead>
+
+                {% for item in bag_items %}
+                    <tr>
+                        <td class="p-3 w-25">
+                            <img height="120px" src="{{ item.product.image.url}}" alt="{{ item.product.name }}">
+                        </td>
+                        <td class="py-3">
+                            <h4 class="lp-mb-10">{{ item.product.name }}</h4>
+                            <p class="lp-text lp-text-sm"><strong>Size:
+                            </strong>{% if item.size %}{{ item.size|upper }}{% else %} N/A{% endif %}</p>
+                            <p class="lp-text lp-text-sm">{{ item.product.ingredients|truncatechars:30 }}</p>
+                        </td>
+                        <td class="py-3">
+                            <p class="my-0">${{ item.product.price }}</p>
+                        </td>
+                        <td class="py-3 w-25">
+                            {% include "cart/quantity_form.html" %}
+                        </td>
+                        <td class="py-3">
+                            <p class="my-0">${{ item.product.price | calc_qty_total:item.quantity }}</p>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="5" class="pt-5 text-right">
+                        {% include "cart/cart_total.html" %}
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5" class="text-right">
+                        {% include "cart/checkout_buttons.html" %}
+                    </td>
+                </tr>
+            </table>
         </div>
         {% else %}
         <div class="text-center">
