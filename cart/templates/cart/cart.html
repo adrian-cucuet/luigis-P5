@@ -60,53 +60,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="table-responsive rounded d-none d-md-block">
-            <table class="table table-sm table-borderless">
-                <thead class="text-black">
-                    <tr>
-                        <th scope="col">Product Info</th>
-                        <th scope="col"></th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Qty</th>
-                        <th scope="col">Subtotal</th>
-                    </tr>
-                </thead>
-
-                {% for item in bag_items %}
-                    <tr>
-                        <td class="p-3 w-25">
-                            <img height="120px" src="{{ item.product.image.url}}" alt="{{ item.product.name }}">
-                        </td>
-                        <td class="py-3">
-                            <h4 class="lp-mb-10">{{ item.product.name }}</h4>
-                            <p class="lp-text lp-text-sm"><strong>Size:
-                            </strong>{% if item.size %}{{ item.size|upper }}{% else %} N/A{% endif %}</p>
-                            <p class="lp-text lp-text-sm">{{ item.product.ingredients|truncatechars:30 }}</p>
-                        </td>
-                        <td class="py-3">
-                            <p class="my-0">${{ item.product.price }}</p>
-                        </td>
-                        <td class="py-3 w-25">
-                            {% include "cart/quantity_form.html" %}
-                        </td>
-                        <td class="py-3">
-                            <p class="my-0">${{ item.product.price | calc_qty_total:item.quantity }}</p>
-                        </td>
-                    </tr>
-                {% endfor %}
-                <tr>
-                    <td colspan="5" class="pt-5 text-right">
-                        {% include "cart/cart_total.html" %}
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="5" class="text-right">
-                        {% include "cart/checkout_buttons.html" %}
-                    </td>
-                </tr>
-            </table>
-        </div>
         {% else %}
         <div class="text-center">
             <h3 class="lp-mb-25">Your cart is empty!</h3>

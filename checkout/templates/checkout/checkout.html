@@ -57,6 +57,21 @@
                                         {% endif %}
                                     </div>
                                 </fieldset>
+                                <!-- <div class="lp-mb-30">
+                                    <h3 class="lp-mb-30">Payment method</h3>
+                                    <ul>
+                                        <li class="lp-radio">
+                                            <input type="radio" id="option-1" name="selector" checked>
+                                            <label for="option-1">Pay by Card</label>
+                                            <div class="lp-check"></div>
+                                        </li>
+                                        <li class="lp-radio">
+                                            <input type="radio" id="option-2" name="selector">
+                                            <label for="option-3">Cash on delivery</label>
+                                            <div class="lp-check"></div>
+                                        </li>
+                                    </ul>
+                                </div> -->
                                 <fieldset class="px-3">
                                     <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
                                     <!-- A Stripe card element will go here -->
@@ -66,42 +81,18 @@
                                     <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                                     <!-- Pass the client secret to the view so we can get the payment intent id -->
                                 </fieldset>
-                                <div class="lp-mb-30">
-                                    <h3>Additional information</h3>
-                                </div>
-                                <div class="lp-group-input">
-                                    <textarea name="name" required></textarea>
-                                    <span class="lp-bar"></span>
-                                    <label>Order notes</label>
-                                </div>
-                                <div class="lp-mb-30">
-                                    <h3 class="lp-mb-30">Payment method</h3>
-                                    <ul>
-                                        <li class="lp-radio">
-                                            <input type="radio" id="option-1" name="selector" checked>
-                                            <label for="option-1">Pay by Card</label>
-                                            <div class="lp-check"></div>
-                                        </li>
-                                        <li class="lp-radio">
-                                            <input type="radio" id="option-3" name="selector">
-                                            <label for="option-3">Cash on delivery</label>
-                                            <div class="lp-check"></div>
-                                        </li>
-                                    </ul>
-                                </div>
-
                                 <div class="submit-button text-right mt-5 mb-2">
-                                    <a href="{% url 'view_cart' %}" class="btn btn-outline-black rounded-0">
-                                        <span class="icon">
+                                    <a href="{% url 'view_cart' %}" class="lp-btn lp-btn-gray">
+                                        <span class="lp-icon">
                                             <i class="fas fa-chevron-left"></i>
                                         </span>
                                         <span class="font-weight-bold">Adjust Cart</span>
                                     </a>
-                                    <button id="submit-button" class="btn btn-black rounded-0">
-                                        <span class="font-weight-bold">Complete Order</span>
-                                        <span class="icon">
+                                    <button id="submit-button" class="lp-btn">
+                                        <span class="lp-icon">
                                             <i class="fas fa-lock"></i>
                                         </span>
+                                        <span class="font-weight-bold">Complete Order</span>
                                     </button>
                                     <p class="small text-danger my-0">
                                         <span class="icon">
@@ -204,4 +195,11 @@
         </div>
     </div>
 </section>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
