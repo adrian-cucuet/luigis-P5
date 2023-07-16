@@ -147,7 +147,7 @@
                                             <div class="lp-total-title">Delivery:</div>
                                         </div>
                                         <div class="col-6">
-                                            <div class="lp-price-1 text-right">$${{ delivery|floatformat:2 }}</div>
+                                            <div class="lp-price-1 text-right">${{ delivery|floatformat:2 }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -180,6 +180,9 @@
         </div>
     </div>
 </section>
+<!-- <div id="loading-overlay">
+    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+</div> -->
 {% endblock %}
 
 {% block postloadjs %}

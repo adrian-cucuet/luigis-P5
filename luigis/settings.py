@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,7 +27,6 @@ SECRET_KEY = 'django-insecure-dw@^tq3=9+%fhmuu8qliw7f_$t!d#_k&h=j_iex4&uc$djc-i=
 DEBUG = True
 
 ALLOWED_HOSTS = ['8000-adriancucuet-luigisp5-wtaxvdaex9o.ws-eu101.gitpod.io']
-
 
 # Application definition
 
@@ -171,10 +169,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Stripe
 FREE_DELIVERY_THRESHOLD = 35
-STANDARD_DELIVERY_FEE = 2.99
+STANDARD_DELIVERY_FEE = 3
 STRIPE_CURRENCY = 'usd'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
+STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

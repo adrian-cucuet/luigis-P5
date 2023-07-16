@@ -1884,6 +1884,37 @@ menu
 
 /***************************
 
+tabs
+
+***************************/
+.lp-tab {
+    width: 100%;
+    margin-bottom: 90px;
+}
+
+.lp-tab .lp-list {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(4, auto);
+    grid-auto-flow: column;
+    grid-column-gap: 30px;
+}
+
+@media (max-width: 768px) {
+    .lp-tab {
+        width: 100%;
+        margin-bottom: 90px;
+    }
+
+    .lp-tab .lp-list {
+        grid-template-columns: repeat(1, 100%);
+        grid-template-rows: repeat(100, auto);
+        grid-column-gap: 0;
+    }
+}
+
+/***************************
+
 badge
 
 ***************************/
