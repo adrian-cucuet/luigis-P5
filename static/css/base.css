@@ -2180,3 +2180,66 @@ toasts messages
     overflow-x: hidden;
     overflow-y: auto;
 }
+
+/***************************
+
+allauth
+
+***************************/
+
+.allauth-form-inner-content p {
+    margin-top: 1.5rem;
+    /* mt-4 */
+    color: #6c757d;
+    /* text-secondary */
+}
+
+.allauth-form-inner-content input {
+    height: 50px;
+    position: relative;
+    padding: 0 20px;
+    font-size: 14px;
+    background-color: #F2F3F5;
+    display: block;
+    width: 100%;
+    border: none;
+    border: solid 1px #F2F3F5;
+}
+
+.allauth-form-inner-content label {
+    font-size: 14px;
+    color: #343a40;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 20px;
+    top: 15px;
+    transition: 0.3s ease-in-out;
+  }
+
+.allauth-form-inner-content label:not([for='id_remember']) {
+    display: none;
+}
+
+.allauth-form-inner-content input::placeholder {
+    color: #343a40;
+}
+
+.allauth-form-inner-content a {
+    color: #231E41;
+    /* text-info */
+}
+
+.lp-allauth {
+    display: block;
+    background-color: #F9FAFC;
+    box-shadow: 0 0 0 2px #FFFFFF;
+    margin-bottom: 30px;
+}
+
+.lp-allauth .lp-allauth-body {
+    text-align: center;
+    background-color: #fff;
+    padding: 30px;
+    transition: 0.3s ease-in-out;
+}
