@@ -10,7 +10,11 @@
                 <!-- main title -->
                 <div class="lp-main-title-frame">
                     <div class="lp-main-title">
+                        {% if request.user.is_authenticated %}
+                        <span class="lp-suptitle lp-mb-30">Hi, {{ user }}!</span>
+                        {% else %}
                         <span class="lp-suptitle lp-mb-30">Hi, new friend!</span>
+                        {% endif %}
                         <h1 class="lp-mb-30">We do not <span>cook</span>, <br>we <span>create</span> your
                             <br>emotions!</h1>
                         <p class="lp-text lp-text-lg lp-mb-30">Consectetur numquam poro nemo veniam<br>eligendi rem

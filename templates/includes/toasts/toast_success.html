@@ -16,7 +16,7 @@
                 <hr class="mt-1 mb-3">
             </div>
         </div>
-        {% if cart.has_items %}
+        {% if cart.has_items and not on_profile_page %}
         <div class="lp-ib-title-frame lp-mb-30">
             <h4>Your order.</h4><i class="fas fa-arrow-down"></i>
           </div>

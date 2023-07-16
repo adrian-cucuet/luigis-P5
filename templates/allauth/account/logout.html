@@ -8,7 +8,7 @@
 <div class="lp-main-title-frame">
   <h2 class="lp-main-title lp-mb-30">{% trans "Sign In" %}</h2>
 </div>
-<p>{% trans 'Are you sure you want to sign out?' %}</p>
+<p class="lp-text-lg">{% trans 'Are you sure you want to sign out?' %}</p>
 
 <form method="post" action="{% url 'account_logout' %}">
   {% csrf_token %}
