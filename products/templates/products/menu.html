@@ -46,6 +46,12 @@
             <h4 class="lp-card-title">{{ product.name }}</h4>
             <div class="lp-price-menu">${{ product.price }}</div>
           </div>
+          {% if user.is_superuser %}
+          <div class="mb-2 mt-2 d-flex justify-content-between">
+            <a class="p-1 bg-primary text-white" href="{% url 'edit_product' product.id %}">Edit Product</a>
+            <a class="p-1 bg-danger text-white" href="{% url 'delete_product' product.id %}">Delete Product</a>
+          </div>
+          {% endif %}
           <div class="lp-description">
             <p class="lp-text lp-mb-15"><span>{{ product.ingredients|truncatechars:100 }}</span></p>
             {% if product.rating %}
