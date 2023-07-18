@@ -49,6 +49,7 @@ def checkout(request):
             'street_address2': request.POST['street_address2'],
             'county': request.POST['county'],
         }
+
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
@@ -98,10 +99,12 @@ def checkout(request):
         total = current_cart['grand_total']
         stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key
-        intent = stripe.PaymentIntent.create(amount=stripe_total, currency=settings.STRIPE_CURRENCY,)
+        intent = stripe.PaymentIntent.create(
+            amount=stripe_total,
+            currency=settings.STRIPE_CURRENCY,
+        )
 
-        order_form = OrderForm()
-
+        # Attempt to prefill the form with any user profile data
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
