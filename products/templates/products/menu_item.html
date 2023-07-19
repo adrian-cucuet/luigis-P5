@@ -12,11 +12,11 @@
 {% block content %}
 <section class="lp-p-90-0">
   {% if user.is_superuser %}
-    <div class="px-3 mb-5 text-center">
-      <a class="p-4 bg-primary text-white" href="{% url 'edit_product' product.id %}">Edit Product</a>
-      <a class="p-4 bg-danger text-white" href="{% url 'delete_product' product.id %}">Delete Product</a>
-    </div>
-    {% endif %}
+  <div class="px-3 mb-5 text-center">
+    <a class="p-4 bg-primary text-white" href="{% url 'edit_product' product.id %}">Edit Product</a>
+    <a class="p-4 bg-danger text-white" href="{% url 'delete_product' product.id %}">Delete Product</a>
+  </div>
+  {% endif %}
   <div class="container">
     <div class="row align-items-center">
       <div class="col-lg-6">
