@@ -54,14 +54,14 @@
           {% endif %}
           <div class="lp-description">
             <p class="lp-text lp-mb-15"><span>{{ product.ingredients|truncatechars:100 }}</span></p>
-            {% if product.rating %}
+            {% if average_rating.rating %}
             <ul class="lp-stars">
-              <li><i class="fas fa-star {% if product.rating > 0 %} full {% else %} empty {% endif %}"></i></li>
-              <li><i class="fas fa-star {% if product.rating > 1 %} full {% else %} empty {% endif %}"></i></li>
-              <li><i class="fas fa-star {% if product.rating > 2 %} full {% else %} empty {% endif %}"></i></li>
-              <li><i class="fas fa-star {% if product.rating > 3 %} full {% else %} empty {% endif %}"></i></li>
-              <li><i class="fas fa-star {% if product.rating > 4 %} full {% else %} empty {% endif %}"></i></li>
-              <li><span>{{ product.rating }} / 5</span></li>
+              <li><i class="fas fa-star {% if average_rating.rating > 0 %} full {% else %} empty {% endif %}"></i></li>
+              <li><i class="fas fa-star {% if average_rating.rating > 1 %} full {% else %} empty {% endif %}"></i></li>
+              <li><i class="fas fa-star {% if average_rating.rating > 2 %} full {% else %} empty {% endif %}"></i></li>
+              <li><i class="fas fa-star {% if average_rating.rating > 3 %} full {% else %} empty {% endif %}"></i></li>
+              <li><i class="fas fa-star {% if average_rating.rating > 4 %} full {% else %} empty {% endif %}"></i></li>
+              <li><span>{{ average_rating.rating|floatformat }} out of 5.0</span></li>
             </ul>
             {% else %}
             <ul class="lp-stars">
@@ -118,4 +118,5 @@
 {% block postloadjs %}
 {{ block.super }}
 {% include 'products/includes/isotope_menu.html' %}
+{% include 'products/includes/ajax_add_review.html' %}
 {% endblock %}

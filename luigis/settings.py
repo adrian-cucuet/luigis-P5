@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-dw@^tq3=9+%fhmuu8qliw7f_$t!d#_k&h=j_iex4&uc$djc-i=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-adriancucuet-luigisp5-wtaxvdaex9o.ws-eu101.gitpod.io']
+ALLOWED_HOSTS = ['8000-adriancucuet-luigisp5-wtaxvdaex9o.ws-eu102.gitpod.io']
 
 # Application definition
 
@@ -176,6 +176,9 @@ STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 DEFAULT_FROM_EMAIL = 'luigispizza@example.com'
+
+# Authorize User Profile
+AUTH_PROFILE_MODULE = 'products.UserProfile'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
