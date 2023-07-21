@@ -59,7 +59,6 @@ def menu_item(request, product_id):
         'average_rating': average_rating,
         'reviews': reviews,
         'similar_products': similar_products,
-        'rating': rating,
     }
 
     return render(request, 'products/menu_item.html', context)

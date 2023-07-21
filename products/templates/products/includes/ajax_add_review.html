@@ -1,55 +1,81 @@
 <script type="text/javascript">
-    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
-                        'July', 'August', 'Sept', 'Oct', 'Sept', 'Nov', 'Dec',];
+    $(document).ready(function () {
+                const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+                ];
 
-    $('#comment-form').submit(function (e) {
-        e.preventDefault();
+                $('#comment-form').submit(function (e) {
+                    e.preventDefault();
 
-        let dt = new Date();
-        let time = dt.getDay() + " " + monthNames[dt.getUTCMonth] + ", " + dt.getFullYear()
+                    let dt = new Date();
+                    let time = dt.getDay() + " " + monthNames[dt.getUTCMonth] + ", " + dt.getFullYear()
 
-        $.ajax({
-            data: $(this).serialize(),
+                    $.ajax({
+                        data: $(this).serialize(),
 
-            method: $(this).attr("method"),
+                        method: $(this).attr("method"),
 
-            url: $(this).attr("action"),
+                        url: $(this).attr("action"),
 
-            success: function (response) {
-                if (response.bool == true) {
-                    $("#review-mess").html("Review added successfully")
-                    $(".hide-comment-form").hide()
-                    $(".add-review").hide()
+                        success: function (response) {
+                            if (response.bool == true) {
+                                $("#review-mess").html("Review added successfully")
+                                $(".hide-comment-form").hide()
+                                $(".add-review").hide()
 
-                    let _html = '<div class="single-comment justify-content-between d-flex mb-30">'
-                    _html += '<div class="user justify-content-between d-flex">'
-                    _html += '<div class="text-center">'
-                    _html += '<p class="user">{{ r.user.username|title }}</p>'
-                    _html += '</div>'
+                                let _html = '<div class="user justify-content-between d-flex">'
+                                _html += '<div class="text-center mr-4">'
+                                _html += '<p class="user">' + response.context.user + '</p>'
+                                _html += '<p class="font-xs text-muted">' + time + '</p>'
+                                _html += '</div>'
+                                _html += '<div class="desc">'
+                                _html += '<div class="d-flex justify-content-bentween mb-3">'
+                                _html += '<ul class="lp-stars">'
+                                for (let i = 1; i < response.context.rating; i++) {
+                                    if (i > 0) {
+                                        _html += '<li><i class="fas fa-star full"></i></li>'
+                                    }else{
+                                        _html += '<li><i class="fas fa-star empty"></i></li>'
+                                    }    
+                                }
+                                _html += '<li><span class="ml-2">' + response.context.rating + ' out of 5.0</span></li>'
+                                _html += '</ul>'
+                                _html += '</div>'
+                                _html += '<p class="mb-10">' + response.context.review + '</p>'
+                                _html += '</div>'
+                                _html += '</div>'
+                                _html += '</div>'
 
-                    _html += '<div class="desc">'
-                    _html += '<div class="d-flex justify-content-bentween mb-10">'
-                    _html += '<div class="d-flex align-items-center">'
-                    _html += '<span class="font-xs text-muted">' + time + '</span>'
-                    _html += '</div>'
+                                // let _html = '<div class="single-comment justify-content-between d-flex mb-3">'
+                                // _html += '<div class="user justify-content-between d-flex">'
+                                // _html += '<div class="text-center">'
+                                // _html += '<p class="user">{{ r.user.username }}</p>'
+                                // _html += '</div>'
 
-                    for (let i = 1; i < res.context.rating; i++) {
-                        _html += '<i class="fas fa-star text-warning"></i>'
-                    }
+                                // _html += '<div class="desc">'
+                                // _html += '<div class="d-flex justify-content-bentween mb-10">'
+                                // _html += '<div class="d-flex align-items-center">'
+                                // _html += '<span class="font-xs text-muted">' + time + '</span>'
+                                // _html += '</div>'
 
-                    _html += '<div class="product-rate d-inline-block">'
-                    _html += '<div class="product-rating" style="width: 100%"></div>'
-                    _html += '</div>'
+                                // for (let i = 1; i < res.context.rating; i++) {
+                                //     _html += '<i class="fas fa-star text-warning"></i>'
+                                // }
 
-                    _html += '</div>'
-                    _html += '<p class="mb-10">' + response.context.review + '</p>'
+                                // _html += '<div class="product-rate d-inline-block">'
+                                // _html += '<div class="product-rating" style="width: 100%"></div>'
+                                // _html += '</div>'
 
-                    _html += '</div>'
-                    _html += '</div>'
-                    _html += '</div>'
-                }
-                $(".comment-list").prepand(_html)
-            }
-        })
-    })
+                                // _html += '</div>'
+                                // _html += '<p class="mb-10">' + response.context.review + '</p>'
+
+                                // _html += '</div>'
+                                // _html += '</div>'
+                                // _html += '</div>'
+                                $(".comment-list").prepend(_html);
+                            }
+                        }
+                    });
+                });
+            });
 </script>
