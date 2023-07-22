@@ -5,7 +5,7 @@ from django.db.models import Q
 from django.http import JsonResponse
 from django.db.models import Avg, FloatField
 
-from .models import Product, ProductReview
+from .models import Product, ProductReview, Category
 from .forms import ProductForm, ProductReviewForm
 from profiles.models import UserProfile
 
@@ -14,6 +14,7 @@ def all_products(request):
     """ A view to show all products, including sorting and search queries """
 
     products = Product.objects.all()
+    categories = Category.objects.all()
     query = None
 
     if request.GET:
@@ -29,6 +30,7 @@ def all_products(request):
     context = {
         'products': products,
         'search_term': query,
+        'categories': categories,
     }
 
     return render(request, 'products/menu.html', context)

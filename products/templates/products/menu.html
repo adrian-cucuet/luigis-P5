@@ -15,10 +15,8 @@
     <!-- filter -->
     <div class="lp-filter mb-30">
       <a class="lp-filter-link lp-active" data-filter="*">See all</a>
-      {% for product in products %}
-      {% ifchanged %}
-      <a class="lp-filter-link" data-filter=".{{ product.category|lower }}">{{ product.category }}</a>
-      {% endifchanged %}
+      {% for category in categories %}
+      <a class="lp-filter-link" data-filter=".{{ category|lower }}">{{ category }}</a>
       {% endfor %}
     </div>
     <!-- filter end -->

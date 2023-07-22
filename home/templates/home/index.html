@@ -92,83 +92,6 @@
 </section>
 <!-- features end -->
 
-<!-- categories -->
-<section class="p-30-30">
-    <div class="container">
-        <div class="lp-group-title lp-mb-30">
-            <div class="lp-left lp-mb-30">
-                <h2 class="lp-mb-30">What do you <span>like today?</span></h2>
-                <p class="lp-text">Consectetur numquam poro nemo veniam<br>eligendi rem adipisci quo modi.</p>
-            </div>
-            <div class="lp-right lp-mb-30">
-                <!-- button -->
-                <a href="#" class="lp-btn lp-m-0">
-                    <span class="lp-icon">
-                        <img src="/media/arrow.svg" alt="icon">
-                    </span>
-                    <span>Go shopping now</span>
-                </a>
-                <!-- button end -->
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <a href="#" class="lp-categorie-card lp-categorie-card-2 lp-mb-30">
-                    <div class="lp-card-body">
-                        <div class="lp-category-icon">
-                            <img src="/media/1.png" alt="icon">
-                        </div>
-                        <div class="lp-card-descr">
-                            <h3 class="lp-mb-10">Sides</h3>
-                            <p class="lp-text">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-6">
-                <a href="shop-list-1.html" class="lp-categorie-card lp-categorie-card-2 lp-mb-30">
-                    <div class="lp-card-body">
-                        <div class="lp-category-icon">
-                            <img src="/media/2.png" alt="icon">
-                        </div>
-                        <div class="lp-card-descr">
-                            <h3 class="lp-mb-10">Pizza</h3>
-                            <p class="lp-text">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-6">
-                <a href="shop-list-1.html" class="lp-categorie-card lp-categorie-card-2 lp-mb-30">
-                    <div class="lp-card-body">
-                        <div class="lp-category-icon">
-                            <img src="/media/3.png" alt="icon">
-                        </div>
-                        <div class="lp-card-descr">
-                            <h3 class="lp-mb-10">Drinks</h3>
-                            <p class="lp-text">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-6">
-                <a href="shop-list-1.html" class="lp-categorie-card lp-categorie-card-2 lp-mb-30">
-                    <div class="lp-card-body">
-                        <div class="lp-category-icon">
-                            <img src="/media/4.png" alt="icon">
-                        </div>
-                        <div class="lp-card-descr">
-                            <h3 class="lp-mb-10">Desserts</h3>
-                            <p class="lp-text">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- categories end -->
-
 <!-- short menu -->
 <section class="lp-short-menu p-60-60">
     <div class="lp-bg-2">
@@ -200,11 +123,9 @@
         <div class="swiper-container lp-short-menu-slider">
             <div class="swiper-wrapper">
                 {% for product in products %}
-                {% if product.category|lower == pizza %}
-                <a href="{% url 'menu_item' product.id %}">
+                {% if product.category_name == pizza %}
                     <div class="swiper-slide">
                         <div class="lp-menu-item">
-
                             {% if product.image %}
                             <div class="lp-cover-frame">
                                 <img src="{{ product.image.url }}" alt="{{ product.name }}">
@@ -227,35 +148,6 @@
                             </div>
                             <div class="lp-description">
                                 <p class="lp-text lp-mb-15">{{ product.ingredients|truncatechars:50 }}</p>
-                                {% if product.rating %}
-                                <ul class="lp-stars lp-mb-25">
-                                    <li><i
-                                            class="fas fa-star {% if product.rating > 0 %} full {% else %} empty {% endif %}"></i>
-                                    </li>
-                                    <li><i
-                                            class="fas fa-star {% if product.rating > 1 %} full {% else %} empty {% endif %}"></i>
-                                    </li>
-                                    <li><i
-                                            class="fas fa-star {% if product.rating > 2 %} full {% else %} empty {% endif %}"></i>
-                                    </li>
-                                    <li><i
-                                            class="fas fa-star {% if product.rating > 3 %} full {% else %} empty {% endif %}"></i>
-                                    </li>
-                                    <li><i
-                                            class="fas fa-star {% if product.rating > 4 %} full {% else %} empty {% endif %}"></i>
-                                    </li>
-                                    <li><span>{{ s.rating }} / 5</span></li>
-                                </ul>
-                                {% else %}
-                                <ul class="lp-stars lp-mb-25">
-                                    <li><i class="fas fa-star empty"></i></li>
-                                    <li><i class="fas fa-star empty"></i></li>
-                                    <li><i class="fas fa-star empty"></i></li>
-                                    <li><i class="fas fa-star empty"></i></li>
-                                    <li><i class="fas fa-star empty"></i></li>
-                                    <li><span>Sorry, not rated yet!</span></li>
-                                </ul>
-                                {% endif %}
                             </div>
                             <div class="lp-card-buttons-frame">
                                 <!-- button -->
@@ -292,7 +184,6 @@
                             </div>
                         </div>
                     </div>
-                </a>
                 {% endif %}
                 {% endfor %}
                 <!-- <div class="swiper-slide">

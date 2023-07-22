@@ -13,29 +13,28 @@ class ReservationForm(forms.ModelForm):
                   'no_of_guests', 'date', 'time',)
         widgets = {'date': DateInput()}
 
-        def __init__(self, *args, **kwargs):
-            """
-            Add placeholders and classes, remove auto-generated
-            labels and set autofocus on first field
-            """
-            super().__init__(*args, **kwargs)
-            placeholders = {
-                'name': 'Name',
-                'email': 'Email',
-                'phone': 'Phone',
-                'no_of_guests': 'Guests',
-                'time': 'Choose time',
-                'date': 'dd/mm/yy',
-            }
+    def __init__(self, *args, **kwargs):
+        """
+        Add placeholders and classes, remove auto-generated
+        labels and set autofocus on first field
+        """
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            'name': 'Full Name',
+            'email': 'Email Address',
+            'phone': 'Phone Number',
+            'no_of_guests': 'Guests',
+            'date': 'Date',
+            'time': 'Time',
+        }
 
-            self.fields['name'].widget.attrs['autofocus'] = True
-            for field_name, field in self.fields.items():
-                self.fields[field_name].widget.attrs['placeholder'] = field.label
-            for field in self.fields:
-                if self.fields[field].required:
-                    placeholder = f'{placeholders[field]} *'
-                else:
-                    placeholder = placeholders[field]
-                self.fields[field].widget.attrs['placeholder'] = placeholder
-                self.fields[field].widget.attrs['class'] = 'lp-group-input reservation-form-input'
-                self.fields[field].label = False
+        self.fields['name'].widget.attrs['autofocus'] = False
+        for field in self.fields:
+            if self.fields[field].required:
+                placeholder = f'{placeholders[field]} *'
+            else:
+                placeholder = placeholders[field]
+            self.fields[field].widget.attrs['placeholder'] = placeholder
+            self.fields[field].widget.attrs['class'] = 'stripe-style-input'
+            self.fields[field].label = False
+            self.fields[field].label = False

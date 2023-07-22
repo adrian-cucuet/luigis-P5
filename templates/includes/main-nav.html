@@ -8,24 +8,17 @@
         </li>
 
         <li class="nav-item">
-            <a class="logo-font font-weight-bold lp-btn-nav text-black mr-5" href="#" id="about-us-link"
+            <a class="logo-font font-weight-bold lp-btn-nav text-black mr-5" href="{% url 'about' %}" id="about-us-link"
                 aria-haspopup="true" aria-expanded="false">
                 About Us
             </a>
         </li>
 
-        <li class="nav-item dropdown">
-                <a class="logo-font font-weight-bold text-black lp-btn-nav mr-5" href="#" id="order-now"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <li class="nav-item">
+                <a class="logo-font font-weight-bold text-black lp-btn-nav mr-5" href="{% url 'menu' %}" id="order-now"
+                    aria-haspopup="true" aria-expanded="false">
                     Order Now
                 </a>
-            <div class="dropdown-menu border-0" aria-labelledby="order-link">
-                <a href="{% url 'menu' %}" class="dropdown-item">All Products</a>
-                <a href="{% url 'menu' %}" class="dropdown-item">Pizza</a>
-                <a href="{% url 'menu' %}" class="dropdown-item">Sides</a>
-                <a href="{% url 'menu' %}" class="dropdown-item">Dessert</a>
-                <a href="{% url 'menu' %}" class="dropdown-item">Drinks</a>
-            </div>
         </li>
 
         <li class="nav-item">
