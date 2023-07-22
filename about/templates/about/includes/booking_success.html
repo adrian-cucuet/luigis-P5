@@ -1,0 +1,16 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#booking-form').submit(function (event) {
+            event.preventDefault();
+            $.ajax({
+                url: 'about/reservation_success.html',
+                type: 'POST',
+                data: $(this).serialize(),
+                success: function (data) {
+                    $('#booking_form').hide();
+                    $('.booking-success').html(data);
+                }
+            });
+        });
+    });
+</script>
