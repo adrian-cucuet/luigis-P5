@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse
 from .models import Reservation
 from .forms import ReservationForm
+
+from django.http import JsonResponse
 from datetime import datetime, timedelta
 from django.contrib import messages
 
@@ -18,36 +20,28 @@ def about(request):
 
 
 def reservation_success(request):
-    if request.method == 'POST':
-        form_data = {
-            'name': request.POST['name'],
-            'phone': request.POST['phone'],
-            'email': request.POST['email'],
-            'no_of_guests': request.POST['no_of_guests'],
-            'date': request.POST['date'],
-            'time': request.POST['time'],
-        }
-        booking_form = ReservationForm(form_data)
-        if booking_form.is_valid():
-            reservation = booking_form.save(commit=False)
-            reservation.save()
-
-            messages.success(request, 'Reservation created successfully! \
-                An email with the detail will be sent soon.')
-
-            context = {
-                        'reservation': reservation,
-                    }
-
-            return render(request, 'about/reservation_success.html', context)
-        else:
-            messages.error(request, 'There was an error with your form. \
-                Please double check your information.')
-    else:
-        booking_form = ReservationForm()
+    """ Ajax view for reservation success """
+    booking_form = ReservationForm(request.POST)
 
     context = {
-                'reservation': reservation,
-            }
+        'name': request.POST['name'],
+        'phone': request.POST['phone'],
+        'email': request.POST['email'],
+        'no_of_guests': request.POST['no_of_guests'],
+        'date': request.POST['date'],
+        'time': request.POST['time'],
+    }   
+    if booking_form.is_valid():
+        booking_form.save()
 
-    return render(request, 'about/reservation_success.html', context)
+        return JsonResponse(
+            {
+                'bool': True,
+                'context': context,
+            }
+        )
+    else:
+        # Return an error message
+        messages.error(request, 'There was an error with your form. \
+            Please double check your information.')
+        return HttpResponse('There was an error submitting the form.')

@@ -15,32 +15,37 @@
 {% endblock %}
 
 {% block content %}
-<section class="lp--about-text lp--p-90-0">
-    <div class="lp--bg-2" style="margin-top: 90px">
+<section class="lp-about-text lp-p-90-0">
+    <div class="lp-bg-2" style="margin-top: 90px">
         <div></div>
     </div>
     <div class="container">
         <div class="row">
             <div class="col-lg-6 align-self-center">
-                <div class="lp--illustration-2 lp--mb-90">
-                    <div class="lp--interior-frame">
-                        <img src="/media/place-holder.jpg" alt="interior" class="lp--interior"
+                <div class="lp-illustration-2 lp-mb-90">
+                    <div class="lp-interior-frame">
+                        <img src="/media/place-holder.jpg" alt="interior" class="lp-interior"
                             style="object-position: center">
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 align-self-center lp--mb-60">
-                <h2 class="lp--mb-60">We are doing more than <br>you expect</h2>
-                <p class="lp--text lp--mb-30">Faudantium magnam error temporibus ipsam aliquid neque quibusdam dolorum,
-                    quia ea numquam assumenda mollitia dolorem impedit. Voluptate at quis exercitationem officia
-                    temporibus adipisci quae totam enim
-                    dolorum,
-                    assumenda. Sapiente soluta nostrum reprehenderit a velit obcaecati facilis vitae magnam tenetur
-                    neque vel itaque inventore eaque explicabo commodi maxime! Aliquam quasi, voluptates odio.</p>
-                <p class="lp--text lp--mb-60">Consectetur adipisicing elit. Cupiditate nesciunt amet facilis numquam,
-                    nam adipisci qui voluptate voluptas enim obcaecati veritatis animi nulla, mollitia commodi quaerat
-                    ex, autem ea
-                    laborum.</p>
+            <div class="col-lg-6 align-self-center lp-mb-60">
+                <h2 class="lp-mb-30">We are doing more than <br>you expect</h2>
+                <p>Luigi's Pizza was founded in 2022 by Luigi. He had always dreamed of
+                    opening a pizza shop, and he was determined to create a place where people could enjoy delicious,
+                    authentic Our place quickly became a popular spot in the community. People loved the fresh,
+                    flavourful pizzas, and they appreciated the friendly service. Today, Luigi’s Pizza is still going
+                    strong. We're proud to be a part of the community, and we're committed to providing our customers
+                    with the best possible dining experience.</p>
+                <p><strong>Our Commitment to Quality</strong></p>
+                <p>We're committed to using the finest ingredients in our pizzas. Our dough is made fresh daily, and our
+                    sauce is made with vine-ripened tomatoes. We also use only the highest quality cheese. We're also
+                    committed to providing our customers with a consistent level of quality. Our pizzas are made to
+                    order, and we use the same recipes every time. This ensures that you'll always get a delicious,
+                    authentic pizza when you visit Luigi’s Pizza.</p>
+                <p><strong>Our Mission</strong>
+                    <p>Our mission is to provide our customers with the best possible dining experience. We want our
+                        customers to enjoy our delicious pizzas, friendly service, and warm atmosphere.</p>
             </div>
         </div>
     </div>
@@ -54,8 +59,8 @@
                     <div class="lp-main-title">
                         <span class="lp-suptitle lp-mb-30">Reservation</span>
                         <h1 class="lp-mb-30">Mmm...! <br>Your evening <br>will be great!</h1>
-                        <p class="lp-text lp-text-lg lp-mb-30">Consectetur numquam poro nemo veniam<br>eligendi rem
-                            adipisci quo modi.</p>
+                        <p class="lp-text lp-text-lg lp-mb-30">We hope you'll join us for a slice of pizza soon.<br>We
+                            guarantee that you'll love it!</p>
                     </div>
                 </div>
             </div>
@@ -63,10 +68,10 @@
                 <div class="lp-contact-form-frame">
                     <div class="lp-form-content">
                         <div class="lp-main-content">
-                            <h3 class="lp-mb-30">Make a reservation:</h3>
-                            <div class="booking-success">
+                            <div id="reservation_success">
                             </div>
-                            <form action="{% url 'reservation_success' %}" method="POST" class="reservation-form mt-3"
+                            <h3 id="reservation_title" class="mb-3">Make a reservation:</h3>
+                            <form action="{% url 'reservation_success' %}" method="POST" id="reservation_form" class="reservation-form mt-3"
                                 id="booking_form">
                                 {% csrf_token %}
                                 {{ booking_form.name | as_crispy_field }}
@@ -75,8 +80,7 @@
                                 {{ booking_form.no_of_guests | as_crispy_field }}
                                 {{ booking_form.date | as_crispy_field }}
                                 {{ booking_form.time | as_crispy_field }}
-                                <!-- {{ booking_form|crispy }} -->
-                                <button class="lp-btn float-right add-booking my-3" type="submit">
+                                <button class="lp-btn mt-3" type="submit">
                                     <span class="lp-icon">
                                         <i class="fa-regular fa-clock fa-xl"></i>
                                     </span>
@@ -90,4 +94,9 @@
         </div>
     </div>
 </section>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+{% include 'about/includes/booking_success.html' %}
 {% endblock %}

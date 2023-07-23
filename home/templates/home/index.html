@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+{% endblock %}
+
 {% block content %}
 <!-- banner -->
 <section class="lp-banner">
@@ -15,12 +20,13 @@
                         {% else %}
                         <span class="lp-suptitle lp-mb-30">Hi, new friend!</span>
                         {% endif %}
-                        <h1 class="lp-mb-30">We do not <span>cook</span>, <br>we <span>create</span> your
+                        <h1 class="lp-mb-30">We do not <span>cook</span>, <br>we <span>create</span>
                             <br>emotions!</h1>
-                        <p class="lp-text lp-text-lg lp-mb-30">Consectetur numquam poro nemo veniam<br>eligendi rem
-                            adipisci quo modi.</p>
+                        <p class="lp-text lp-text-lg lp-mb-30">We're also committed to giving back to our
+                            community.<br>We regularly donate pizzas to local charities, and we support a number of
+                            local organizations.</p>
                         <!-- button -->
-                        <a href="#" class="lp-btn">
+                        <a href="{% url 'menu' %}" class="lp-btn">
                             <span class="lp-icon">
                                 <img src="/media/menu.svg" alt="icon">
                             </span>
@@ -28,7 +34,7 @@
                         </a>
                         <!-- button end -->
                         <!-- button -->
-                        <a href="about-1.html" class="lp-btn lp-btn-2 lp-btn-gray">
+                        <a href="{% url 'about' %}" class="lp-btn lp-btn-2 lp-btn-gray">
                             <span class="lp-icon">
                                 <img src="/media/arrow.svg" alt="icon">
                             </span>
@@ -60,24 +66,24 @@
                         <div class="lp-number">01</div>
                         <div class="lp-feature-text">
                             <h3 class="lp-mb-15">We are located in the city center</h3>
-                            <p class="lp-text">Porro nemo veniam necessitatibus praesentium eligendi rem temporibus
-                                adipisci quo modi numquam.</p>
+                            <p class="lp-text">We're committed to making Luigi's Pizza your go-to spot for pizza in
+                                Dublin City Center. We hope you'll come in and see us soon!</p>
                         </div>
                     </li>
                     <li class="lp-features-item lp-mb-60">
                         <div class="lp-number">02</div>
                         <div class="lp-feature-text">
                             <h3 class="lp-mb-15">Fresh, organic ingredients</h3>
-                            <p class="lp-text">Consectetur numquam porro nemo veniam necessitatibus praesentium
-                                eligendi rem temporibus adipisci quo modi.</p>
+                            <p class="lp-text">We're committed to using the finest ingredients in our pizzas. Our dough
+                                is made fresh daily, and our sauce is made with vine-ripened tomatoes.</p>
                         </div>
                     </li>
                     <li class="lp-features-item lp-mb-60">
                         <div class="lp-number">03</div>
                         <div class="lp-feature-text">
                             <h3 class="lp-mb-15">Own fast delivery</h3>
-                            <p class="lp-text">Necessitatibus praesentium eligendi rem temporibus adipisci quo modi.
-                                Lorem ipsum dolor sit.</p>
+                            <p class="lp-text">We're proud to offer our own fast delivery service. We know that you want
+                                your pizza as soon as possible, and we're here to make sure that you get it.</p>
                         </div>
                     </li>
                 </ul>
@@ -92,6 +98,35 @@
 </section>
 <!-- features end -->
 
+<section class="lp-call-to-action bg-light">
+    <div class="lp-bg-3"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 align-self-center">
+                <div class="lp-cta-text mt-4">
+                    <h2 class="lp-mb-30">Signup for our newsletter!</h2>
+                    <p class="lp-text lp-mb-30">And be the first to find out<br>the latest deals and newest products.</p>
+                </div>
+            </div>
+            <div class="col-lg-6 align-self-center">
+                <div id="signup_success">
+                </div>
+                <form action="{% url 'sign_up_newsletter' %}" method="POST" class="mt-3" id="sign_up_newsletter">
+                    {% csrf_token %}
+                    {{ subscribe_form.full_name | as_crispy_field }}
+                    {{ subscribe_form.email_address | as_crispy_field }}
+                    <button class="lp-btn mt-3" type="submit">
+                        <span class="lp-icon">
+                            <i class="fa-regular fa-clock fa-xl"></i>
+                        </span>
+                        <span class="font-weight-bold">Sign Up</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- short menu -->
 <section class="lp-short-menu p-60-60">
     <div class="lp-bg-2">
@@ -100,8 +135,7 @@
     <div class="container">
         <div class="lp-group-title lp-mb-30">
             <div class="lp-left lp-mb-30">
-                <h2 class="lp-mb-30">Most <span>popular</span> dishes</h2>
-                <p class="lp-text">Consectetur numquam poro nemo veniam<br>eligendi rem adipisci quo modi.</p>
+                <h2 class="lp-mb-30">Most <span>popular</span> pizza's</h2>
             </div>
             <div class="lp-right lp-mb-30">
                 <!-- slider navigation -->
@@ -111,7 +145,7 @@
                 </div>
                 <!-- slider navigation end -->
                 <!-- button -->
-                <a href="#" class="lp-btn">
+                <a href="{% url 'menu' %}" class="lp-btn">
                     <span class="lp-icon">
                         <img src="/media/menu.svg" alt="icon">
                     </span>
@@ -122,188 +156,68 @@
         </div>
         <div class="swiper-container lp-short-menu-slider">
             <div class="swiper-wrapper">
-                {% for product in products %}
-                {% if product.category_name == pizza %}
-                    <div class="swiper-slide">
-                        <div class="lp-menu-item">
-                            {% if product.image %}
-                            <div class="lp-cover-frame">
-                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
-                                {% if product.vegetarian == True %}
-                                <div class="lp-badge lp-vegan"><i class="fas fa-leaf"></i> Vegeterian</div>
-                                {% elif product.spicy == True %}
-                                <div class="lp-badge lp-hot"><i class="fas fa-pepper-hot"></i> Spicy</div>
-                                {% else %}
-                                {% endif %}
-                            </div>
+                {% for product in pizza_products %}
+                <div class="swiper-slide">
+                    <div class="lp-menu-item">
+                        {% if product.image %}
+                        <div class="lp-cover-frame">
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                            {% if product.vegetarian == True %}
+                            <div class="lp-badge lp-vegan"><i class="fas fa-leaf"></i> Vegeterian</div>
+                            {% elif product.spicy == True %}
+                            <div class="lp-badge lp-hot"><i class="fas fa-pepper-hot"></i> Spicy</div>
                             {% else %}
-                            <div class="lp-cover-frame">
-                                <img src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
-                            </div>
                             {% endif %}
+                        </div>
+                        {% else %}
+                        <div class="lp-cover-frame">
+                            <img src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                        </div>
+                        {% endif %}
 
-                            <div class="lp-card-tp">
-                                <h5 class="lp-card-title">{{ product.name}}</h5>
-                                <div class="lp-price">${{ product.price }}</div>
-                            </div>
-                            <div class="lp-description">
-                                <p class="lp-text lp-mb-15">{{ product.ingredients|truncatechars:50 }}</p>
-                            </div>
-                            <div class="lp-card-buttons-frame">
-                                <!-- button -->
-                                <a href="{% url 'menu_item' product.id %}" class="lp-btn lp-btn-gray">
-                                    <span class="lp-icon">
-                                        <img src="/media/arrow.svg" alt="icon">
-                                    </span>
-                                    <span>Details</span>
-                                </a>
-                                <!-- button end -->
-                                {% if product.has_size %}
-                                <a href="{% url 'menu_item' product.id %}" class="lp-btn lp-atc">
-                                    <span class="lp-icon">
-                                        <img src="/media/cart.svg" alt="icon">
-                                    </span>
-                                    <span class="lp-add-to-cart-text">Add to Cart</span>
-                                    <span class="lp-added-text">Added</span>
-                                </a>
-                                {% else %}
-                                <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
-                                    {% csrf_token %}
-                                    <div class="form-group lp-buttons-frame">
-                                        <button type="submit" class="lp-btn lp-atc">
-                                            <span class="lp-icon">
-                                                <img src="/media/cart.svg" alt="icon">
-                                            </span>
-                                            <span class="lp-add-to-cart-text">Add to cart</span>
-                                            <span class="lp-added-text">Added</span>
-                                        </button>
-                                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                                    </div>
-                                </form>
-                                {% endif %}
-                            </div>
+                        <div class="lp-card-tp">
+                            <h5 class="lp-card-title">{{ product.name}}</h5>
+                            <div class="lp-price">${{ product.price }}</div>
+                        </div>
+                        <div class="lp-description">
+                            <p class="lp-text lp-mb-15">{{ product.ingredients|truncatechars:50 }}</p>
+                        </div>
+                        <div class="lp-card-buttons-frame">
+                            <!-- button -->
+                            <a href="{% url 'menu_item' product.id %}" class="lp-btn lp-btn-gray">
+                                <span class="lp-icon">
+                                    <img src="/media/arrow.svg" alt="icon">
+                                </span>
+                                <span>Details</span>
+                            </a>
+                            <!-- button end -->
+                            {% if product.has_size %}
+                            <a href="{% url 'menu_item' product.id %}" class="lp-btn lp-atc">
+                                <span class="lp-icon">
+                                    <img src="/media/cart.svg" alt="icon">
+                                </span>
+                                <span class="lp-add-to-cart-text">Add to Cart</span>
+                                <span class="lp-added-text">Added</span>
+                            </a>
+                            {% else %}
+                            <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
+                                {% csrf_token %}
+                                <div class="form-group lp-buttons-frame">
+                                    <button type="submit" class="lp-btn lp-atc">
+                                        <span class="lp-icon">
+                                            <img src="/media/cart.svg" alt="icon">
+                                        </span>
+                                        <span class="lp-add-to-cart-text">Add to cart</span>
+                                        <span class="lp-added-text">Added</span>
+                                    </button>
+                                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                </div>
+                            </form>
+                            {% endif %}
                         </div>
                     </div>
-                {% endif %}
+                </div>
                 {% endfor %}
-                <!-- <div class="swiper-slide">
-                    <a data-fancybox="menu" data-no-swup href="/media/pizza.jpeg" class="lp-menu-item">
-                        <div class="lp-cover-frame">
-                            <img src="/media/pizza.jpeg" alt="product">
-                        </div>
-                        <div class="lp-card-tp">
-                            <h5 class="lp-card-title">Chevrefrit au miel</h5>
-                            <div class="lp-price"><sub>€</sub> 14</div>
-                        </div>
-                        <div class="lp-description">
-                            <p class="lp-text lp-mb-15"><span>tomatoes</span>, <span>nori</span>, <span>feta
-                                    cheese</span>, <span>mushrooms</span>, <span>rice noodles</span>,
-                                <span>corn</span>, <span>shrimp</span>.</p>
-                            <ul class="lp-stars">
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a data-fancybox="menu" data-no-swup href="/media/pizza.jpeg" class="lp-menu-item">
-                        <div class="lp-cover-frame">
-                            <img src="/media/pizza.jpeg" alt="product">
-                            <div class="lp-badge lp-vegan"><i class="fas fa-leaf"></i> Vegan</div>
-                        </div>
-                        <div class="lp-card-tp">
-                            <h5 class="lp-card-title">Saumon Gravlax</h5>
-                            <div class="lp-price"><sub>€</sub> 9</div>
-                        </div>
-                        <div class="lp-description">
-                            <p class="lp-text lp-mb-15"><span>tomatoes</span>, <span>nori</span>, <span>feta
-                                    cheese</span>, <span>mushrooms</span>, <span>rice noodles</span>,
-                                <span>corn</span>, <span>shrimp</span>.</p>
-                            <ul class="lp-stars">
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a data-fancybox="menu" data-no-swup href="/media/pizza.jpeg" class="lp-menu-item">
-                        <div class="lp-cover-frame">
-                            <img src="/media/pizza.jpeg" alt="product">
-                            <div class="lp-badge lp-hot"><i class="fas fa-pepper-hot"></i> Hot</div>
-                        </div>
-                        <div class="lp-card-tp">
-                            <h5 class="lp-card-title">Croustillant de poisson</h5>
-                            <div class="lp-price"><sub>€</sub> 4</div>
-                        </div>
-                        <div class="lp-description">
-                            <p class="lp-text lp-mb-15"><span>tomatoes</span>, <span>nori</span>, <span>feta
-                                    cheese</span>, <span>mushrooms</span>, <span>rice noodles</span>,
-                                <span>corn</span>, <span>shrimp</span>.</p>
-                            <ul class="lp-stars">
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a data-fancybox="menu" data-no-swup href="/media/pizza.jpeg" class="lp-menu-item">
-                        <div class="lp-cover-frame">
-                            <img src="/media/pizza.jpeg" alt="product">
-                            <div class="lp-badge lp-vegan"><i class="fas fa-leaf"></i> Vegan</div>
-                        </div>
-                        <div class="lp-card-tp">
-                            <h5 class="lp-card-title">Carpaccio de daurade</h5>
-                            <div class="lp-price"><sub>€</sub> 6</div>
-                        </div>
-                        <div class="lp-description">
-                            <p class="lp-text lp-mb-15"><span>tomatoes</span>, <span>nori</span>, <span>feta
-                                    cheese</span>, <span>mushrooms</span>, <span>rice noodles</span>,
-                                <span>corn</span>, <span>shrimp</span>.</p>
-                            <ul class="lp-stars">
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a data-fancybox="menu" data-no-swup href="/media/pizza.jpeg" class="lp-menu-item">
-                        <div class="lp-cover-frame">
-                            <img src="/media/pizza.jpeg" alt="product">
-                        </div>
-                        <div class="lp-card-tp">
-                            <h5 class="lp-card-title">Stracciatella</h5>
-                            <div class="lp-price"><sub>€</sub> 11</div>
-                        </div>
-                        <div class="lp-description">
-                            <p class="lp-text lp-mb-15"><span>tomatoes</span>, <span>nori</span>, <span>feta
-                                    cheese</span>, <span>mushrooms</span>, <span>rice noodles</span>,
-                                <span>corn</span>, <span>shrimp</span>.</p>
-                            <ul class="lp-stars">
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </a>
-                </div> -->
             </div>
         </div>
     </div>
@@ -366,25 +280,9 @@
     </div>
 </section>
 <!-- promo end -->
+{% endblock %}
 
-<!-- footer -->
-<footer>
-    <div class="container">
-        <div class="lp-footer-frame">
-            <a href="#" class="lp-logo-frame">
-                <!-- logo img -->
-                <h4 class="logo-font text-black my-0"><img src="/media/logo-pizza.svg" alt="Pizza slice">
-                    <strong>Luigi's</strong> Pizza</h4>
-            </a>
-            <ul class="lp-social">
-                <li><a href="#."><i class="fa-brands fa-facebook"></i></a></li>
-                <li><a href="#."><i class="fa-brands fa-instagram"></i></a></li>
-                <li><a href="#."><i class="fa-brands fa-twitter"></i></a></li>
-                <li><a href="#."><i class="fa-brands fa-youtube"></i></a></li>
-            </ul>
-            <div class="lp-copy">&copy; late 2021 Starbelly. All Rights Reserved.</div>
-        </div>
-    </div>
-</footer>
-<!-- footer end -->
+{% block postloadjs %}
+{{ block.super }}
+{% include 'home/includes/sign_up_newsletter.html' %}
 {% endblock %}

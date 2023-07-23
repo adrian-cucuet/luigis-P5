@@ -1,14 +1,30 @@
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#booking-form').submit(function (event) {
-            event.preventDefault();
+        $('#reservation_form').submit(function (e) {
+            e.preventDefault();
+
             $.ajax({
-                url: 'about/reservation_success.html',
-                type: 'POST',
                 data: $(this).serialize(),
-                success: function (data) {
-                    $('#booking_form').hide();
-                    $('.booking-success').html(data);
+
+                method: $(this).attr("method"),
+
+                url: $(this).attr("action"),
+
+                success: function (response) {
+                    if (response.bool == true) {
+                        $("#reservation_form").addClass("hide-reservation-form");
+                        $("#reservation_title").addClass("hide-reservation-form");
+                        let _html = '<div class="text-success text-center lp-mb-30"><i class="fa-regular fa-circle-check fa-2xl"></i></div>'
+                        _html += '<h3 class="lp-mb-30 text-success">Reservation successful!</h3>'
+                        _html += '<p class="text-black">A confirmation email will be sent to <strong>' + response.context.email + '</strong></p>'
+                        _html += '<div class="mx-3 d-flex flex-column">'
+                        _html += '<p class="mb-2">Name: <strong>' + response.context.name + '</strong></p>'
+                        _html += '<p class="mb-2">Guests: <strong>' + response.context.no_of_guests + '</strong></p>'
+                        _html += '<p class="mb-2">Date: <strong>' + response.context.date + '</strong></p>'
+                        _html += '<p class="mb-2">Time: <strong>' + response.context.time + '</strong></p>'
+                        _html += '</div>'
+                        $("#reservation_success").prepend(_html);
+                    }
                 }
             });
         });

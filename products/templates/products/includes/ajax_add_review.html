@@ -1,54 +1,53 @@
 <script type="text/javascript">
     $(document).ready(function () {
-                const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
-                ];
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+        ];
 
-                $('#comment-form').submit(function (e) {
-                    e.preventDefault();
+        $('#comment-form').submit(function (e) {
+            e.preventDefault();
 
-                    let dt = new Date();
-                    let time = dt.getDay() + " " + monthNames[dt.getUTCMonth] + ", " + dt.getFullYear()
+            let dt = new Date();
+            let time = dt.getUTCDate() + " " + monthNames[dt.getUTCMonth()] + ", " + dt.getFullYear()
 
-                    $.ajax({
-                        data: $(this).serialize(),
+            $.ajax({
+                data: $(this).serialize(),
 
-                        method: $(this).attr("method"),
+                method: $(this).attr("method"),
 
-                        url: $(this).attr("action"),
+                url: $(this).attr("action"),
 
-                        success: function (response) {
-                            if (response.bool == true) {
-                                $("#review-mess").html("Review added successfully")
-                                $(".hide-comment-form").hide()
-                                $(".add-review").hide()
+                success: function (response) {
+                    if (response.bool == true) {
+                        $("#review-mess").html("Review added successfully")
+                        $(".hide-comment-form").hide()
+                        $(".add-review").hide()
 
-                                let _html = '<div class="user justify-content-between d-flex">'
-                                _html += '<div class="text-center mr-4">'
-                                _html += '<p class="user">' + response.context.user + '</p>'
-                                _html += '<p class="font-xs text-muted">' + time + '</p>'
-                                _html += '</div>'
-                                _html += '<div class="desc">'
-                                _html += '<div class="d-flex justify-content-bentween mb-3">'
-                                _html += '<ul class="lp-stars">'
-                                for (let i = 1; i < response.context.rating; i++) {
-                                    if (i > 0) {
-                                        _html += '<li><i class="fas fa-star full"></i></li>'
-                                    }else{
-                                        _html += '<li><i class="fas fa-star empty"></i></li>'
-                                    }    
-                                }
-                                _html += '<li><span class="ml-2">' + response.context.rating + ' out of 5.0</span></li>'
-                                _html += '</ul>'
-                                _html += '</div>'
-                                _html += '<p class="mb-10">' + response.context.review + '</p>'
-                                _html += '</div>'
-                                _html += '</div>'
-                                _html += '</div>'
-                                $(".comment-list").prepend(_html);
-                            }
+                        let _html =
+                            '<div class="single-comment justify-content-between d-flex mb-3">'
+                        _html = '<div class="d-flex justify-content-between">'
+                        _html += '<div class="text-center mr-4">'
+                        _html += '<p class="text-muted">' + response.context.user + '</p>'
+                        _html += '<p class="font-xs text-muted">' + time + '</p>'
+                        _html += '</div>'
+                        _html += '<div class="d-flex justify-content-end flex-column">'
+                        _html += '<div class="d-flex justify-content-bentween mb-3">'
+                        _html += '<ul class="lp-stars">'
+                        for (let i = 0; i < response.context.rating; i++) {
+                            _html += '<li><i class="fas fa-star full"></i></li>'
                         }
-                    });
-                });
+                        _html += '<li><span class="ml-2">' + response.context.rating +
+                            ' out of 5.0</span></li>'
+                        _html += '</ul>'
+                        _html += '</div>'
+                        _html += '<p class="mb-10">' + response.context.review + '</p>'
+                        _html += '</div>'
+                        _html += '</div>'
+                        _html += '</div>'
+                        $(".comment-list").prepend(_html);
+                    }
+                }
             });
+        });
+    });
 </script>

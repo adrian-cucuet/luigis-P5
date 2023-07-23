@@ -1,0 +1,59 @@
+/***************************
+
+call to action
+
+***************************/
+.lp-call-to-action {
+    position: relative;
+    padding: 30px 0;
+}
+
+.lp-download-btn {
+    background-color: #231E41;
+    border-radius: 11px;
+    display: inline-block;
+    margin-right: 15px;
+    height: 55px;
+    transform: scale(1.001);
+    transition: 0.3s ease-in-out;
+}
+
+.lp-download-btn img {
+    height: 100%;
+}
+
+.lp-download-btn:last-child {
+    margin-bottom: 0;
+}
+
+.lp-download-btn:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 992px) {
+    .lp-call-to-action {
+        position: relative;
+        padding: 60px 0;
+    }
+
+    .lp-download-btn {
+        margin-bottom: 10px;
+    }
+
+    .lp-download-btn:last-child {
+        margin-bottom: 0;
+    }
+
+    .lp-call-to-action {
+        position: relative;
+    }
+
+    .lp-call-to-action .lp-cta-text {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+}
+
+.hide-newsletter-form {
+    display: none;
+}

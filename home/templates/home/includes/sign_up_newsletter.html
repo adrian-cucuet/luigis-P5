@@ -1,0 +1,31 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sign_up_newsletter').submit(function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                data: $(this).serialize(),
+
+                method: $(this).attr("method"),
+
+                url: $(this).attr("action"),
+
+                success: function (response) {
+                    if (response.bool == true) {
+                        $("#sign_up_newsletter").addClass("hide-newsletter-form");
+                        let _html = '<div class="text-success text-center lp-mb-30"><i class="fa-regular fa-circle-check fa-2xl"></i></div>'
+                        _html += '<div class="justify-content-between d-flex">'
+                        _html += '<div class="mr-4">'
+                        _html +=
+                            '<h3 class="text-success lp-mb-30">Successfully signed up!</h3>'
+                        _html +=
+                            '<p class="text-success lp-mb-30">Thank you for being our friend.</p>'
+                        _html += '</div>'
+                        _html += '</div>'
+                        $("#signup_success").prepend(_html);
+                    }
+                }
+            });
+        });
+    });
+</script>

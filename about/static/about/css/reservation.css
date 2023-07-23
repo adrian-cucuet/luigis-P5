@@ -184,3 +184,7 @@ contact
         border: none;
     }
 }
+
+.hide-reservation-form {
+    display: none;
+}
