@@ -24,8 +24,13 @@
                         _html += '<p class="mb-2">Time: <strong>' + response.context.time + '</strong></p>'
                         _html += '</div>'
                         $("#reservation_success").prepend(_html);
-                    }
-                }
+                        }
+                },
+
+                error: function(data){
+                    alert(data.status); // the status code
+                    alert(data.responseJSON.error); // the message
+                },
             });
         });
     });

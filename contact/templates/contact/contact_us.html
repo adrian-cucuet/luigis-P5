@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+<link rel="stylesheet" href="{% static 'contact/css/contact_us.css' %}">
+{% endblock %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<section class="lp-banner lp-banner-color">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <div class="lp-main-title-frame">
+                    <div class="lp-main-title">
+                        <span class="lp-suptitle lp-mb-30">Contact</span>
+                        <h1 class="lp-mb-30">Get in <span>Touch with Luigi'sPizza</span></h1>
+                        <p class="lp-text lp-text-lg lp-mb-30">We're always happy to hear from you! If you have any questions, feedback,<br>or just want to say hello, please don't hesitate to contact us.</p>
+                        <a href="{% url 'home' %}" class="lp-btn lp-btn-gray bg-light">
+                            <span class="lp-icon">
+                                <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="font-weight-bold">Back Home</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="lp-contact-form-frame">
+                    <div class="lp-form-content">
+                        <div class="lp-main-content">
+                            <h3 class="lp-mb-30">Send Message</h3>
+                            <form action="{% url 'contact_success' %}" method="POST" id="contact_form">
+                                {% csrf_token %}
+                                {{ contact_form.department | as_crispy_field }}
+                                {{ contact_form.name | as_crispy_field }}
+                                {{ contact_form.email | as_crispy_field }}
+                                {{ contact_form.subject | as_crispy_field }}
+                                {{ contact_form.message | as_crispy_field }}
+                                <p class="lp-text lp-text-xs lp-mb-30">*We promise not to disclose your <br>personal
+                                    information to third parties.</p>
+                                <!-- button -->
+                                <button type="submit" class="lp-btn lp-cf-submit lp-show-success">
+                                    <span class="lp-icon">
+                                        <i class="fa-regular fa-paper-plane fa-lg"></i>
+                                    </span>
+                                    <span>Send</span>
+                                </button>
+                                <!-- button end -->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="lp-p-90-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="lp-features-item lp-mb-60">
+                    <div class="lp-number">01</div>
+                    <div class="lp-feature-text">
+                        <h3 class="lp-mb-15">Welcome</h3>
+                        <p class="lp-text">Dublin, 36 Talbot Street</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="lp-features-item lp-mb-60">
+                    <div class="lp-number">02</div>
+                    <div class="lp-feature-text">
+                        <h3 class="lp-mb-15">Call</h3>
+                        <p class="lp-text">+01 (234) 756-66-52</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="lp-features-item lp-mb-60">
+                    <div class="lp-number">03</div>
+                    <div class="lp-feature-text">
+                        <h3 class="lp-mb-15">Write</h3>
+                        <p class="lp-text">luigispizza@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

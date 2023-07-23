@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse
 from .models import Reservation
 from .forms import ReservationForm
+import datetime
 
 from django.http import JsonResponse
 from datetime import datetime, timedelta
@@ -30,18 +31,14 @@ def reservation_success(request):
         'no_of_guests': request.POST['no_of_guests'],
         'date': request.POST['date'],
         'time': request.POST['time'],
-    }   
+    }
+
     if booking_form.is_valid():
         booking_form.save()
+        return JsonResponse({'bool': True, 'context': context, })
 
-        return JsonResponse(
-            {
-                'bool': True,
-                'context': context,
-            }
-        )
     else:
         # Return an error message
         messages.error(request, 'There was an error with your form. \
             Please double check your information.')
-        return HttpResponse('There was an error submitting the form.')
+        return JsonResponse({'bool': False, 'error': 'There was an error with the form.'})
