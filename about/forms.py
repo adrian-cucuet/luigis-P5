@@ -1,5 +1,6 @@
 from django import forms
 from .models import Reservation
+import datetime
 
 
 class DateInput(forms.DateInput):
@@ -12,6 +13,12 @@ class ReservationForm(forms.ModelForm):
         fields = ('name', 'email', 'phone',
                   'no_of_guests', 'date', 'time',)
         widgets = {'date': DateInput()}
+
+    def clean_date(self):
+        date = self.cleaned_data['date']
+        if date < datetime.date.today():
+            raise ValidationError(self.error_messages['Date cannot be in the past'], code='Date cannot be in the past')
+        return date
 
     def __init__(self, *args, **kwargs):
         """

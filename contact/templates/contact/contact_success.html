@@ -3,58 +3,65 @@
 
 {% block content %}
 <section class="lp-banner lp-banner-color">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-12">
-          <div class="lp-main-title-frame">
-            <div class="lp-main-title">
-              <span class="lp-suptitle lp-mb-30">Contact</span>
-              <h1 class="lp-mb-30">Thank you<br>for the message!</h1>
-              <p class="lp-text lp-text-lg lp-mb-30">Your message was successfully sent<br>We will get in touch with you soon.</p>
-              <ul class="lp-breadcrumbs">
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'contact' %}">Contact</a></li>
-              </ul>
-            </div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <div class="lp-main-title-frame">
+          <div class="lp-main-title">
+            <span class="lp-suptitle lp-mb-30">Contact</span>
+            <h1 class="lp-mb-30">Thank you<br>for the message!</h1>
+            <p class="lp-text lp-text-lg lp-mb-30">Your message was successfully sent<br>We will get in touch with you
+              soon.</p>
+            <a href="{% url 'home' %}" class="lp-btn lp-btn-gray bg-light">
+              <span class="lp-icon">
+                <i class="fas fa-chevron-left"></i>
+              </span>
+              <span class="font-weight-bold">Back Home</span>
+            </a>
           </div>
         </div>
       </div>
+      <div class="col-lg-5">
+        <img src="/media/mail-sent.svg" alt="mail-sent">
+      </div>
     </div>
-  </section>
-  <!-- banner end -->
+  </div>
+</section>
+<!-- banner end -->
 
-  <!-- contact info -->
-  <section class="lp-p-90-30">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="lp-features-item lp-mb-60">
-            <div class="lp-number">01</div>
-            <div class="lp-feature-text">
-              <h3 class="lp-mb-15">Welcome</h3>
-              <p class="lp-text">Dublin, 36 Talbot Street</p>
-            </div>
+<!-- contact info -->
+<section class="lp-p-90-30">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="lp-features-item lp-mb-60">
+          <div class="lp-number">01</div>
+          <div class="lp-feature-text">
+            <h3 class="lp-mb-15">Welcome</h3>
+            <p class="lp-text">Dublin, 36 Talbot Street</p>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="lp-features-item lp-mb-60">
-            <div class="lp-number">02</div>
-            <div class="lp-feature-text">
-              <h3 class="lp-mb-15">Call</h3>
-              <p class="lp-text">+01 (234) 756-66-52</p>
-            </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="lp-features-item lp-mb-60">
+          <div class="lp-number">02</div>
+          <div class="lp-feature-text">
+            <h3 class="lp-mb-15">Call</h3>
+            <p class="lp-text">+01 (234) 756-66-52</p>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="lp-features-item lp-mb-60">
-            <div class="lp-number">03</div>
-            <div class="lp-feature-text">
-              <h3 class="lp-mb-15">Write</h3>
-              <p class="lp-text">luigispizza@gmail.com</p>
-            </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="lp-features-item lp-mb-60">
+          <div class="lp-number">03</div>
+          <div class="lp-feature-text">
+            <h3 class="lp-mb-15">Write</h3>
+            <p class="lp-text">luigispizza@gmail.com</p>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+<a href="https://storyset.com/communication" class="text-muted">Communication illustrations by Storyset</a>
 {% endblock %}

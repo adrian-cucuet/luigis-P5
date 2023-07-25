@@ -47,27 +47,72 @@
             <div class="lp-price">${{ product.price }}</div>
           </div>
           {% if average_rating.rating %}
-            <ul class="lp-stars lp-mb-25">
-              <li><i class="fas fa-star {% if average_rating.rating > 0 %} full {% else %} empty {% endif %}"></i></li>
-              <li><i class="fas fa-star {% if average_rating.rating > 1 %} full {% else %} empty {% endif %}"></i></li>
-              <li><i class="fas fa-star {% if average_rating.rating > 2 %} full {% else %} empty {% endif %}"></i></li>
-              <li><i class="fas fa-star {% if average_rating.rating > 3 %} full {% else %} empty {% endif %}"></i></li>
-              <li><i class="fas fa-star {% if average_rating.rating > 4 %} full {% else %} empty {% endif %}"></i></li>
-              <li><span class="ml-2">{{ average_rating.rating|floatformat }} / 5.0</span></li>
-            </ul>
-            {% else %}
-            <ul class="lp-stars lp-mb-25">
-              <li><i class="fas fa-star empty"></i></li>
-              <li><i class="fas fa-star empty"></i></li>
-              <li><i class="fas fa-star empty"></i></li>
-              <li><i class="fas fa-star empty"></i></li>
-              <li><i class="fas fa-star empty"></i></li>
-              <li><span>Sorry, not rated yet!</span></li>
-            </ul>
+          <ul class="lp-stars lp-mb-25">
+            <li><i class="fas fa-star {% if average_rating.rating > 0 %} full {% else %} empty {% endif %}"></i></li>
+            <li><i class="fas fa-star {% if average_rating.rating > 1 %} full {% else %} empty {% endif %}"></i></li>
+            <li><i class="fas fa-star {% if average_rating.rating > 2 %} full {% else %} empty {% endif %}"></i></li>
+            <li><i class="fas fa-star {% if average_rating.rating > 3 %} full {% else %} empty {% endif %}"></i></li>
+            <li><i class="fas fa-star {% if average_rating.rating > 4 %} full {% else %} empty {% endif %}"></i></li>
+            <li><span class="ml-2">{{ average_rating.rating|floatformat }} / 5.0</span></li>
+          </ul>
+          {% else %}
+          <ul class="lp-stars lp-mb-25">
+            <li><i class="fas fa-star empty"></i></li>
+            <li><i class="fas fa-star empty"></i></li>
+            <li><i class="fas fa-star empty"></i></li>
+            <li><i class="fas fa-star empty"></i></li>
+            <li><i class="fas fa-star empty"></i></li>
+            <li><span>Sorry, not rated yet!</span></li>
+          </ul>
           {% endif %}
           <p class="lp-text lp-mb-30">{{ product.ingredients }}</p>
           <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
             {% csrf_token %}
+            {% with product.has_size as s %}
+            <div class="row">
+              <div class="container">
+              {% if s %}
+                <div class="row form-group mb-5" name="product_size" id="id_product_size">
+                    <div class="col text-center align-self-end">
+                    <input type="radio" name="imgbackground" id="img1" class="d-none imgbgchk form-control" value="S">
+                      <label for="img1">
+                        <div class="d-flex flex-column text-center">
+                          <img src="/media/pizza_size.png" width="50px" height="50px">
+                          <h4 class="sb-mb-15">Small - 9"</h4>
+                        </div>
+                        <div class="tick_container">
+                          <div class="tick"><i class="fa fa-check"></i></div>
+                        </div>
+                        </label>
+                    </div>
+                    <div class="col text-center align-self-end">
+                    <input type="radio" name="imgbackground" id="img2" class="d-none imgbgchk form-control" value="M">
+                      <label for="img2">
+                        <div class="d-flex flex-column text-center">
+                          <img src="/media/pizza_size.png" width="60px" height="60px">
+                          <h4 class="sb-mb-15">Medium - 12"</h4>
+                        </div>
+                        <div class="tick_container">
+                          <div class="tick"><i class="fa fa-check"></i></div>
+                        </div>
+                      </label>
+                    </div>
+                    <div class="col text-center align-self-end">
+                    <input type="radio" name="imgbackground" id="img3" class="d-none imgbgchk form-control" value="L">
+                      <label for="img3">
+                        <div class="d-flex flex-column text-center">
+                          <img src="/media/pizza_size.png" width="70px" height="70px">
+                          <h4 class="sb-mb-15">Large - 15"</h4>
+                        </div>
+                        <div class="tick_container">
+                          <div class="tick"><i class="fa fa-check"></i></div>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+            {% endif %}
+          </div>
+        </div>
             <div class="form-group lp-buttons-frame">
               <div class="input-group lp-input-number-frame">
                 <div class="input-group-prepend">
@@ -98,6 +143,7 @@
               </button>
               <input type="hidden" name="redirect_url" value="{{ request.path }}">
             </div>
+            {% endwith %}
           </form>
         </div>
       </div>
@@ -171,7 +217,7 @@
                         </div>
                         <button type="submit" class="lp-btn lp-atc">
                           <span class="lp-icon">
-                              <i class="fa-regular fa-square-plus fa-xl"></i>
+                            <i class="fa-regular fa-square-plus fa-xl"></i>
                           </span>
                           <span class="lp-add-to-cart-text">Add Review</span>
                         </button>
@@ -211,76 +257,86 @@
     <div class="swiper-container lp-short-menu-slider">
       <div class="swiper-wrapper">
         {% for sp in similar_products %}
-        
-          <div class="swiper-slide">
-            <div class="lp-menu-item">
-              {% if sp.image %}
-              <div class="lp-cover-frame">
-                <img src="{{ sp.image.url }}" alt="{{ sp.name }}">
-                {% if sp.vegetarian == True %}
-                <div class="lp-badge lp-vegan"><i class="fas fa-leaf"></i> Vegeterian</div>
-                {% elif sp.spicy == True %}
-                <div class="lp-badge lp-hot"><i class="fas fa-pepper-hot"></i> Spicy</div>
-                {% else %}
-                {% endif %}
-              </div>
-              {% else %}
-              <div class="lp-cover-frame">
-                <img src="{{ MEDIA_URL }}noimage.png" alt="{{ sp.name }}">
-              </div>
-              {% endif %}
 
-              <div class="lp-card-tp">
-                <h5 class="lp-card-title">{{ sp.name}}</h5>
-                <div class="lp-price">${{ sp.price }}</div>
-              </div>
-              <div class="lp-description">
-                <p class="lp-text lp-mb-15">{{ sp.ingredients|truncatechars:50 }}</p>
-                <!-- {% for r in sp.rating %} -->
-                {% if sp.rating %}
-                  <ul class="lp-stars lp-mb-25">
-                    <li><i class="fas fa-star {% if sp.rating > 0 %} full {% else %} empty {% endif %}"></i></li>
-                    <li><i class="fas fa-star {% if sp.rating > 1 %} full {% else %} empty {% endif %}"></i></li>
-                    <li><i class="fas fa-star {% if sp.rating > 2 %} full {% else %} empty {% endif %}"></i></li>
-                    <li><i class="fas fa-star {% if sp.rating > 3 %} full {% else %} empty {% endif %}"></i></li>
-                    <li><i class="fas fa-star {% if sp.rating > 4 %} full {% else %} empty {% endif %}"></i></li>
-                    <li><span class="ml-2">{{ sp.rating|floatformat }} / 5.0</span></li>
-                  </ul>
-                  {% else %}
-                  <ul class="lp-stars lp-mb-25">
-                    <li><i class="fas fa-star empty"></i></li>
-                    <li><i class="fas fa-star empty"></i></li>
-                    <li><i class="fas fa-star empty"></i></li>
-                    <li><i class="fas fa-star empty"></i></li>
-                    <li><i class="fas fa-star empty"></i></li>
-                    <li><span>Sorry, not rated yet!</span></li>
-                  </ul>
+        <div class="swiper-slide">
+          <div class="lp-menu-item">
+            {% if sp.image %}
+            <div class="lp-cover-frame">
+              <img src="{{ sp.image.url }}" alt="{{ sp.name }}">
+              {% if sp.vegetarian == True %}
+              <div class="lp-badge lp-vegan"><i class="fas fa-leaf"></i> Vegeterian</div>
+              {% elif sp.spicy == True %}
+              <div class="lp-badge lp-hot"><i class="fas fa-pepper-hot"></i> Spicy</div>
+              {% else %}
+              {% endif %}
+            </div>
+            {% else %}
+            <div class="lp-cover-frame">
+              <img src="{{ MEDIA_URL }}noimage.png" alt="{{ sp.name }}">
+            </div>
+            {% endif %}
+
+            <div class="lp-card-tp">
+              <h5 class="lp-card-title">{{ sp.name}}</h5>
+              <div class="lp-price">${{ sp.price }}</div>
+            </div>
+            <div class="lp-description">
+              <p class="lp-text lp-mb-15">{{ sp.ingredients|truncatechars:50 }}</p>
+              <!-- {% for r in sp.rating %} -->
+              {% if sp.rating %}
+              <ul class="lp-stars lp-mb-25">
+                <li><i class="fas fa-star {% if sp.rating > 0 %} full {% else %} empty {% endif %}"></i></li>
+                <li><i class="fas fa-star {% if sp.rating > 1 %} full {% else %} empty {% endif %}"></i></li>
+                <li><i class="fas fa-star {% if sp.rating > 2 %} full {% else %} empty {% endif %}"></i></li>
+                <li><i class="fas fa-star {% if sp.rating > 3 %} full {% else %} empty {% endif %}"></i></li>
+                <li><i class="fas fa-star {% if sp.rating > 4 %} full {% else %} empty {% endif %}"></i></li>
+                <li><span class="ml-2">{{ sp.rating|floatformat }} / 5.0</span></li>
+              </ul>
+              {% else %}
+              <ul class="lp-stars lp-mb-25">
+                <li><i class="fas fa-star empty"></i></li>
+                <li><i class="fas fa-star empty"></i></li>
+                <li><i class="fas fa-star empty"></i></li>
+                <li><i class="fas fa-star empty"></i></li>
+                <li><i class="fas fa-star empty"></i></li>
+                <li><span>Sorry, not rated yet!</span></li>
+              </ul>
               {% endif %}
               <!-- {% endfor %} -->
-              </div>
-              <div class="lp-card-buttons-frame">
-                <a href="{% url 'menu_item' sp.id %}" class="lp-btn lp-btn-gray">
-                  <span class="lp-icon">
-                    <img src="/media/arrow.svg" alt="icon">
-                  </span>
-                  <span>Details</span>
-                </a>
-                <form class="form" action="{% url 'add_to_cart' sp.id %}" method="POST">
-                  {% csrf_token %}
-                  <div class="form-group lp-buttons-frame">
-                    <button type="submit" class="lp-btn lp-atc">
-                      <span class="lp-icon">
-                        <img src="/media/cart.svg" alt="icon">
-                      </span>
-                      <span class="lp-add-to-cart-text">Add to cart</span>
-                      <span class="lp-added-text">Added</span>
-                    </button>
-                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                  </div>
-                </form>
-              </div>
+            </div>
+            <div class="lp-card-buttons-frame">
+              <a href="{% url 'menu_item' sp.id %}" class="lp-btn lp-btn-gray">
+                <span class="lp-icon">
+                  <img src="/media/arrow.svg" alt="icon">
+                </span>
+                <span>Details</span>
+              </a>
+              {% if product.has_size %}
+              <a href="{% url 'menu_item' sp.id %}" class="lp-btn lp-atc">
+                <span class="lp-icon">
+                  <img src="/media/cart.svg" alt="icon">
+                </span>
+                <span class="lp-add-to-cart-text">Add to Cart</span>
+                <span class="lp-added-text">Added</span>
+              </a>
+              {% else %}
+              <form class="form" action="{% url 'add_to_cart' sp.id %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group lp-buttons-frame">
+                  <button type="submit" class="lp-btn lp-atc">
+                    <span class="lp-icon">
+                      <img src="/media/cart.svg" alt="icon">
+                    </span>
+                    <span class="lp-add-to-cart-text">Add to cart</span>
+                    <span class="lp-added-text">Added</span>
+                  </button>
+                  <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                </div>
+              </form>
+              {% endif %}
             </div>
           </div>
+        </div>
         {% endfor %}
       </div>
     </div>

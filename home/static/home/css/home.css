@@ -57,3 +57,106 @@ call to action
 .hide-newsletter-form {
     display: none;
 }
+
+/***************************
+
+promo
+
+***************************/
+.lp-promo-content {
+    width: 100%;
+    align-items: center;
+    display: flex;
+}
+
+.lp-promo-content .lp-text-frame {
+    padding: 30px;
+    width: 45%;
+}
+
+.lp-promo-content .lp-image-frame {
+    display: flex;
+    align-items: center;
+    width: 55%;
+    height: 100%;
+    background-color: #F9FAFC;
+}
+
+.lp-promo-frame {
+    box-shadow: 0 0 0 2px #FFFFFF;
+    padding: 20px 0 20px 20px;
+    background-color: #F9FAFC;
+    overflow: hidden;
+}
+
+.lp-promo-frame .lp-promo-content {
+    position: relative;
+}
+
+.lp-promo-frame .lp-promo-content .lp-text-frame {
+    padding: 0;
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 580px) {
+    .lp-promo-content {
+        padding-top: 15px;
+
+    }
+
+    .lp-promo-content .lp-text-frame {
+        width: 100%;
+        text-align: center;
+        margin-left: 0.5rem;
+    }
+
+    .lp-promo-content .lp-text-frame .lp-h1 {
+        margin-bottom: 15px;
+    }
+
+    .lp-promo-content .lp-image-frame {
+        width: 80%;
+    }
+
+    .lp-promo-frame {
+        padding: 30px 0;
+    }
+}
+
+.lp-illustration-promo {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    padding-bottom: 60%;
+    animation: anima3 3s 1s infinite ease-in-out;
+}
+
+.lp-promo-img {
+    position: absolute;
+    width: 95%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    top: 0;
+    right: 0;
+    animation: anima2 3s infinite ease-in-out;
+}
+
+@media (max-width: 580px) {
+    .lp-illustration-promo {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .lp-promo-img {
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        bottom: 0;
+        right: auto;
+        animation: anima2 3s infinite ease-in-out;
+    }
+}

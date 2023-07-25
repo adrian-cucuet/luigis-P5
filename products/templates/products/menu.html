@@ -16,7 +16,7 @@
     <div class="lp-filter mb-30">
       <a class="lp-filter-link lp-active" data-filter="*">See all</a>
       {% for category in categories %}
-      <a class="lp-filter-link" data-filter=".{{ category|lower }}">{{ category }}</a>
+      <a class="lp-filter-link" data-filter=".{{ category|lower }}">{{ category.friendly_name }}</a>
       {% endfor %}
     </div>
     <!-- filter end -->
@@ -81,15 +81,6 @@
               <span>Details</span>
             </a>
             <!-- button end -->
-            {% if product.has_size %}
-            <a href="{% url 'menu_item' product.id %}" class="lp-btn lp-atc">
-              <span class="lp-icon">
-                <img src="/media/cart.svg" alt="icon">
-              </span>
-              <span class="lp-add-to-cart-text">Add to Cart</span>
-              <span class="lp-added-text">Added</span>
-            </a>
-            {% else %}
             <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
               {% csrf_token %}
               <div class="form-group lp-buttons-frame">
@@ -103,7 +94,6 @@
                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
               </div>
             </form>
-            {% endif %}
           </div>
         </div>
       </div>

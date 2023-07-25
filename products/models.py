@@ -26,20 +26,6 @@ class Category(models.Model):
         return self.friendly_name
 
 
-class Size(models.Model):
-    name = models.CharField(max_length=20)
-
-    def __str__(self):
-        return self.name
-
-
-class Topping(models.Model):
-    name = models.CharField(max_length=15)
-
-    def __str__(self):
-        return self.name
-
-
 class Product(models.Model):
     category = models.ForeignKey('Category', null=True, blank=True,
                                  on_delete=models.SET_NULL)
@@ -48,9 +34,6 @@ class Product(models.Model):
     ingredients = models.TextField()
     vegetarian = models.BooleanField(blank=True)
     spicy = models.BooleanField(blank=True)
-    has_size = models.BooleanField(default=False, null=True, blank=True)
-    size = models.ManyToManyField('Size')
-    topping = models.ManyToManyField('Topping')
     price = models.DecimalField(max_digits=6, decimal_places=2)
     rating = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
@@ -75,3 +58,4 @@ class ProductReview(models.Model):
 
     def get_rating(self):
         return self.rating
+

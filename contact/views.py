@@ -1,20 +1,21 @@
 from django.shortcuts import render, redirect
 from .forms import ContactUsForm
-from .models import ContactUs
+from django.contrib import messages
 
 
 def contact_us(request):
     """ View to render contact us page """
-    
+
     contact_form = ContactUsForm()
 
     if request.method == 'POST':
         contact_form = ContactUsForm(request.POST)
         if contact_form.is_valid():
             contact_form.save()
+            messages.success(request, 'Message sent successfully.')
             return redirect('contact_success')
-    else:
-        contact_form = ContactUsForm()
+        else:
+            messages.error(request, 'Please ensure the form is completed')
 
     context = {
         'contact_form': contact_form

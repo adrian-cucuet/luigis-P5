@@ -1,3 +1,11 @@
+/* about section */
+.lp-illustration-2 img {
+    width: 150%;
+    height: 100%;
+    object-fit: contain;
+    -webkit-mask-image: -webkit-gradient(linear, left top, right top, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+}
+
 .reservation-form-input:focus {
     border-bottom: solid 1px #F5C332;
 }

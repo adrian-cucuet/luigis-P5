@@ -38,13 +38,11 @@
                     <div class="lp-form-content">
                         <div class="lp-main-content">
                             <h3 class="lp-mb-30">Send Message</h3>
-                            <form action="{% url 'contact_success' %}" method="POST" id="contact_form">
+                            <form action="{% url 'contact' %}" method="POST" id="contact_form">
                                 {% csrf_token %}
-                                {{ contact_form.department | as_crispy_field }}
-                                {{ contact_form.name | as_crispy_field }}
-                                {{ contact_form.email | as_crispy_field }}
-                                {{ contact_form.subject | as_crispy_field }}
-                                {{ contact_form.message | as_crispy_field }}
+                                {% for field in contact_form %}
+                                    {{ field | as_crispy_field }}
+                                {% endfor %}
                                 <p class="lp-text lp-text-xs lp-mb-30">*We promise not to disclose your <br>personal
                                     information to third parties.</p>
                                 <!-- button -->

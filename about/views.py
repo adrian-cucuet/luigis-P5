@@ -1,17 +1,22 @@
 from django.shortcuts import render, redirect, reverse
-from django.http import HttpResponse
 from .models import Reservation
 from .forms import ReservationForm
-import datetime
-
-from django.http import JsonResponse
-from datetime import datetime, timedelta
 from django.contrib import messages
 
 
 def about(request):
-
+    """ View to render contact us page """
     booking_form = ReservationForm()
+
+    if request.method == 'POST':
+        booking_form = ReservationForm(request.POST)
+        if booking_form.is_valid():
+            booking_form.save()
+            messages.success(request, f'Reservation successfully created!')
+            return redirect('reservation_success')
+
+    else:
+        booking_form = ReservationForm()
 
     context = {
         'booking_form': booking_form,
@@ -21,24 +26,6 @@ def about(request):
 
 
 def reservation_success(request):
-    """ Ajax view for reservation success """
-    booking_form = ReservationForm(request.POST)
+    """ Render the Contact Success HTML page """
 
-    context = {
-        'name': request.POST['name'],
-        'phone': request.POST['phone'],
-        'email': request.POST['email'],
-        'no_of_guests': request.POST['no_of_guests'],
-        'date': request.POST['date'],
-        'time': request.POST['time'],
-    }
-
-    if booking_form.is_valid():
-        booking_form.save()
-        return JsonResponse({'bool': True, 'context': context, })
-
-    else:
-        # Return an error message
-        messages.error(request, 'There was an error with your form. \
-            Please double check your information.')
-        return JsonResponse({'bool': False, 'error': 'There was an error with the form.'})
+    return render(request, 'about/reservation_success.html')

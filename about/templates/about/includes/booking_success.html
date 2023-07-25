@@ -3,33 +3,55 @@
         $('#reservation_form').submit(function (e) {
             e.preventDefault();
 
+            var form_data = {
+                name: $('input[name="name"]').val(),
+                phone: $('input[phone="phone"]').val(),
+                email: $('input[email="email"]').val(),
+                no_of_guests: $('input[no_of_guests="no_of_guests"]').val(),
+                date: $('input[date="date"]').val(),
+                time: $('input[time="time"]').val(),
+            }
+
             $.ajax({
-                data: $(this).serialize(),
+                data: form_data,
 
                 method: $(this).attr("method"),
 
                 url: $(this).attr("action"),
 
-                success: function (response) {
-                    if (response.bool == true) {
-                        $("#reservation_form").addClass("hide-reservation-form");
-                        $("#reservation_title").addClass("hide-reservation-form");
-                        let _html = '<div class="text-success text-center lp-mb-30"><i class="fa-regular fa-circle-check fa-2xl"></i></div>'
-                        _html += '<h3 class="lp-mb-30 text-success">Reservation successful!</h3>'
-                        _html += '<p class="text-black">A confirmation email will be sent to <strong>' + response.context.email + '</strong></p>'
-                        _html += '<div class="mx-3 d-flex flex-column">'
-                        _html += '<p class="mb-2">Name: <strong>' + response.context.name + '</strong></p>'
-                        _html += '<p class="mb-2">Guests: <strong>' + response.context.no_of_guests + '</strong></p>'
-                        _html += '<p class="mb-2">Date: <strong>' + response.context.date + '</strong></p>'
-                        _html += '<p class="mb-2">Time: <strong>' + response.context.time + '</strong></p>'
-                        _html += '</div>'
-                        $("#reservation_success").prepend(_html);
-                        }
+                headers: {
+                    "X-Requested-With": "XMLHttpRequest",
+                    "X-CSRFToken": getCookie(
+                    "csrftoken"), // don't forget to include the 'getCookie' function
                 },
 
-                error: function(data){
-                    alert(data.status); // the status code
-                    alert(data.responseJSON.error); // the message
+                success: function (response) {
+                    if (response.success == true) {
+                        $("#reservation_form").addClass("hide-reservation-form");
+                        $("#reservation_title").addClass("hide-reservation-form");
+                        let _html =
+                            '<div class="text-success text-center lp-mb-30"><i class="fa-regular fa-circle-check fa-2xl"></i></div>'
+                        _html +=
+                            '<h3 class="lp-mb-30 text-success">Reservation successful!</h3>'
+                        _html +=
+                            '<p class="text-black">A confirmation email will be sent to <strong>' +
+                            response.context.email + '</strong></p>'
+                        _html += '<div class="mx-3 d-flex flex-column">'
+                        _html += '<p class="mb-2">Name: <strong>' + response.context.name +
+                            '</strong></p>'
+                        _html += '<p class="mb-2">Guests: <strong>' + response.context
+                            .no_of_guests + '</strong></p>'
+                        _html += '<p class="mb-2">Date: <strong>' + response.context.date +
+                            '</strong></p>'
+                        _html += '<p class="mb-2">Time: <strong>' + response.context.time +
+                            '</strong></p>'
+                        _html += '</div>'
+                        $("#reservation_success").prepend(_html);
+                    }
+                },
+
+                error: function (response) {
+                    
                 },
             });
         });

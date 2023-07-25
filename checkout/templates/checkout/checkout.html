@@ -12,6 +12,14 @@
         <div class="col"></div>
     </div>
 </div>
+
+<div id="loading-overlay">
+    <h1 class="text-light logo-font loading-spinner">
+        <span class="icon">
+            <i class="fa-solid fa-circle-notch fa-spin fa-2xl"></i>
+        </span>
+    </h1>
+</div>
 {% endblock %}
 
 {% block content %}
@@ -118,8 +126,6 @@
                                             </div>
                                             <div class="lp-co-prod-description">
                                                 <h4 class="lp-mb-10">{{ item.product.name }}</h4>
-                                                <p class="lp-text lp-text-sm">Size:
-                                                    {% if item.size %}{{ item.size|upper }}{% else %} N/A{% endif %}</p>
                                                 <p class="lp-text lp-text-sm">Qty: {{ item.quantity }}</p>
                                             </div>
                                         </a>
@@ -181,9 +187,6 @@
         </div>
     </div>
 </section>
-<div id="loading-overlay">
-    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-</div>
 {% endblock %}
 
 {% block postloadjs %}

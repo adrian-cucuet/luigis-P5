@@ -12,6 +12,10 @@ body {
     position: relative;
 }
 
+.shadow-navbar {
+    box-shadow: 0px 8px 15px -3px rgba(0,0,0,0.1);
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -356,23 +360,10 @@ h5 {
     width: 100%;
 }
 
-.lp-illustration-promo {
+.lp-illustration-about img {
     width: 100%;
-    position: relative;
-    z-index: 1;
-    padding-bottom: 60%;
-    animation: anima3 3s 1s infinite ease-in-out;
-}
-
-.lp-promo-img {
-    position: absolute;
-    width: 95%;
     height: 100%;
-    object-fit: contain;
-    object-position: center;
-    top: 0;
-    right: 0;
-    animation: anima2 3s infinite ease-in-out;
+    object-fit: cover;
 }
 
 /***************************
@@ -1005,7 +996,7 @@ banner
 }
 
 .lp-banner .lp-main-title-frame {
-    padding-top: 7vh;
+    /* padding-top: 7vh; */
     display: flex;
     align-items: center;
     height: 100vh;
@@ -1952,77 +1943,6 @@ badge
 
 /***************************
 
-promo
-
-***************************/
-.lp-promo-content {
-    width: 100%;
-    align-items: center;
-    display: flex;
-}
-
-.lp-promo-content .lp-text-frame {
-    padding: 30px;
-    width: 45%;
-}
-
-.lp-promo-content .lp-image-frame {
-    display: flex;
-    align-items: center;
-    width: 55%;
-    height: 100%;
-    background-color: #F9FAFC;
-}
-
-.lp-promo-frame {
-    box-shadow: 0 0 0 2px #FFFFFF;
-    padding: 20px 0 20px 20px;
-    background-color: #F9FAFC;
-    overflow: hidden;
-}
-
-.lp-promo-frame .lp-promo-content {
-    position: relative;
-}
-
-.lp-promo-frame .lp-promo-content .lp-text-frame {
-    padding: 0;
-    position: relative;
-    z-index: 1;
-}
-
-@media (max-width: 580px) {
-    .lp-popup-frame .lp-popup-body .lp-close-popup {
-        top: 0;
-        right: 10px;
-    }
-
-    .lp-promo-content {
-        padding-top: 15px;
-        flex-direction: column;
-    }
-
-    .lp-promo-content .lp-text-frame {
-        width: 100%;
-        text-align: center;
-    }
-
-    .lp-promo-content .lp-text-frame .lp-h1 {
-        margin-bottom: 15px;
-    }
-
-    .lp-promo-content .lp-image-frame {
-        width: 100%;
-        padding-bottom: 30px;
-    }
-
-    .lp-promo-frame {
-        padding: 30px 0;
-    }
-}
-
-/***************************
-
 footer
 
 ***************************/
@@ -2245,9 +2165,13 @@ allauth
     border: solid 1px #F2F3F5;
 }
 
+.allauth-form-inner-content .form-group .form-check {
+    margin-bottom: 4rem;
+}
+
 .allauth-form-inner-content .form-group input[type=checkbox] {
     height: 14px;
-    position: absolute;
+    /* position: absolute; */
     left: 20px;
     top: 15px;
     transition: 0.3s ease-in-out;
@@ -2290,4 +2214,50 @@ allauth
     background-color: #fff;
     padding: 30px;
     transition: 0.3s ease-in-out;
+}
+
+.parent{
+    height: 120%;
+}
+.parent>.row{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.col img{
+    cursor: pointer;
+    transition: transform 1s;
+    object-fit: cover;
+}
+.col label{
+    overflow: hidden;
+    position: relative;
+}
+.imgbgchk:checked + label>.tick_container{
+    opacity: 1;
+}
+/*         aNIMATION */
+.imgbgchk:checked + label>img{
+    transform: scale(1.25);
+    opacity: 0.3;
+}
+.tick_container {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    cursor: pointer;
+    text-align: center;
+}
+.tick {
+    background-color: #F5C332;
+    color: white;
+    font-size: 16px;
+    padding: 6px 12px;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
 }

@@ -24,7 +24,7 @@
             <div class="col-lg-6 align-self-center">
                 <div class="lp-illustration-2 lp-mb-90">
                     <div class="lp-interior-frame">
-                        <img src="/media/place-holder.jpg" alt="interior" class="lp-interior"
+                        <img src="/media/team.jpeg" alt="interior" class="lp-interior"
                             style="object-position: center">
                     </div>
                 </div>
@@ -68,11 +68,8 @@
                 <div class="lp-contact-form-frame">
                     <div class="lp-form-content">
                         <div class="lp-main-content">
-                            <div id="reservation_success">
-                            </div>
                             <h3 id="reservation_title" class="mb-3">Make a reservation:</h3>
-                            <form action="{% url 'reservation_success' %}" method="POST" id="reservation_form" class="reservation-form mt-3"
-                                id="booking_form">
+                            <form action="{% url 'about' %}" method="POST" class="reservation-form mt-3" id="booking_form">
                                 {% csrf_token %}
                                 {{ booking_form.name | as_crispy_field }}
                                 {{ booking_form.phone | as_crispy_field }}
@@ -96,7 +93,3 @@
 </section>
 {% endblock %}
 
-{% block postloadjs %}
-{{ block.super }}
-{% include 'about/includes/booking_success.html' %}
-{% endblock %}

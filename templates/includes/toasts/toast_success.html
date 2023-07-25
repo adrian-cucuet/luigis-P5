@@ -16,7 +16,7 @@
                 <hr class="mt-1 mb-3">
             </div>
         </div>
-        {% if grand_total and not on_profile_page %}
+        {% if total and not on_profile_page %}
         <div class="lp-ib-title-frame lp-mb-30">
             <h4>Your order.</h4><i class="fas fa-arrow-down"></i>
           </div>
@@ -32,8 +32,6 @@
                 </div>
                 <div class="col-6">
                     <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                    <p class="my-0 small">Size:
-                        {% if item.size %}{{ item.size|upper }}{% else %} N/A{% endif %}</p>
                     <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
                 </div>
                 <div class="col-3">

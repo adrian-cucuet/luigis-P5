@@ -40,6 +40,7 @@ def menu_item(request, product_id):
     """ A view to show an individual item """
 
     product = get_object_or_404(Product, pk=product_id)
+    # Getting similar products from the same category
     similar_products = Product.objects.filter(category=product.category).exclude(pk=product_id)[:5]
     # Getting all reviews related to a products
     reviews = ProductReview.objects.filter(product=product).order_by("-date")

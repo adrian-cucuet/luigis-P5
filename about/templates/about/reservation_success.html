@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+<link rel="stylesheet" href="{% static 'about/css/reservation.css' %}">
+{% endblock %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<section class="lp-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="lp-main-title-frame">
+                    <div class="lp-main-title">
+                        <span class="lp-suptitle lp-mb-30">Reservation successful!</span>
+                        <h1 class="lp-mb-30">Mmm...! <br>Your evening <br>will be great!</h1>
+                        <p class="lp-text lp-text-lg lp-mb-30">We will see you for a slice of pizza soon.<br>We
+                            guarantee that you'll love it!</p>
+                        <a href="{% url 'home' %}" class="lp-btn lp-btn-gray bg-light">
+                            <span class="lp-icon">
+                                <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="font-weight-bold">Back Home</span>
+                            </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 align-self-center">
+                    <img src="/media/confirmed.svg" alt="Reservation success">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
