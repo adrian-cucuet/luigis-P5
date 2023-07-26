@@ -58,4 +58,3 @@ class ProductReview(models.Model):
 
     def get_rating(self):
         return self.rating
-
