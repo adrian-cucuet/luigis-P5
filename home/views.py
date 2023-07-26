@@ -46,3 +46,15 @@ def sign_up_newsletter(request):
         # Return an error message
         messages.alert(request, 'Please complete the form')
         return HttpResponse('There was an error submitting your subscription.')
+
+
+def terms_conditions(request):
+    """ A view to return the index page """
+
+    return render(request, 'home/terms_and_conditions.html')
+
+
+def privacy_policy(request):
+    """ A view to return the index page """
+
+    return render(request, 'home/privacy_policy.html')
