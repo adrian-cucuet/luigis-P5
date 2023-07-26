@@ -32,8 +32,8 @@ ALLOWED_HOSTS = ['luigispizza-p5-294fbfd7e697.herokuapp.com', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
-    'jazzmin',
     'django.contrib.admin',
+    'jazzmin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
