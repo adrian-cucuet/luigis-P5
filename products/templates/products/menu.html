@@ -73,7 +73,7 @@
           <div class="lp-card-buttons-frame">
             <a href="{% url 'menu_item' product.id %}" class="lp-btn lp-btn-gray">
               <span class="lp-icon">
-                <img src="/media/arrow.svg" alt="icon">
+                <img src="{{ MEDIA_URL }}/media/arrow.svg" alt="icon">
               </span>
               <span>Details</span>
             </a>
@@ -82,7 +82,7 @@
               <div class="form-group lp-buttons-frame">
                 <button type="submit" class="lp-btn lp-atc">
                   <span class="lp-icon">
-                    <img src="/media/cart.svg" alt="icon">
+                    <img src="{{ MEDIA_URL }}/media/cart.svg" alt="icon">
                   </span>
                   <span class="lp-add-to-cart-text">Add to cart</span>
                   <span class="lp-added-text">Added</span>

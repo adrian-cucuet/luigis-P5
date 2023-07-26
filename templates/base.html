@@ -64,7 +64,7 @@
         <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex d-xl-flex">
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                    <h3 class="logo-font text-black my-0"><img src="/media/logo-slice-1.png" alt="Pizza slice">
+                    <h3 class="logo-font text-black my-0"><img src="{{ MEDIA_URL }}/media/logo-slice-1.png" alt="Pizza slice">
                         <strong>Luigi's</strong> Pizza</h3>
                 </a>
             </div>
@@ -74,7 +74,7 @@
                         <input class="form-control rounded-0" type="text" name="q" placeholder="Search your pizza">
                         <div class="input-group-append">
                             <button class="form-control btn btn-gray rounded-0" type="submit"><img
-                                    src="/media/search.svg" alt="search"></button>
+                                    src="{{ MEDIA_URL }}/media/search.svg" alt="search"></button>
                         </div>
                     </div>
                 </form>
@@ -87,7 +87,7 @@
                             <div class="text-center">
                                 <div class="lp-btn lp-btn-top-nav lp-btn-2 lp-btn-yellow">
                                     <span class="lp-icon">
-                                        <img class="acc-btn" src="/media/acc.svg" alt="icon">
+                                        <img class="acc-btn" src="{{ MEDIA_URL }}/media/acc.svg" alt="icon">
                                     </span>
                                 </div>
                                 <p>Account</p>
@@ -112,7 +112,7 @@
                             <div class="text-center">
                                 <div class="lp-btn lp-btn-top-nav lp-btn-2 lp-btn-yellow">
                                     <span class="lp-icon">
-                                        <img class="cart-btn" src="/media/cart.svg" alt="icon">
+                                        <img class="cart-btn" src="{{ MEDIA_URL }}/media/cart.svg" alt="icon">
                                     </span>
                                     <i class="lp-cart-number">{{ product_count }}</i>
                                 </div>
@@ -136,7 +136,7 @@
                         data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false"
                         aria-label="Toggle navigation">
                         <span class="lp-icon">
-                            <img class="menu-btn" src="/media/mobile-menu.svg" alt="icon">
+                            <img class="menu-btn" src="{{ MEDIA_URL }}/media/mobile-menu.svg" alt="icon">
                         </span>
                     </div>
                     <p class="d-block d-lg-none">Menu</p>
