@@ -1,16 +1,16 @@
 import json
-from django.shortcuts import (
-    render, redirect, reverse, get_object_or_404, HttpResponse)
-from django.views.decorators.http import require_POST
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
+from django.http import HttpResponse
+from django.views.decorators.http import require_POST
 import stripe
+from cart.contexts import cart_contents
 from .forms import OrderForm
 from .models import Order, OrderLineItem
 from products.models import Product
 from profiles.forms import UserProfileForm
 from profiles.models import UserProfile
-from cart.contexts import cart_contents
 
 
 @require_POST
