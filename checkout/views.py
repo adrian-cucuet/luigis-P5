@@ -68,7 +68,7 @@ def checkout(request):
 
                 except Product.DoesNotExist:
                     messages.error(request, (
-                        "One of the products in your bag wasn't found \
+                        "One of the products in your cart wasn't found \
                             in our database. Please call us for more \
                                 information"
                     ))
