@@ -93,18 +93,6 @@
   width: calc(100% - 90px);
 }
 
-.lp-co-product .lp-co-prod-description h4 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -moz-box;
-  -moz-box-orient: vertical;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  line-clamp: 2;
-  box-orient: vertical;
-}
-
 @media (max-width: 992px) {
   .lp-checkout-form {
     margin-bottom: 90px;

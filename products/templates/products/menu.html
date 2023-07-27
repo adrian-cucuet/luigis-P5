@@ -75,20 +75,8 @@
               <span class="lp-icon">
                 <img src="{{ MEDIA_URL }}arrow.svg" alt="icon">
               </span>
-              <span>Details</span>
+              <span>See more</span>
             </a>
-            <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
-              {% csrf_token %}
-              <div class="form-group lp-buttons-frame">
-                <button type="submit" class="lp-btn lp-atc">
-                  <span class="lp-icon">
-                    <img src="{{ MEDIA_URL }}cart.svg" alt="icon">
-                  </span>
-                  <span class="lp-add-to-cart-text">Add to cart</span>
-                </button>
-                <input type="hidden" name="redirect_url" value="{{ request.path }}">
-              </div>
-            </form>
           </div>
         </div>
       </div>

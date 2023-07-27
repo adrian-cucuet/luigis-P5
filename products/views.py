@@ -8,11 +8,10 @@ from .models import Product, ProductReview, Category
 from .forms import ProductForm, ProductReviewForm
 
 
-def all_products(request, product_id):
+def all_products(request):
     """ A view to show all products, including sorting and search queries """
 
     products = Product.objects.all()
-    product = get_object_or_404(Product, pk=product_id)
     categories = Category.objects.all()
     query = None
 
@@ -30,7 +29,6 @@ def all_products(request, product_id):
 
     context = {
         'products': products,
-        'product': product,
         'search_term': query,
         'categories': categories,
     }

@@ -18,11 +18,8 @@
                         {% else %}
                         <span class="lp-suptitle lp-mb-30">Hi, new friend!</span>
                         {% endif %}
-                        <h1 class="lp-mb-30">We do not <span>cook</span>, <br>we <span>create</span>
-                            <br>emotions!</h1>
-                        <p class="lp-text lp-text-lg lp-mb-30">We're also committed to giving back to our
-                            community.<br>We regularly donate pizzas to local charities, and we support a number of
-                            local organizations.</p>
+                        <h1 class="lp-mb-30">Welcome to the,<br>best pizza in<br><span>Dublin!</span></h1>
+                        <p class="lp-text lp-text-lg lp-mb-30">Looking for the best pizza in town? Look no further than our restaurant!<br>We offer a wide variety of pizzas, from classic pepperoni to unique specialty pizzas.</p>
                         <a href="{% url 'menu' %}" class="lp-btn">
                             <span class="lp-icon">
                                 <img src="{{ MEDIA_URL }}menu.svg" alt="icon">
@@ -93,7 +90,8 @@
             <div class="col-lg-6 align-self-center">
                 <div class="lp-cta-text mt-4">
                     <h2 class="lp-mb-30">Signup for our newsletter!</h2>
-                    <p class="lp-text lp-mb-30">And be the first to find out<br>the latest deals and newest products.</p>
+                    <p class="lp-text lp-mb-30">And be the first to find out<br>the latest deals and newest products.
+                    </p>
                 </div>
             </div>
             <div class="col-lg-6 align-self-center">
@@ -163,20 +161,8 @@
                                 <span class="lp-icon">
                                     <img src="{{ MEDIA_URL }}arrow.svg" alt="icon">
                                 </span>
-                                <span>Details</span>
+                                <span>See more</span>
                             </a>
-                            <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
-                                {% csrf_token %}
-                                <div class="form-group lp-buttons-frame">
-                                    <button type="submit" class="lp-btn lp-atc">
-                                        <span class="lp-icon">
-                                            <img src="{{ MEDIA_URL }}cart.svg" alt="icon">
-                                        </span>
-                                        <span class="lp-add-to-cart-text">Add to cart</span>
-                                    </button>
-                                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>
