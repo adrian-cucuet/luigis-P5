@@ -804,6 +804,11 @@ h5 {
         display: block;
         margin-right: 0;
     }
+
+    .lp-btn .lp-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
 }
 
 /* grid */
@@ -2167,4 +2172,14 @@ footer .lp-footer-frame .lp-links-footer {
 .col label{
     overflow: hidden;
     position: relative;
+}
+
+@media (max-width: 992px) {
+    .lp-allauth .lp-allauth-body {
+        text-align: center;
+        background-color: #fff;
+        padding: 30px;
+        transition: 0.3s ease-in-out;
+        max-width: 100%!important;
+    } 
 }

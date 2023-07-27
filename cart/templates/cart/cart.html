@@ -14,7 +14,34 @@
 <section class="lp-p-90-90">
     <div class="container">
         {% if cart_items %}
-        <div class="table-responsive table-borderless">
+        <div class="d-block d-md-none">
+            <div class="row">
+                <div class="col">
+                    {% includes 'cart/cart_total.html' %}
+                </div>
+                <div class="col">
+                    {% includes 'cart/checkout_buttons.html' %}
+                    <p class="text-muted mb-5">A summary of your bag contents is below</p>
+                </div>
+            </div>
+            {% for item in cart_items %}
+            <div class="col-12 col-sm-6 mb-2">
+                {% includes 'cart/product_image.html' %}
+            </div>
+            <div class="col-12 col-sm-6 mb-2">
+                {% includes 'cart/product_info.html' %}
+            </div>
+            <div class="col-12 col-sm- order-sm-last">
+                <p class="lp-price-1"><strong>Price:</strong> ${{ item.product.price }}</p>
+                <p class="lp-price-2"><strong>Subtotal:</strong> ${{ item.product.price | calc_qty_total:item.quantity }}</p>
+            </div>
+            <div class="col-12 col-sm-6">
+                {% includes 'cart/quantity_form.html' %}
+            </div>
+            <div class="row"><div class="col"><hr></div></div>
+            {% endfor %}
+        </div>
+        <div class="table-responsive table-borderless d-none d-md-block">
             <table class="table table-sm ">
                 <thead class="text-black">
                     <tr>
@@ -29,24 +56,14 @@
                 <tr>
                     <tr class="py-3 lp-cart-separator-start"></tr>
                     <td class="py-3 w-20">
-                        {% if item.product.image %}
-                        <img height="120px" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
-                        {% else %}
-                        <img height="120px" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
-                        {% endif %}
+                        {% includes 'cart/product_image.html' %}
                     </td>
-                    <td class="py-3 w-25">
-                        <h4 class="lp-mb-10">{{ item.product.name }}</h4>
-                        <p class="lp-text lp-text-sm">{{ item.product.ingredients|truncatechars:30 }}</p>
-                    </td>
+                        {% include 'cart/product_info.html' %}
                     <td class="py-3">
                         <div class="lp-price-1">${{ item.product.price }}</div>
                     </td>
                     <td class="py-3 w-20">
                         {% include 'cart/quantity_form.html' %}
-                        <a class="lp-update text-info"><small>Update</small></a>
-                        <a class="lp-remove text-danger float-right" id="remove_{{ item.item_id }}"
-                            data-product_size="{{ item.size }}"><small>Remove</small></a>
                     </td>
                     <td class="py-3 float-right">
                         <div class="lp-price-2">${{ item.product.price | calc_qty_total:item.quantity }}</div>
