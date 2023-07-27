@@ -17,26 +17,26 @@
         <div class="d-block d-md-none">
             <div class="row">
                 <div class="col">
-                    {% includes 'cart/cart_total.html' %}
+                    {% include 'cart/cart_total.html' %}
                 </div>
                 <div class="col">
-                    {% includes 'cart/checkout_buttons.html' %}
+                    {% include 'cart/checkout_buttons.html' %}
                     <p class="text-muted mb-5">A summary of your bag contents is below</p>
                 </div>
             </div>
             {% for item in cart_items %}
             <div class="col-12 col-sm-6 mb-2">
-                {% includes 'cart/product_image.html' %}
+                {% include 'cart/product_image.html' %}
             </div>
             <div class="col-12 col-sm-6 mb-2">
-                {% includes 'cart/product_info.html' %}
+                {% include 'cart/product_info.html' %}
             </div>
             <div class="col-12 col-sm- order-sm-last">
                 <p class="lp-price-1"><strong>Price:</strong> ${{ item.product.price }}</p>
                 <p class="lp-price-2"><strong>Subtotal:</strong> ${{ item.product.price | calc_qty_total:item.quantity }}</p>
             </div>
             <div class="col-12 col-sm-6">
-                {% includes 'cart/quantity_form.html' %}
+                {% include 'cart/quantity_form.html' %}
             </div>
             <div class="row"><div class="col"><hr></div></div>
             {% endfor %}
@@ -56,7 +56,7 @@
                 <tr>
                     <tr class="py-3 lp-cart-separator-start"></tr>
                     <td class="py-3 w-20">
-                        {% includes 'cart/product_image.html' %}
+                        {% include 'cart/product_image.html' %}
                     </td>
                         {% include 'cart/product_info.html' %}
                     <td class="py-3">
