@@ -1,5 +1,4 @@
-from django.shortcuts import render, redirect, reverse
-from .models import Reservation
+from django.shortcuts import render, redirect
 from .forms import ReservationForm
 from django.contrib import messages
 
@@ -12,7 +11,7 @@ def about(request):
         booking_form = ReservationForm(request.POST)
         if booking_form.is_valid():
             booking_form.save()
-            messages.success(request, f'Reservation successfully created!')
+            messages.success(request, 'Reservation successfully created!')
             return redirect('reservation_success')
 
     else:

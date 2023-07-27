@@ -17,7 +17,8 @@ class ReservationForm(forms.ModelForm):
     def clean_date(self):
         date = self.cleaned_data['date']
         if date < datetime.date.today():
-            raise ValidationError(self.error_messages['Date cannot be in the past'], code='Date cannot be in the past')
+            raise forms.ValidationError(self.error_messages['Date \
+                 cannot be in the past'], code='Date cannot be in the past')
         return date
 
     def __init__(self, *args, **kwargs):

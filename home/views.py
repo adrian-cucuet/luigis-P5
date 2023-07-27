@@ -1,9 +1,9 @@
 from django.shortcuts import render, HttpResponse
 from products.models import Product, Category
 from django.http import JsonResponse
+from django.contrib import messages
 
 from .forms import NewsletterForm
-from .models import Newsletter
 
 
 def index(request):

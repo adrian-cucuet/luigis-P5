@@ -1,5 +1,4 @@
 from django.db import models
-import datetime
 
 TIME = (
     ('12.00 - 13.00', '12.00 - 13.00'),

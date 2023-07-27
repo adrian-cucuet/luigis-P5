@@ -14,7 +14,9 @@ class ContactUs(models.Model):
     class Meta:
         verbose_name_plural = 'Contact Us'
 
-    department = models.CharField(max_length=50, choices=DEPARTMENT_CHOICES, default='General Info', null=False, blank=False)
+    department = models.CharField(max_length=50, choices=DEPARTMENT_CHOICES,
+                                  default='General Info', null=False,
+                                  blank=False)
     name = models.CharField(max_length=100)
     email = models.EmailField()
     subject = models.CharField(max_length=200)

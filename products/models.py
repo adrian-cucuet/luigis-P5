@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from profiles.models import UserProfile
 
 RATING = (
     (1, "★☆☆☆☆"),
@@ -35,7 +34,8 @@ class Product(models.Model):
     vegetarian = models.BooleanField(blank=True)
     spicy = models.BooleanField(blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    rating = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
+    rating = models.DecimalField(max_digits=6, decimal_places=2,
+                                 null=True, blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
 
@@ -45,7 +45,8 @@ class Product(models.Model):
 
 class ProductReview(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, related_name="reviews")
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True,
+                                related_name="reviews")
     review = models.TextField()
     rating = models.IntegerField(choices=RATING, default=1)
     date = models.DateTimeField(auto_now_add=True)

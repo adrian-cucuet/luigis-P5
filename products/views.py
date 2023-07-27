@@ -1,13 +1,11 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.views.generic import ListView
 from django.contrib import messages
 from django.db.models import Q
 from django.http import JsonResponse
-from django.db.models import Avg, FloatField
+from django.db.models import Avg
 
 from .models import Product, ProductReview, Category
 from .forms import ProductForm, ProductReviewForm
-from profiles.models import UserProfile
 
 
 def all_products(request):
@@ -21,10 +19,12 @@ def all_products(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "Oops, you must include a cool pizza name!")
+                messages.error(request, "Oops, you must \
+                     include a cool pizza name!")
                 return redirect(reverse('menu'))
 
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
     context = {
@@ -41,17 +41,20 @@ def menu_item(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
     # Getting similar products from the same category
-    similar_products = Product.objects.filter(category=product.category).exclude(pk=product_id)[:5]
+    similar_products = Product.objects.filter(
+        category=product.category).exclude(pk=product_id)[:5]
     # Getting all reviews related to a products
     reviews = ProductReview.objects.filter(product=product).order_by("-date")
     # Getting average reviews
-    average_rating = ProductReview.objects.filter(product=product).aggregate(rating=Avg('rating'))
+    average_rating = ProductReview.objects.filter(
+        product=product).aggregate(rating=Avg('rating'))
     # Product review form
     review_form = ProductReviewForm()
 
     make_review = True
     if request.user.is_authenticated:
-        user_review_count = ProductReview.objects.filter(user=request.user.id, product=product).count()
+        user_review_count = ProductReview.objects.filter(
+            user=request.user.id, product=product).count()
         if user_review_count > 0:
             make_review = False
 
@@ -76,7 +79,8 @@ def add_product(request):
             messages.success(request, 'Successfully added product!')
             return redirect(reverse('menu_item', args=[product.id]))
         else:
-            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+            messages.error(request, 'Failed to add product. \
+                 Please ensure the form is valid.')
     else:
         form = ProductForm()
 
@@ -98,7 +102,8 @@ def edit_product(request, product_id):
             messages.success(request, 'Successfully updated product!')
             return redirect(reverse('menu_item', args=[product.id]))
         else:
-            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+            messages.error(request, 'Failed to update product. \
+                 Please ensure the form is valid.')
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
@@ -138,7 +143,8 @@ def ajax_add_review(request, product_id):
         'rating': request.POST['rating'],
     }
 
-    average_reviews = ProductReview.objects.filter(product=product).aggregate(rating=Avg('rating'))
+    average_reviews = ProductReview.objects.filter(
+        product=product).aggregate(rating=Avg('rating'))
 
     return JsonResponse(
         {
