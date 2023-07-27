@@ -66,7 +66,7 @@
         <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex d-xl-flex">
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                    <h3 class="logo-font text-black my-0"><img src="{{ MEDIA_URL }}logo-slice-1.png" alt="Pizza slice">
+                    <h3 class="logo-font text-black my-0"><img src="{{ MEDIA_URL }}logo-slice-1.png" alt="pizza slice logo">
                         <strong>Luigi's</strong> Pizza</h3>
                 </a>
             </div>
@@ -89,7 +89,7 @@
                             <div class="text-center">
                                 <div class="lp-btn lp-btn-top-nav lp-btn-2 lp-btn-yellow">
                                     <span class="lp-icon">
-                                        <img class="acc-btn" src="{{ MEDIA_URL }}acc.svg" alt="icon">
+                                        <img class="acc-btn" src="{{ MEDIA_URL }}acc.svg" alt="my account button">
                                     </span>
                                 </div>
                                 <p>Account</p>
@@ -114,13 +114,13 @@
                             <div class="text-center">
                                 <div class="lp-btn lp-btn-top-nav lp-btn-2 lp-btn-yellow">
                                     <span class="lp-icon">
-                                        <img class="cart-btn" src="{{ MEDIA_URL }}cart.svg" alt="icon">
+                                        <img class="cart-btn" src="{{ MEDIA_URL }}cart.svg" alt="add to cart button">
                                     </span>
                                     <i class="lp-cart-number">{{ product_count }}</i>
                                 </div>
                                 <p class="my-0 lp-top-nav-p">
-                                    {% if total %}
-                                    ${{ total|floatformat:2 }}
+                                    {% if grand_total %}
+                                    ${{ grand_total|floatformat:2 }}
                                     {% else %}
                                     €0.00
                                     {% endif %}
@@ -137,7 +137,7 @@
                     <div class="lp-btn lp-btn-top-nav lp-btn-2 lp-btn-yellow navbar-toggler">
                         <button class="lp-menu-btn" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="lp-icon">
-                                <img class="menu-btn" src="{{ MEDIA_URL }}mobile-menu.svg" alt="icon">
+                                <img class="menu-btn" src="{{ MEDIA_URL }}mobile-menu.svg" alt="mobile menu button">
                             </span>
                         </button>
                     </div>

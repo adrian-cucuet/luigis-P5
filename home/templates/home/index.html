@@ -148,7 +148,6 @@
                             <img src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                         </div>
                         {% endif %}
-
                         <div class="lp-card-tp">
                             <h5 class="lp-card-title">{{ product.name}}</h5>
                             <div class="lp-price">${{ product.price }}</div>
@@ -159,7 +158,7 @@
                         <div class="lp-card-buttons-frame">
                             <a href="{% url 'menu_item' product.id %}" class="lp-btn lp-btn-gray">
                                 <span class="lp-icon">
-                                    <img src="{{ MEDIA_URL }}arrow.svg" alt="icon">
+                                    <img src="{{ MEDIA_URL }}arrow.svg" alt="arrow">
                                 </span>
                                 <span>See more</span>
                             </a>
@@ -183,7 +182,7 @@
                             <p class="lp-text lp-text-sm lp-mb-15">*Orders over €{{ free_delivery_threshold }}.</p>
                             <a href="{% url 'menu' %}" class="lp-btn">
                                 <span class="lp-icon">
-                                    <img src="{{ MEDIA_URL }}arrow.svg" alt="icon">
+                                    <img src="{{ MEDIA_URL }}arrow.svg" alt="arrow">
                                 </span>
                                 <span>Get it now</span>
                             </a>
@@ -205,14 +204,14 @@
                             <p class="lp-text lp-text-sm lp-mb-15">*Only for online reservations.</p>
                             <a href="{% url 'about' %}" class="lp-btn">
                                 <span class="lp-icon">
-                                    <img src="{{ MEDIA_URL }}arrow.svg" alt="icon">
+                                    <img src="{{ MEDIA_URL }}arrow.svg" alt="arrow">
                                 </span>
                                 <span>Book a Table</span>
                             </a>
                         </div>
                         <div class="lp-image-frame">
                             <div class="lp-illustration-promo">
-                                <img src="{{ MEDIA_URL }}cocktail.png" alt="cocktail" class="lp-promo-img">
+                                <img src="{{ MEDIA_URL }}cocktail.png" alt="cocktail glass" class="lp-promo-img">
                             </div>
                         </div>
                     </div>

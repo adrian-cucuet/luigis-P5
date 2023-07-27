@@ -33,7 +33,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                            <form id="payment-form" action="{% url 'checkout' %}" method="POST">
                                 {% csrf_token %}
                                 <fieldset class="rounded px-3 mb-5">
                                     <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>

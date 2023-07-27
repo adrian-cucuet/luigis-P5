@@ -63,8 +63,8 @@
                         <i class="lp-cart-number">{{ product_count }}</i>
                     </div>
                     <p class="my-0 lp-top-nav-p">
-                        {% if total %}
-                        ${{ total|floatformat:2 }}
+                        {% if grand_total %}
+                        ${{ grand_total|floatformat:2 }}
                         {% else %}
                         €0.00
                         {% endif %}
