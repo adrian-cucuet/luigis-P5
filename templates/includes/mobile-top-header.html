@@ -1,74 +1,76 @@
 <div class="lp-right-side">
-    <li class="list-inline-item">
-        <a class="text-black nav-link d-block d-lg-none" href="#" id="mobile-search" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            <div class="text-center">
-                <div class="lp-btn lp-btn-top-nav lp-btn-2 lp-btn-yellow">
-                    <span class="lp-icon">
-                        <img class="cart-btn" src="{{ MEDIA_URL }}search.svg" alt="icon">
-                    </span>
-                </div>
-                <p class="">Search</p>
-            </div>
-        </a>
-        <div class="dropdown-menu border-0 w-100 p-3 rounded-0 my-0" aria-labelledby="mobile-search">
-            <form method="GET" action="{% url 'menu' %}">
-                <div class="input-group w-100">
-                    <input class="form-control rounded-0" type="text" name="q" placeholder="Search your pizza">
-                    <div class="input-group-append">
-                        <button class="form-control btn btn-gray rounded-0" type="submit">
-                            <span class="lp-icon">
-                                <img src="{{ MEDIA_URL }}search.svg" alt="search">
-                            </span>
-                        </button>
+    <ul>
+        <li class="list-inline-item">
+            <a class="text-black nav-link d-block d-lg-none" href="#" id="mobile-search" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <div class="text-center">
+                    <div class="lp-btn lp-btn-top-nav lp-btn-2 lp-btn-yellow">
+                        <span class="lp-icon">
+                            <img class="cart-btn" src="{{ MEDIA_URL }}search.svg" alt="icon">
+                        </span>
                     </div>
+                    <p class="">Search</p>
                 </div>
-            </form>
-        </div>
-    </li>
-    <li class="list-inline-item dropdown">
-        <a class="text-black nav-link d-block d-lg-none" href="#" id="user-options" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            <div class="text-center">
-                <div class="lp-btn lp-btn-top-nav lp-btn-2 lp-btn-yellow">
-                    <span class="lp-icon">
-                        <img class="acc-btn" src="{{ MEDIA_URL }}acc.svg" alt="icon">
-                    </span>
-                </div>
-                <p>Account</p>
+            </a>
+            <div class="dropdown-menu border-0 w-100 p-3 rounded-0 my-0" aria-labelledby="mobile-search">
+                <form method="GET" action="{% url 'menu' %}">
+                    <div class="input-group w-100">
+                        <input class="form-control rounded-0" type="text" name="q" placeholder="Search your pizza">
+                        <div class="input-group-append">
+                            <button class="form-control btn btn-gray rounded-0" type="submit">
+                                <span class="lp-icon">
+                                    <img src="{{ MEDIA_URL }}search.svg" alt="search">
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </a>
-        <div class="dropdown-menu border-0" aria-labelledby="user-options">
-            {% if request.user.is_authenticated %}
-            {% if request.user.is_superuser %}
-            <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
-            {% endif %}
-            <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
-            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-            {% else %}
-            <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-            {% endif %}
-        </div>
-    </li>
-    <li class="list-inline-item">
-        <a class="{% if grand_total %}text-primary font-weight-bold{% else %}lp-text-lg{% endif %} nav-link d-block d-lg-none"
-            href="{% url 'view_cart' %}">
-            <div class="text-center">
-                <div class="lp-btn lp-btn-top-nav lp-btn-2 lp-btn-yellow">
-                    <span class="lp-icon">
-                        <img class="cart-btn" src="{{ MEDIA_URL }}cart.svg" alt="icon">
-                    </span>
-                    <i class="lp-cart-number">{{ product_count }}</i>
+        </li>
+        <li class="list-inline-item dropdown">
+            <a class="text-black nav-link d-block d-lg-none" href="#" id="user-options" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <div class="text-center">
+                    <div class="lp-btn lp-btn-top-nav lp-btn-2 lp-btn-yellow">
+                        <span class="lp-icon">
+                            <img class="acc-btn" src="{{ MEDIA_URL }}acc.svg" alt="icon">
+                        </span>
+                    </div>
+                    <p>Account</p>
                 </div>
-                <p class="my-0 lp-top-nav-p">
-                    {% if total %}
-                    ${{ total|floatformat:2 }}
-                    {% else %}
-                    €0.00
-                    {% endif %}
-                </p>
+            </a>
+            <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                {% if request.user.is_authenticated %}
+                {% if request.user.is_superuser %}
+                <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
+                {% endif %}
+                <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
+                <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                {% else %}
+                <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                {% endif %}
             </div>
-        </a>
-    </li>
+        </li>
+        <li class="list-inline-item">
+            <a class="{% if grand_total %}text-primary font-weight-bold{% else %}lp-text-lg{% endif %} nav-link d-block d-lg-none"
+                href="{% url 'view_cart' %}">
+                <div class="text-center">
+                    <div class="lp-btn lp-btn-top-nav lp-btn-2 lp-btn-yellow">
+                        <span class="lp-icon">
+                            <img class="cart-btn" src="{{ MEDIA_URL }}cart.svg" alt="icon">
+                        </span>
+                        <i class="lp-cart-number">{{ product_count }}</i>
+                    </div>
+                    <p class="my-0 lp-top-nav-p">
+                        {% if total %}
+                        ${{ total|floatformat:2 }}
+                        {% else %}
+                        €0.00
+                        {% endif %}
+                    </p>
+                </div>
+            </a>
+        </li>
+    </ul>
 </div>

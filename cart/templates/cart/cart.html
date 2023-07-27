@@ -15,14 +15,12 @@
     <div class="container">
         {% if cart_items %}
         <div class="d-block d-md-none">
-            <div class="row">
-                <div class="col">
-                    {% include 'cart/cart_total.html' %}
-                </div>
-                <div class="col">
-                    {% include 'cart/checkout_buttons.html' %}
-                    <p class="text-muted mb-5">A summary of your bag contents is below</p>
-                </div>
+            <div class="col">
+                {% include 'cart/checkout_buttons.html' %}
+                <p class="text-muted mb-3">A summary of your bag contents is below</p>
+            </div>
+            <div class="col">
+                {% include 'cart/cart_total.html' %}
             </div>
             {% for item in cart_items %}
             <div class="col-12 col-sm-6 mb-2">

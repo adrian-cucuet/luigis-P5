@@ -9,6 +9,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Looking for the best pizza in town? Look no further than our restaurant! We offer a wide variety of pizzas, from classic pepperoni to unique specialty pizzas. We also have a variety of sides and desserts to choose from. Order your pizza online or call us today!">
+    <meta name="keywords" content="pizza, pizza delivery dublin, best pizza dublin, pizza near me, pizza delivery, pizza delivery near me, pizza delivery in dublin, order pizza online, pizza delivery online, pizza delivery service, pizza delivery app, pizza delivery deals ,pizza delivery coupons, pizza delivery discounts">
     {% endblock %}
 
     {% block extra_meta %}
@@ -24,7 +26,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css"
-        integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" />
+        integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==">
     <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
@@ -132,12 +134,12 @@
         <div class="row bg-white shadow-navbar">
             <nav class="navbar navbar-expand-lg navbar-light w-100">
                 <div class="text-center">
-                    <div class="lp-btn lp-btn-top-nav lp-btn-2 lp-btn-yellow navbar-toggler" type="button"
-                        data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="lp-icon">
-                            <img class="menu-btn" src="{{ MEDIA_URL }}mobile-menu.svg" alt="icon">
-                        </span>
+                    <div class="lp-btn lp-btn-top-nav lp-btn-2 lp-btn-yellow navbar-toggler">
+                        <button class="lp-menu-btn" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="lp-icon">
+                                <img class="menu-btn" src="{{ MEDIA_URL }}mobile-menu.svg" alt="icon">
+                            </span>
+                        </button>
                     </div>
                     <p class="d-block d-lg-none">Menu</p>
                 </div>

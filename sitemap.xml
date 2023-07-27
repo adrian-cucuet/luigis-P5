@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/accounts/signup/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/accounts/login/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/cart/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/about/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/menu/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/contact/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/menu/5/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/menu/6/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/menu/7/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/menu/8/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/menu/9/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/menu/10/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/menu/11/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/menu/12/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/menu/13/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/menu/14/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/menu/15/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/privacy_policy</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/terms_conditions</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/accounts/password/reset/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/menu/16/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/menu/17/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/menu/18/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/menu/19/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/menu/20/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/menu/21/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/menu/22/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/menu/23/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/menu/24/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/menu/25/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/menu/26/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/menu/27/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://luigispizza-p5-294fbfd7e697.herokuapp.com/menu/28/</loc>
+  <lastmod>2023-07-27T03:04:22+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>
