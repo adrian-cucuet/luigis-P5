@@ -38,6 +38,14 @@
   box-shadow: 0 0 8px -2px rgba(0, 0, 0, 0.1);
 }
 
+.lp-cart-table {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1rem;
+}
+
 .lp-sidebar-frame .lp-sidebar {
   border: dotted 3px #F2F3F5;
   padding: 30px;
