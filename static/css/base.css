@@ -363,6 +363,7 @@ h5 {
     object-fit: cover;
 }
 
+.navbar-toggler button,
 .navbar-toggler .lp-menu-btn {
     border: none;
     background-color: #fff;
