@@ -15,8 +15,8 @@ def about(request):
             return redirect('reservation_success')
 
         else:
-            messages.error(request, 'There was an error with the form')
-            booking_form = ReservationForm() 
+            messages.error(request, 'There was an error with your form. \
+                Please double check your information.')
 
     else:
         booking_form = ReservationForm() 
