@@ -1,6 +1,7 @@
 from django import forms
 from .models import Reservation
-import datetime
+from django.core.exceptions import ValidationError
+from django.utils import timezone
 
 
 class DateInput(forms.DateInput):
@@ -8,23 +9,18 @@ class DateInput(forms.DateInput):
 
 
 class ReservationForm(forms.ModelForm):
+    #Validate date to be in the future
+    def clean_date(self):
+        date = self.cleaned_data['date']
+        if date < timezone.now().date():
+            raise forms.ValidationError(message='Date cannot be in the past')
+        return date
+
     class Meta:
         model = Reservation
         fields = ('name', 'email', 'phone',
                   'no_of_guests', 'date', 'time',)
         widgets = {'date': DateInput()}
-   
-    def clean(self):
-        cleaned_data = super(ReservationForm, self).clean()
-        date = cleaned_data.get('date')
-        no_of_guests = cleaned_data.get('no_of_guests')
-        # Check if the date is in the past
-        if date and date < date.today():
-            raise forms.ValidationError("You can't book a table in the past")
-        # Check if number_of_guests are not None and not small or equal to null
-        if no_of_guests is not None and no_of_guests <= 0:
-            raise forms.ValidationError('Number of guests must be greater than 0.')
-        return cleaned_data
 
     def __init__(self, *args, **kwargs):
         """
