@@ -8,6 +8,7 @@ def about(request):
     booking_form = ReservationForm()
 
     if request.method == 'POST':
+
         booking_form = ReservationForm(request.POST)
         if booking_form.is_valid():
             booking_form.save()
@@ -15,6 +16,7 @@ def about(request):
             return redirect('reservation_success')
 
     else:
+        messages.error(request, 'There was an error. Please check the information')
         booking_form = ReservationForm()
 
     context = {
