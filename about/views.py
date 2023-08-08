@@ -8,16 +8,18 @@ def about(request):
     booking_form = ReservationForm()
 
     if request.method == 'POST':
-
         booking_form = ReservationForm(request.POST)
         if booking_form.is_valid():
             booking_form.save()
             messages.success(request, 'Reservation successfully created!')
             return redirect('reservation_success')
 
+        else:
+            messages.error(request, 'There was an error with the form')
+            booking_form = ReservationForm() 
+
     else:
-        messages.error(request, 'There was an error. Please check the information')
-        booking_form = ReservationForm()
+        booking_form = ReservationForm() 
 
     context = {
         'booking_form': booking_form,
