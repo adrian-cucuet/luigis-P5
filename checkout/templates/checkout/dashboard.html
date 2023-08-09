@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block extra_css %}
@@ -58,7 +58,7 @@
                             <td>{{ order.street_address2 }}</td>
                             {% endif %}
                             <td>
-                                <a href="">View</a>
+                                <a class="btn-primary" href="">View</a>
                             </td>
                         </tr>
                         {% endfor %}

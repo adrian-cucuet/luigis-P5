@@ -191,6 +191,7 @@ def dashboard(request, order_number):
 
     context = {
         'orders': orders,
+        'order_number': order_number,
     }
 
     return render(request, 'checkout/dashboard.html', context)

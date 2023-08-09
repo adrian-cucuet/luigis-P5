@@ -50,4 +50,4 @@ def bookings(request):
         'bookings': bookings,
     }
 
-    return render(request, 'bookings/bookings.html', context)
+    return render(request, 'about/bookings.html', context)
