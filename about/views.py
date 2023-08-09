@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .forms import ReservationForm
+from .models import Reservation
 from django.contrib import messages
+import datetime
 
 
 def about(request):

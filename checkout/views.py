@@ -15,6 +15,7 @@ from cart.contexts import cart_contents
 
 import stripe
 import json
+import datetime
 
 
 @require_POST
@@ -177,11 +178,19 @@ def checkout_success(request, order_number):
 
 
 def dashboard(request, order_number):
-    order = get_object_or_404(Order, order_number=order_number)
+    """ Display all orders for today """
+    all_orders = get_object_or_404(Order, order_number=order_number)
 
-    template = 'checkout/checkout_success.html'
+    today = datetime.today()
+
+    # Get all bookings scheduled for today or later
+    orders = all_orders.filter(date__gte=today)
+
+    # Order the bookings by date
+    orders = orders.order_by('date')
+
     context = {
-        'order': order,
+        'orders': orders,
     }
 
-    return render(request, template, context)
+    return render(request, 'checkout/dashboard.html', context)
