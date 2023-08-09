@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+<link rel="stylesheet" href="{% static 'about/css/reservation.css' %}">
+{% endblock %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<section class="lp-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="lp-main-title-frame">
+                    <div class="lp-main-title">
+                        <span class="lp-suptitle lp-mb-30">Order Management</span>
+                        <a href="{% url 'home' %}" class="lp-btn lp-btn-gray bg-light">
+                            <span class="lp-icon">
+                                <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="font-weight-bold">Back Home</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col ">
+                <table  class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Order No:</th>
+                            <th scope="col">Name:</th>
+                            <th scope="col">Guests:</th>
+                            <th scope="col">Date:</th>
+                            <th scope="col">Time:</th>
+                            <th scope="col">Status:</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                        <tr>
+                            <td>{{ order.order_number }}</td>
+                            <td>{{ order.full_name }}</td>
+                            <td>{{ order.phone_number }}</td>
+                            <td>{{ order.postcode }}</td>
+                            <td>{{ order.street_address1 }}</td>
+
+                            {% if order.street_address2 %}
+                            <td>{{ order.street_address2 }}</td>
+                            {% endif %}
+                            <td>
+                                <a href="">View</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

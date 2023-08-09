@@ -32,3 +32,20 @@ def reservation_success(request):
     """ Render the Contact Success HTML page """
 
     return render(request, 'about/reservation_success.html')
+
+
+def bookings(request):
+    """ Display the user's profile. """
+    today = datetime.today()
+
+    # Get all bookings scheduled for today or later
+    bookings = Reservation.objects.filter(date__gte=today)
+
+    # Order the bookings by date
+    bookings = bookings.order_by('date')
+
+    context = {
+        'bookings': bookings,
+    }
+
+    return render(request, 'bookings/bookings.html', context)
