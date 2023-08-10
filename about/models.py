@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 TIME = (
     ('12.00 - 13.00', '12.00 - 13.00'),
@@ -24,7 +25,7 @@ class Reservation(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField()
     phone = models.CharField(max_length=20, null=False, blank=False)
-    no_of_guests = models.IntegerField()
+    no_of_guests = models.PositiveIntegerField(default=1, validators=[MinValueValidator(1), MaxValueValidator(12)])
     date = models.DateField()
     time = models.CharField(max_length=15, choices=TIME, default=TIME[0])
     status = models.CharField(max_length=15, choices=STATUS, default=STATUS[0])

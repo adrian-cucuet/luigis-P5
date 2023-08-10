@@ -36,7 +36,6 @@ class ReservationForm(forms.ModelForm):
             'date': 'Date',
             'time': 'Time',
         }
-        self.fields['no_of_guests'] = forms.ReservationFormField(max_value=12, min_value=1)
         self.fields['name'].widget.attrs['autofocus'] = False
         for field in self.fields:
             if self.fields[field].required:
