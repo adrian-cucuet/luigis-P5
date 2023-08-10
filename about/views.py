@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import ReservationForm
-from .models import Reservation
 from django.contrib import messages
-import datetime
 
 
 def about(request):
@@ -34,20 +32,3 @@ def reservation_success(request):
     """ Render the Contact Success HTML page """
 
     return render(request, 'about/reservation_success.html')
-
-
-def bookings(request):
-    """ Display the user's profile. """
-    today = datetime.today()
-
-    # Get all bookings scheduled for today or later
-    bookings = Reservation.objects.filter(date__gte=today)
-
-    # Order the bookings by date
-    bookings = bookings.order_by('date')
-
-    context = {
-        'bookings': bookings,
-    }
-
-    return render(request, 'about/bookings.html', context)
