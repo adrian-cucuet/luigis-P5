@@ -23,7 +23,7 @@ def about(request):
 
     context = {
         'booking_form': booking_form,
-        'on_booking_page': True,
+        'on_booking_page': True
     }
 
     return render(request, 'about/about.html', context)
