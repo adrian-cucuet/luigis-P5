@@ -23,7 +23,6 @@ def about(request):
 
     context = {
         'booking_form': booking_form,
-        'on_booking_page': True
     }
 
     return render(request, 'about/about.html', context)
@@ -32,4 +31,5 @@ def about(request):
 def reservation_success(request):
     """ Render the Contact Success HTML page """
 
-    return render(request, 'about/reservation_success.html')
+    return render(request, 'about/reservation_success.html', {
+        'on_booking_page': True})

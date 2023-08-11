@@ -29,10 +29,10 @@ class ReservationForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
         placeholders = {
-            'name': 'your name',
-            'email': 'email address',
-            'phone': 'phone number',
-            'no_of_guests': 'Guests',
+            'name': 'name',
+            'email': 'email',
+            'phone': 'phone',
+            'no_of_guests': 'guests',
             'date': 'Date',
             'time': 'Time',
         }
@@ -53,4 +53,6 @@ class ReservationForm(forms.ModelForm):
                 placeholder = f'{placeholder} *'
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
+            # Set label text and class for each field
             self.fields[field].label = labels[field]
+            self.fields[field].label.attrs['class'] = 'float-left'
