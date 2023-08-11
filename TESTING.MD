@@ -6,23 +6,30 @@
 
 ![Navbar](./documents/readme-files/test-navbar.png)
 
-![Navbar](./documents/readme-files/testindex.png)
+![Index](./documents/readme-files/testindex.png)
 
-![Navbar](./documents/readme-files/test-about.png)
+![About](./documents/readme-files/test-about.png)
 
-![Navbar](./documents/readme-files/test-contact.png)
+![Contact](./documents/readme-files/test-contact.png)
 
-![Navbar](./documents/readme-files/test-profile.png)
+![Profile](./documents/readme-files/test-profile.png)
 
-![Navbar](./documents/readme-files/test-list.png)
+![Product List](./documents/readme-files/test-list.png)
 
-![Navbar](./documents/readme-files/test-detail.png)
+![Product Detail](./documents/readme-files/test-detail.png)
 
-![Navbar](./documents/readme-files/test-add.png)
+![Add Product](./documents/readme-files/test-add.png)
 
-![Navbar](./documents/readme-files/test-edit.png)
+![Edit Product](./documents/readme-files/test-edit.png)
 
-![Navbar](./documents/readme-files/test-delete.png)
+![Delete Product](./documents/readme-files/test-delete.png)
 
-![Navbar](./documents/readme-files/test-checkout.png)
+![Checkout Product](./documents/readme-files/test-checkout.png)
 
+# CSS Validator
+
+![CSS](./documents/readme-files/css-validator.png)
+
+# HTML Validator
+
+![HTML](./documents/readme-files/html-validator.png)
