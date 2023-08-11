@@ -54,4 +54,3 @@ class ReservationForm(forms.ModelForm):
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
             self.fields[field].label = labels[field]
-            self.fields[field].label.attrs['class'] = 'float-left'
