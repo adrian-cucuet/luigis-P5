@@ -218,26 +218,7 @@
               <div class="lp-price">${{ sp.price }}</div>
             </div>
             <div class="lp-description">
-              <p class="lp-text lp-mb-15">{{ sp.ingredients|truncatechars:50 }}</p>
-              {% if sp.rating %}
-              <ul class="lp-stars lp-mb-25">
-                <li><i class="fas fa-star {% if sp.rating > 0 %} full {% else %} empty {% endif %}"></i></li>
-                <li><i class="fas fa-star {% if sp.rating > 1 %} full {% else %} empty {% endif %}"></i></li>
-                <li><i class="fas fa-star {% if sp.rating > 2 %} full {% else %} empty {% endif %}"></i></li>
-                <li><i class="fas fa-star {% if sp.rating > 3 %} full {% else %} empty {% endif %}"></i></li>
-                <li><i class="fas fa-star {% if sp.rating > 4 %} full {% else %} empty {% endif %}"></i></li>
-                <li><span class="ml-2">{{ sp.rating|floatformat }} / 5.0</span></li>
-              </ul>
-              {% else %}
-              <ul class="lp-stars lp-mb-25">
-                <li><i class="fas fa-star empty"></i></li>
-                <li><i class="fas fa-star empty"></i></li>
-                <li><i class="fas fa-star empty"></i></li>
-                <li><i class="fas fa-star empty"></i></li>
-                <li><i class="fas fa-star empty"></i></li>
-                <li><span>Sorry, not rated yet!</span></li>
-              </ul>
-              {% endif %}
+              <p class="lp-text lp-mb-15">{{ sp.ingredients|truncatechars:45 }}</p>
             </div>
             <div class="lp-card-buttons-frame">
               <a href="{% url 'menu_item' sp.id %}" class="lp-btn lp-btn-gray">

@@ -828,6 +828,14 @@ The steps are as follows :
 
 [Back To Top](#Luigis-Pizza)
 
+## Bugs<a name="bugs"></a>
+
+- After deployment the average ratings were not showing anymore on the carousel products and product list. I have tried tio fix the issue and I couldn't yet. I am still looking into a solution for that fix.
+
+- During testing I have observed that after submiting a product reciew, the review posted has a different css untill a page refresh. On development it was working fine, I am looking into a solution. Maybe a page refresh after submiting the form.
+
+- During testing I have discovered that the qty button decrement in lkarge screens is not getting disabled on min qty 1. The code seems correct and I have looked into the walkthrough project but could't find a fix in time.
+
 
 ## Credits<a name="credits"></a>
 

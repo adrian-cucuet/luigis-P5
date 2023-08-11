@@ -153,7 +153,7 @@
                             <div class="lp-price">${{ product.price }}</div>
                         </div>
                         <div class="lp-description">
-                            <p class="lp-text lp-mb-15">{{ product.ingredients|truncatechars:50 }}</p>
+                            <p class="lp-text lp-mb-15">{{ product.ingredients|truncatechars:45 }}</p>
                         </div>
                         <div class="lp-card-buttons-frame">
                             <a href="{% url 'menu_item' product.id %}" class="lp-btn lp-btn-gray">

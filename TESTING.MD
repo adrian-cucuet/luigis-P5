@@ -33,3 +33,7 @@
 # HTML Validator
 
 ![HTML](./documents/readme-files/html-validator.png)
+
+# Lighthouse
+
+![Lighthouse](./documents/readme-files/lighthouse-results.png)
