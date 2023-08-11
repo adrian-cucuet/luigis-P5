@@ -465,6 +465,8 @@ I used [XML-Sitmaps](www.xml-sitemaps.com) to generate an xml file.  Google uses
 
 Testing is documented in [testing.md](TESTING.md) file.
 
+During testing I doscovered a bug in the decrement qty button on large screens. It works fine on mobile, but on large it doesn't disable when the product quantity reaches 1. I have tried to fix it, but due to the time limit, unfortunetely I didn't have enough time.
+
 <br>
 
 ## Setup and Deployment<a name="deployment"></a>
