@@ -9,7 +9,7 @@ class DateInput(forms.DateInput):
 
 
 class ReservationForm(forms.ModelForm):
-    #Validate date to be in the future
+    # Validate date to be in the future
     def clean_date(self):
         date = self.cleaned_data['date']
         if date < timezone.now().date():

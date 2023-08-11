@@ -19,7 +19,7 @@ def about(request):
                 Please double check your information.')
 
     else:
-        booking_form = ReservationForm() 
+        booking_form = ReservationForm()
 
     context = {
         'booking_form': booking_form,
