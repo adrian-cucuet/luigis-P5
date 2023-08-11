@@ -32,6 +32,9 @@ class ReservationForm(forms.ModelForm):
             'name': 'your name',
             'email': 'email address',
             'phone': 'phone number',
+            'no_of_guests': 'Guests',
+            'date': 'Date',
+            'time': 'Time',
         }
 
         labels = {
@@ -45,10 +48,9 @@ class ReservationForm(forms.ModelForm):
 
         self.fields['name'].widget.attrs['autofocus'] = False
         for field in self.fields:
+            placeholder = placeholders[field]
             if self.fields[field].required:
-                placeholder = f'{placeholders[field]} *'
-            else:
-                placeholder = placeholders[field]
+                placeholder = f'{placeholder} *'
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
-            self.fields[field].label = True
+            self.fields[field].label = labels[field]
