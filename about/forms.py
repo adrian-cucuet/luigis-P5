@@ -29,13 +29,20 @@ class ReservationForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
         placeholders = {
+            'name': 'your name',
+            'email': 'email address',
+            'phone': 'phone number',
+        }
+
+        labels = {
             'name': 'Full Name',
             'email': 'Email Address',
             'phone': 'Phone Number',
-            'no_of_guests': 'Guests',
-            'date': 'Date',
-            'time': 'Time',
+            'no_of_guests': 'Guests (max 12)',
+            'date': 'Preferred Date',
+            'time': 'Preferred Time',
         }
+
         self.fields['name'].widget.attrs['autofocus'] = False
         for field in self.fields:
             if self.fields[field].required:
@@ -44,5 +51,4 @@ class ReservationForm(forms.ModelForm):
                 placeholder = placeholders[field]
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
-            self.fields[field].label = False
-            self.fields[field].label = False
+            self.fields[field].label = True
