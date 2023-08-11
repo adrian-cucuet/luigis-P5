@@ -1397,8 +1397,6 @@ h5 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    line-clamp: 2;
-    box-orient: vertical;
 }
 
 .lp-input-number-frame {
@@ -1715,7 +1713,6 @@ h5 {
 .lp-menu-item.lp-menu-item-sm .lp-card-tp .lp-card-title {
     font-size: 14px;
     -webkit-line-clamp: 2;
-    line-clamp: 2;
 }
 
 .lp-menu-item.lp-menu-item-sm .lp-card-tp .lp-price {
@@ -1965,7 +1962,7 @@ footer .lp-footer-frame .lp-links-footer {
 .btn-file input[type="file"] {
     position: absolute;
     top: 0;
-    right: o;
+    right: 0;
     min-width: 100%;
     min-height: 100%;
     opacity: 0;
