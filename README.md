@@ -2,9 +2,9 @@
 
 ## Project Overview
 
-Luigi's Pizza is an eCommerce site, built using Django, Python, Javascript and Bootstrap 4. This is my final Project Portofolio for Full-Stack Diploma @CodeInstitute
+Luigi's Pizza is an eCommerce site, built using Django, Python, Javascript, and Bootstrap 4. This is my final Project Portfolio for Full-Stack Diploma @CodeInstitute
 
-'Luigi's Pizza' website is designed and build as a fictitious online store of a pizzeria, with the purpose of creating an online order system for the store to extend its customer reach. The design is simple and intuitive to allow the users to order pizza for delivery.
+'Luigi's Pizza' website is designed and built as a fictitious online store of a pizzeria, to create an online order system for the store to extend its customer reach. The design is simple and intuitive to allow the users to order pizza for delivery.
 
 
 ![screenshot](./documents/readme-files/all-devices-black.png)
@@ -39,12 +39,12 @@ Please visit the live site via [this link](https://luigispizza-p5-294fbfd7e697.h
 
 ### User Stories
 
-The purpose of the project was to create a user-centric website, taking in consideration the main user stories:
+The purpose of the project was to create a user-centric website, taking into consideration the main user stories:
 
     * Store Owner Goals:
 
         * Create a visually appealing design to attract users
-        * Implement a user-friendly front-end for easy navigation
+        * Implement a user-friendly front end for easy navigation
         * Enable user account management and product management
         * Provide means for managing and moderating user-generated content
         * Develop a responsive design that works seamlessly on various devices
@@ -53,13 +53,13 @@ The purpose of the project was to create a user-centric website, taking in consi
 
         * Allow users to create accounts and have control over their information
         * Provide a straightforward and efficient browsing experience for content discovery
-        * Delivery a responsive and user-friendly design that functions well on all devices
+        * Delivery of a responsive and user-friendly design that functions well on all devices
         * The ability to add/edit/remove/update items in the shopping cart
 
-The goal of the e-commerce is to encourage users to browse and order food for delivery. The design is intuitive and clean allowing the user the ability to choose what they would like to order using an approachable process flow.
+The goal of e-commerce is to encourage users to browse and order food for delivery. The design is intuitive and clean allowing the user the ability to choose what they would like to order using an approachable process flow.
 
 
-All interaction with the site is designed to produce a positive emotional response within the user. This is down to the flow of information layout, use of colour, clear and unambiguous navigation structures and user action feedback. There are no aggressive automatic pop-ups.  A user can control all actions and is shown a progress indicator and feedback on financial transactions.
+All interaction with the site is designed to produce a positive emotional response within the user. This is down to the flow of information layout, use of color, unambiguous navigation structures, and user action feedback. There are no aggressive automatic pop-ups.  A user can control all actions and is shown a progress indicator and feedback on financial transactions.
 
 ### Scope
 
@@ -89,9 +89,9 @@ Functionality:
 ### Structure
 
 Navigation:
-- Implement responsive navigation accross all pages.
-- Include cart functionality to show total amount and number of products in cart.
-- Implement a search functionality to allow customers to find products based on product name, category or keywords.
+- Implement responsive navigation across all pages.
+- Include cart functionality to show the total amount and number of products in the cart.
+- Implement a search functionality to allow customers to find products based on product name, category, or keywords.
 
 Registration and User Profiles:
 - User registration and login functionality for customers to create and manage their accounts.
@@ -102,32 +102,32 @@ Registration and User Profiles:
 Products and Sorting:
 - Display a list of all products.
 - Filter products based on their respective category. (isotope filtering)
-- Provide detailed product information, including ingredients, images and ratings.
+- Provide detailed product information, including ingredients, images, and ratings.
 
-Shopping Cart, Checkout and Payment Proccess:
-- Customers can add products to cart and edit product quantities or remove the product from the cart.
+Shopping Cart, Checkout, and Payment Process:
+- Customers can add products to the cart and edit product quantities or remove the product from the cart.
 - Implement a secure checkout process, with address and payment information collection.
 - Integrate a payment gateway to facilitate secure online transactions. (Stripe)
 
 Admin Panel :
-- Implement an admin panel for site administrators to manage products, orders, reservations, newsletter signups and user accounts.
+- Implement an admin panel for site administrators to manage products, orders, reservations, newsletter signups, and user accounts.
 
 Responsive Design :
-- Develop a responsive website that provides great user experience across different devices and screen sizes.
-- Ensure great navigation and readability on desktops, tablets and mobile devices.
+- Develop a responsive website that provides a great user experience across different devices and screen sizes.
+- Ensure great navigation and readability on desktops, tablets, and mobile devices.
 
 Contact Us :
 - Implement a contact form or functionality for users to reach out to the business.
 
-SEO, Marketing and Legal:
+SEO, Marketing, and Legal:
 - Implement Privacy Policy and Terms & Conditions for the website.
-- Create robots.txt, sitemap and add meta description and keywords for the website.
-- Create a facebook page for the business.
+- Create robots.txt, sitemap, and add meta description and keywords for the website.
+- Create a Facebook page for the business.
 
 
 ### Skeleton
 
-The initial wireframes I started from are bellow. Adjustments were made during development to create a better UX experience for the users.
+The initial wireframes I started from are below. Adjustments were made during development to create a better UX experience for the users.
 
 <details>
 <summary>Wireframe Home Page</summary>
@@ -153,11 +153,11 @@ The initial wireframes I started from are bellow. Adjustments were made during d
 
 ## Agile Methodology<a name="agile"></a>
 
-As I was developing the project on multiple devices I have decided to create a Google Spreadsheet for the Agile Methodology. Working by myslef I find it easier to use a spreadsheet insteam of an Agile SaaS product that is more efficient for teams.
+As I was developing the project on multiple devices I decided to create a Google Spreadsheet for the Agile Methodology. Working by myself I find it easier to use a spreadsheet instead of an Agile SaaS product that is more efficient for teams.
 
-While creating the User Stories I implemented the MoSCoW Prioritization Method. This way I focused on more important task first. Every User Story is part of a Milestone and have an accentance criteria.
+While creating the User Stories I implemented the MoSCoW Prioritization Method. This way I focused on more important tasks first. Every User Story is part of a Milestone and has acceptance criteria.
 
-For the Jazzmin implementation, it was working fine before deployment. After deployment, admin wasn't working so I had to give up to this functionality and reeverse to original django admin.
+For the Jazzmin implementation, it was working fine before deployment. After deployment, the admin wasn't working so I had to give up on this functionality and reverse to the original django admin.
 
 <details>
 <summary>Agile Methodology</summary>
@@ -173,11 +173,11 @@ For the Jazzmin implementation, it was working fine before deployment. After dep
 ## Design<a name="design"></a>
 
 
-For the project I have used a website template that I had bought previously and I hold a license for commercial and personal use. In order to create the project I did make adjustments to the template in order to cover my User Stories and project functionality.
+For the project, I have used a website template that I had bought previously and I hold a license for commercial and personal use. In order to create the project I did make adjustments to the template in order to cover my User Stories and project functionality.
 
 ### Colors
 
-As for the colors I opted for simple and clean color scheme. Yellow is a versatile color that can be used effectively in website design. It is often associated with happiness, optimism, and creativity. It can also be used to grab attention and create a sense of urgency.
+As for the colors I opted for a simple and clean color scheme. Yellow is a versatile color that can be used effectively in website design. It is often associated with happiness, optimism, and creativity. It can also be used to grab attention and create a sense of urgency.
 
 <details>
 <summary>Color Scheme</summary>
@@ -193,9 +193,9 @@ I chose Roboto font from Google Fonts for my project. It is a sans-serif font th
 
 ### Favicon
 
-A favicon appears in the browser tab with the website name as a visual reminder to enable a user to easily recognise and identify a company's website in a busy browser with many open tabs.  
+A favicon appears in the browser tab with the website name as a visual reminder to enable a user to easily recognize and identify a company's website in a busy browser with many open tabs.  
 
-The favicon image is from [freepik.com](www.freepik.com). I have used [favicon.io](https://favicon.io/) to generate the favicon files and the link tags to insert in the head of base template.
+The favicon image is from [freepik.com](www.freepik.com). I have used [favicon.io](https://favicon.io/) to generate the favicon files and the link tags to insert in the head of the base template.
 
 
 ### Database Schema 
@@ -254,9 +254,9 @@ For the resgistration and authentication pages, the website colors were used to 
 
 The Navigation bar of the website is designed to help the user to move smoothly around the site.
 
-- Logo to create a string brand presence.
+- Logo to create a strong brand presence.
 - Search bar.
-- My Account, which contains Registration and Login features to an unauthenticated user, or the Logout and Profile for authenticated users. For superuser/store admin instead of Profile we have Add Product features.
+- My Account, which contains Registration and Login features for an unauthenticated user, or the Logout and Profile for authenticated users. For superuser/store admin instead of Profile we have Add Product features.
 - Shopping Cart and Checkout function.
 - Navigation links to all pages of the website.
 
@@ -283,7 +283,7 @@ When a product is successfully added to cart, a Mini Cart is displayed together 
 ![Mini Cart](./documents/readme-files/mini-cart.png)
 </details>
 
-Within the shopping cart page, a user has additional functionality and can increase or decrease the quantity of a product they have selected, or remove it entirely. Also the customer can see the total amount of their purchase updated after every change they make.
+Within the shopping cart page, a user has additional functionality and can increase or decrease the quantity of a product they have selected, or remove it entirely. Also, the customer can see the total amount of their purchase updated after every change they make.
 
 <details>
 <summary>Cart</summary>
@@ -294,7 +294,7 @@ Within the shopping cart page, a user has additional functionality and can incre
 
 #### Checkout
 
-A user can finalise their purchase of the products on this page. The user is required to add shipping details for the order delivery and securely add the card details. The processing of the user's card is managed using Stripe secure payments system.
+A user can finalize their purchase of the products on this page. The user is required to add shipping details for the order delivery and securely add the card details. The processing of the user's card is managed using Stripe's secure payments system.
 
 <details>
 <summary>Checkout</summary>
@@ -320,9 +320,9 @@ The Product List page contains all the products available to the user. They can 
 
 #### Product Detail
 
-Product name, description, rating, price and a quantity picker are some of the features of this page. A product can be added to the shopping cart, and the quantity of the product can be adjusted.
+Product name, description, rating, price, and quantity picker are some of the features of this page. A product can be added to the shopping cart, and the quantity of the product can be adjusted.
 
-On the product detail page a user can leave a review to the product. The option for review is only visible if the user is authenticated. After the review, the product rating will be adjusted automaticaly.
+On the product detail page, a user can leave a review of the product. The option for review is only visible if the user is authenticated. After the review, the product rating will be adjusted automatically.
 
 <details>
 <summary>Product Details</summary>
@@ -429,7 +429,7 @@ Future features to develop will be:
 
 ##### Social Media Marketing - Facebook business page:
 
-- As Facebook has the largest number of users and the widest demographic, I created a Facebook Business Page. Through the presence on Facebook, I can start ads campaign targeting only the audience from a specific area, city, age. Makes it the perfect social media paltform for marketing.
+- As Facebook has the largest number of users and the widest demographic, I created a Facebook Business Page. Through the presence on Facebook, I can start ads campaign targeting only the audience from a specific area, city, or age. Makes it the perfect social media platform for marketing.
 
 <details>
 <summary>404 Page</summary>
@@ -440,13 +440,13 @@ Future features to develop will be:
 
 #### SEO:
 
-- After adding meta tags to my head element to optimize my website's visibility and improve search engine performance, I also added keywords to attract both search engines and users. For the keywords I decided to use [XML-Sitmaps](https://online.seranking.com) to check the competition and make sure I pick the best keywords.
+- After adding meta tags to my head element to optimize my website's visibility and improve search engine performance, I also added keywords to attract both search engines and users. For the keywords, I decided to use [XML-Sitmaps](https://online.seranking.com) to check the competition and make sure I pick the best keywords.
 I used [XML-Sitmaps](www.xml-sitemaps.com) to generate an xml file.  Google uses this xml file to help it understand the website's structure and how the pages link to each other.
 
 
 #### Robots.txt and Sitemap.xml:
 
-- robots.txt is a simple text file that tells search engines where they are not allowed to go on the application.  In Bookworms, the robots.txt file is in the root directory and includes the admin, profiles and checkout directories as urls that the spiders are not permitted to access.
+- robots.txt is a simple text file that tells search engines where they are not allowed to go on the application.  In Bookworms, the robots.txt file is in the root directory and includes the admin, profiles, and checkout directories as urls that the spiders are not permitted to access.
 
 - sitemap.xml is a file that lists a website's import page urls, making sure that search engines can crawl, or navigate through them.  It helps a search engine to understand our website's structure and crawl every essential page on the website.  sitemap.xml was generated on [xml-sitemaps.com](https://www.xml-sitemaps.com/details-mym-bookworms-et-al-b7ea61e35a6e.herokuapp.com-49873d773.html) and is located in the root directory.
 
@@ -454,9 +454,9 @@ I used [XML-Sitmaps](www.xml-sitemaps.com) to generate an xml file.  Google uses
 
 ## Privacy Policy T&Cs:
 
-- A Privacy Policy is a document neccesary for any online presence that collects data from users. It's purpose is to be transparent and inform users about how their data is being collected and processed. 
+- A Privacy Policy is a document necessary for any online presence that collects data from users. Its purpose is to be transparent and inform users about how their data is being collected and processed. 
 
-- Terms & conditions (T&Cs) are a set of rules that govern the use of the website. They cover things like privacy, liability, and termination. T&Cs are important because they protect both the user and the business.
+- Terms & Conditions (T&Cs) are a set of rules that govern the use of the website. They cover things like privacy, liability, and termination. T&Cs are important because they protect both the user and the business.
 
 [Back To Top](#Luigis-Pizza)
 
@@ -465,7 +465,7 @@ I used [XML-Sitmaps](www.xml-sitemaps.com) to generate an xml file.  Google uses
 
 Testing is documented in [testing.md](TESTING.md) file.
 
-During testing I doscovered a bug in the decrement qty button on large screens. It works fine on mobile, but on large it doesn't disable when the product quantity reaches 1. I have tried to fix it, but due to the time limit, unfortunetely I didn't have enough time.
+During testing, I discovered a bug in the decrement qty button on large screens. It works fine on mobile, but on large it doesn't disable when the product quantity reaches 1. I have tried to fix it, but due to the time limit, unfortunately, I didn't have enough time.
 
 <br>
 
@@ -830,11 +830,11 @@ The steps are as follows :
 
 ## Bugs<a name="bugs"></a>
 
-- After deployment the average ratings were not showing anymore on the carousel products and product list. I have tried tio fix the issue and I couldn't yet. I am still looking into a solution for that fix.
+- After deployment, the average ratings were not showing anymore on the carousel products and product list. I have tried to fix the issue and I couldn't yet. I am still looking into a solution for that fix.
 
-- During testing I have observed that after submiting a product reciew, the review posted has a different css untill a page refresh. On development it was working fine, I am looking into a solution. Maybe a page refresh after submiting the form.
+- During testing, I observed that after submitting a product review, the review posted has a different css until a page refresh. On development it was working fine, I am looking into a solution. Maybe a page refresh after submitting the form.
 
-- During testing I have discovered that the qty button decrement in lkarge screens is not getting disabled on min qty 1. The code seems correct and I have looked into the walkthrough project but could't find a fix in time.
+- During testing, I discovered that the qty button decrement in larger screens is not getting disabled on min qty 1. The code seems correct and I have looked into the walkthrough project but couldn't find a fix in time.
 
 
 ## Credits<a name="credits"></a>
